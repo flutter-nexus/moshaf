@@ -1,47 +1,23 @@
 import 'package:flutter/material.dart';
 
-class SignUpScreen extends StatefulWidget {
-  @override
-  _SignUpScreenState createState() => _SignUpScreenState();
-}
+class SignUpScreen extends StatelessWidget {
+  final SignUpController _controller = SignUpController();
 
-class _SignUpScreenState extends State<SignUpScreen> {
-  final _formKey = GlobalKey<FormState>();
-  final TextEditingController _nameController = TextEditingController();
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
-  final TextEditingController _confirmPasswordController =
-      TextEditingController();
-  bool _isLoading = false;
-
-  void _signUp() {
-    if (_formKey.currentState!.validate()) {
-      setState(() {
-        _isLoading = true;
-      });
-
-      // Simulate a network request
-      Future.delayed(Duration(seconds: 2), () {
-        setState(() {
-          _isLoading = false;
-        });
-        // Navigate to the next screen or show success message
-      });
-    }
-  }
+  SignUpScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: 8, vertical: 10),
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
           child: Form(
-            key: _formKey,
+            key: _controller.formKey,
             child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: <Widget>[
-                SizedBox(height: 15),
-                Text(
+                const SizedBox(height: 15),
+                const Text(
                   "Create Account",
                   style: TextStyle(
                     fontSize: 28,
@@ -51,134 +27,182 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   ),
                 ),
                 Image.asset(
-                  'assets/images/muslim-prayer.png', // Add a mosque image or beautiful Islamic design
+                  'assets/images/muslim-prayer.png',
                   height: MediaQuery.sizeOf(context).height * 0.25,
                 ),
-                // SizedBox(height: 10),
-                Text(
+                const SizedBox(height: 10),
+                const Text(
                   "Join the Muslim App",
                   style: TextStyle(fontSize: 18, color: Colors.black54),
                 ),
-                SizedBox(height: 20),
-                TextFormField(
-                  controller: _nameController,
-                  decoration: InputDecoration(
-                    labelText: 'Name',
-                    hintText: 'Enter your name',
-                    prefixIcon: Icon(Icons.person, color: Colors.teal),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                  ),
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Please enter your name';
-                    }
-                    return null;
-                  },
-                ),
-                SizedBox(height: 20),
-                TextFormField(
-                  controller: _emailController,
-                  decoration: InputDecoration(
-                    labelText: 'Email',
-                    hintText: 'Enter your email',
-                    prefixIcon: Icon(Icons.email, color: Colors.teal),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                  ),
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Please enter your email';
-                    }
-                    if (!RegExp(r'^[^@]+@[^@]+\.[^@]+').hasMatch(value)) {
-                      return 'Enter a valid email';
-                    }
-                    return null;
-                  },
-                ),
-                SizedBox(height: 20),
-                TextFormField(
-                  controller: _passwordController,
-                  obscureText: true,
-                  decoration: InputDecoration(
-                    labelText: 'Password',
-                    hintText: 'Enter your password',
-                    prefixIcon: Icon(Icons.lock, color: Colors.teal),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                  ),
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Please enter your password';
-                    }
-                    if (value.length < 6) {
-                      return 'Password must be at least 6 characters';
-                    }
-                    return null;
-                  },
-                ),
-                SizedBox(height: 20),
-                TextFormField(
-                  controller: _confirmPasswordController,
-                  obscureText: true,
-                  decoration: InputDecoration(
-                    labelText: 'Confirm Password',
-                    hintText: 'Confirm your password',
-                    prefixIcon: Icon(Icons.lock, color: Colors.teal),
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                  ),
-                  validator: (value) {
-                    if (value == null || value.isEmpty) {
-                      return 'Please confirm your password';
-                    }
-                    if (value != _passwordController.text) {
-                      return 'Passwords do not match';
-                    }
-                    return null;
-                  },
-                ),
-                SizedBox(height: 40),
-                _isLoading
-                    ? CircularProgressIndicator()
-                    : ElevatedButton(
-                        onPressed: _signUp,
-                        style: ElevatedButton.styleFrom(
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(20),
-                          ),
-                          padding: EdgeInsets.symmetric(
-                            vertical: 15,
-                            horizontal: 100,
-                          ),
-                        ),
-                        child: Text(
-                          'Sign Up',
-                          style: TextStyle(
-                            fontSize: 18,
-                            color: Colors.teal,
-                          ),
-                        ),
-                      ),
-                SizedBox(height: 20),
-                TextButton(
-                  onPressed: () {
-                    // Navigate to the Login screen
-                  },
-                  child: Text(
-                    'Already have an account? Log In',
-                    style: TextStyle(color: Colors.teal),
-                  ),
-                ),
+                const SizedBox(height: 20),
+                _buildNameField(_controller),
+                const SizedBox(height: 20),
+                _buildEmailField(_controller),
+                const SizedBox(height: 20),
+                _buildPasswordField(_controller),
+                const SizedBox(height: 20),
+                _buildConfirmPasswordField(_controller),
+                const SizedBox(height: 40),
+                _controller.isLoading
+                    ? const CircularProgressIndicator()
+                    : _buildSignUpButton(context, _controller),
+                const SizedBox(height: 20),
+                _buildLoginButton(),
               ],
             ),
           ),
         ),
       ),
     );
+  }
+
+  Widget _buildNameField(SignUpController controller) {
+    return TextFormField(
+      controller: controller.nameController,
+      decoration: InputDecoration(
+        labelText: 'Name',
+        hintText: 'Enter your name',
+        prefixIcon: const Icon(Icons.person, color: Colors.teal),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(20),
+        ),
+      ),
+      validator: (value) {
+        if (value == null || value.isEmpty) {
+          return 'Please enter your name';
+        }
+        return null;
+      },
+    );
+  }
+
+  Widget _buildEmailField(SignUpController controller) {
+    return TextFormField(
+      controller: controller.emailController,
+      decoration: InputDecoration(
+        labelText: 'Email',
+        hintText: 'Enter your email',
+        prefixIcon: const Icon(Icons.email, color: Colors.teal),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(20),
+        ),
+      ),
+      validator: (value) {
+        if (value == null || value.isEmpty) {
+          return 'Please enter your email';
+        }
+        if (!RegExp(r'^[^@]+@[^@]+\.[^@]+').hasMatch(value)) {
+          return 'Enter a valid email';
+        }
+        return null;
+      },
+    );
+  }
+
+  Widget _buildPasswordField(SignUpController controller) {
+    return TextFormField(
+      controller: controller.passwordController,
+      obscureText: true,
+      decoration: InputDecoration(
+        labelText: 'Password',
+        hintText: 'Enter your password',
+        prefixIcon: const Icon(Icons.lock, color: Colors.teal),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(20),
+        ),
+      ),
+      validator: (value) {
+        if (value == null || value.isEmpty) {
+          return 'Please enter your password';
+        }
+        if (value.length < 6) {
+          return 'Password must be at least 6 characters';
+        }
+        return null;
+      },
+    );
+  }
+
+  Widget _buildConfirmPasswordField(SignUpController controller) {
+    return TextFormField(
+      controller: controller.confirmPasswordController,
+      obscureText: true,
+      decoration: InputDecoration(
+        labelText: 'Confirm Password',
+        hintText: 'Confirm your password',
+        prefixIcon: const Icon(Icons.lock, color: Colors.teal),
+        border: OutlineInputBorder(
+          borderRadius: BorderRadius.circular(20),
+        ),
+      ),
+      validator: (value) {
+        if (value == null || value.isEmpty) {
+          return 'Please confirm your password';
+        }
+        if (value != controller.passwordController.text) {
+          return 'Passwords do not match';
+        }
+        return null;
+      },
+    );
+  }
+
+  Widget _buildSignUpButton(BuildContext context, SignUpController controller) {
+    return ElevatedButton(
+      onPressed: () => controller.signUp(context),
+      style: ElevatedButton.styleFrom(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20),
+        ),
+        padding: const EdgeInsets.symmetric(
+          vertical: 15,
+          horizontal: 100,
+        ),
+      ),
+      child: const Text(
+        'Sign Up',
+        style: TextStyle(
+          fontSize: 18,
+          color: Colors.teal,
+        ),
+      ),
+    );
+  }
+
+  Widget _buildLoginButton() {
+    return TextButton(
+      onPressed: () {
+        // Navigate to the Login screen
+      },
+      child: const Text(
+        'Already have an account? Log In',
+        style: TextStyle(color: Colors.teal),
+      ),
+    );
+  }
+}
+
+class SignUpController with ChangeNotifier {
+  final formKey = GlobalKey<FormState>();
+  final nameController = TextEditingController();
+  final emailController = TextEditingController();
+  final passwordController = TextEditingController();
+  final confirmPasswordController = TextEditingController();
+  bool isLoading = false;
+
+  void signUp(BuildContext context) async {
+    if (formKey.currentState!.validate()) {
+      isLoading = true;
+      notifyListeners();
+
+      // Simulate a network request
+      await Future.delayed(const Duration(seconds: 2));
+
+      isLoading = false;
+      notifyListeners();
+
+      // Navigate to the next screen or show success message
+    }
   }
 }
