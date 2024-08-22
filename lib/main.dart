@@ -18,14 +18,7 @@ class MyApp extends StatelessWidget {
     return  MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        body: Center(
-          child: VerificationCodeInput(
-            controller: TextEditingController(),
-            onCompleted: (value) {
-              print(value);
-            },
-          ),
-        ),
+        body: LoginScreen(),
       ),
     );
   }

@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:moshaf/view/HomeScreen.dart';
+import 'package:moshaf/view/auth/reset_password_screen.dart';
+import 'package:moshaf/view/auth/signup_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -23,6 +26,12 @@ class _LoginScreenState extends State<LoginScreen> {
           _isLoading = false;
         });
         // Navigate to the next screen or show success message
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(
+            builder: (context) => HomeScreen(),
+          ),
+        );
       });
     }
   }
@@ -31,41 +40,55 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
-          child: Form(
-            key: _formKey,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                const SizedBox(height: 15),
-                const Text(
-                  "Assalamu Alaikum",
-                  style: TextStyle(
-                    fontSize: 28,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.teal,
-                    fontFamily: 'NotoNaskhArabic',
+        child: Container(
+          height: MediaQuery.sizeOf(context).height,
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [
+                  const Color.fromARGB(255, 157, 251, 243),
+                  Colors.white,
+                ]),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
+            child: Form(
+              key: _formKey,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  const SizedBox(height: 15),
+                  const Text(
+                    "Assalamu Alaikum",
+                    style: TextStyle(
+                      fontSize: 28,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.teal,
+                      fontFamily: 'NotoNaskhArabic',
+                    ),
                   ),
-                ),
-                Image.asset(
-                  'assets/images/muslim-prayer.png',
-                  height: MediaQuery.sizeOf(context).height * 0.25,
-                ),
-                const SizedBox(height: 20),
-                const Text(
-                  "Welcome to the Muslim App",
-                  style: TextStyle(fontSize: 18, color: Colors.black54),
-                ),
-                const SizedBox(height: 40),
-                _buildEmailField(),
-                const SizedBox(height: 20),
-                _buildPasswordField(),
-                const SizedBox(height: 40),
-                _isLoading ? _buildLoadingIndicator() : _buildLoginButton(),
-                const SizedBox(height: 20),
-                _buildForgotPasswordButton(),
-              ],
+                  Image.asset(
+                    'assets/images/muslim-prayer.png',
+                    height: MediaQuery.sizeOf(context).height * 0.25,
+                  ),
+                  const SizedBox(height: 20),
+                  const Text(
+                    "Welcome to the Muslim App",
+                    style: TextStyle(fontSize: 18, color: Colors.black54),
+                  ),
+                  const SizedBox(height: 40),
+                  _buildEmailField(),
+                  const SizedBox(height: 20),
+                  _buildPasswordField(),
+                  const SizedBox(height: 40),
+                  _isLoading ? _buildLoadingIndicator() : _buildLoginButton(),
+                  const SizedBox(height: 20),
+                  _buildForgotPasswordButton(),
+                  const SizedBox(height: 5),
+                  _buildCreateAccountButton(),
+                ],
+              ),
             ),
           ),
         ),
@@ -126,7 +149,9 @@ class _LoginScreenState extends State<LoginScreen> {
 
   Widget _buildLoginButton() {
     return ElevatedButton(
-      onPressed: _login,
+      onPressed: () {
+        _login;
+      },
       style: ElevatedButton.styleFrom(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20),
@@ -150,10 +175,36 @@ class _LoginScreenState extends State<LoginScreen> {
     return TextButton(
       onPressed: () {
         // Navigate to the Forgot Password screen
+        // Navigator.pushNamed(context, '/forgot_password');
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => ResetPasswordScreen(),
+          ),
+        );
       },
       child: const Text(
         'Forgot Password?',
         style: TextStyle(color: Colors.teal),
+      ),
+    );
+  }
+
+  Widget _buildCreateAccountButton() {
+    return TextButton(
+      onPressed: () {
+        // Navigate to the Forgot Password screen
+        // Navigator.pushNamed(context, '/forgot_password');
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => SignUpScreen(),
+          ),
+        );
+      },
+      child: Text(
+        'Create Account',
+        style: TextStyle(color: Colors.teal[700]),
       ),
     );
   }

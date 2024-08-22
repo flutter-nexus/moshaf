@@ -9,47 +9,60 @@ class SignUpScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
-          child: Form(
-            key: _controller.formKey,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: <Widget>[
-                const SizedBox(height: 15),
-                const Text(
-                  "Create Account",
-                  style: TextStyle(
-                    fontSize: 28,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.teal,
-                    fontFamily: 'NotoNaskhArabic',
-                  ),
+        child: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [
+                  const Color.fromARGB(255, 157, 251, 243),
+                  Colors.white,
+                ]),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
+            child: Form(
+              key: _controller.formKey,
+              child: Container(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    const SizedBox(height: 15),
+                    const Text(
+                      "Create Account",
+                      style: TextStyle(
+                        fontSize: 28,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.teal,
+                        fontFamily: 'NotoNaskhArabic',
+                      ),
+                    ),
+                    Image.asset(
+                      'assets/images/registration.png',
+                      height: MediaQuery.sizeOf(context).height * 0.25,
+                    ),
+                    const SizedBox(height: 10),
+                    const Text(
+                      "Join the Muslim App",
+                      style: TextStyle(fontSize: 18, color: Colors.black54),
+                    ),
+                    const SizedBox(height: 20),
+                    _buildNameField(_controller),
+                    const SizedBox(height: 20),
+                    _buildEmailField(_controller),
+                    const SizedBox(height: 20),
+                    _buildPasswordField(_controller),
+                    const SizedBox(height: 20),
+                    _buildConfirmPasswordField(_controller),
+                    const SizedBox(height: 40),
+                    _controller.isLoading
+                        ? const CircularProgressIndicator()
+                        : _buildSignUpButton(context, _controller),
+                    const SizedBox(height: 20),
+                    _buildLoginButton(context),
+                  ],
                 ),
-                Image.asset(
-                  'assets/images/muslim-prayer.png',
-                  height: MediaQuery.sizeOf(context).height * 0.25,
-                ),
-                const SizedBox(height: 10),
-                const Text(
-                  "Join the Muslim App",
-                  style: TextStyle(fontSize: 18, color: Colors.black54),
-                ),
-                const SizedBox(height: 20),
-                _buildNameField(_controller),
-                const SizedBox(height: 20),
-                _buildEmailField(_controller),
-                const SizedBox(height: 20),
-                _buildPasswordField(_controller),
-                const SizedBox(height: 20),
-                _buildConfirmPasswordField(_controller),
-                const SizedBox(height: 40),
-                _controller.isLoading
-                    ? const CircularProgressIndicator()
-                    : _buildSignUpButton(context, _controller),
-                const SizedBox(height: 20),
-                _buildLoginButton(),
-              ],
+              ),
             ),
           ),
         ),
@@ -150,7 +163,10 @@ class SignUpScreen extends StatelessWidget {
 
   Widget _buildSignUpButton(BuildContext context, SignUpController controller) {
     return ElevatedButton(
-      onPressed: () => controller.signUp(context),
+      onPressed: () {
+        controller.signUp(context);
+        Navigator.pop(context);
+      },
       style: ElevatedButton.styleFrom(
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20),
@@ -170,10 +186,10 @@ class SignUpScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildLoginButton() {
+  Widget _buildLoginButton(BuildContext context) {
     return TextButton(
       onPressed: () {
-        // Navigate to the Login screen
+        Navigator.pop(context);
       },
       child: const Text(
         'Already have an account? Log In',
