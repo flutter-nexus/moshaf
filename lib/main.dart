@@ -3,6 +3,7 @@ import 'package:moshaf/view/HomeScreen.dart';
 import 'package:moshaf/view/auth/login_screen.dart';
 import 'package:moshaf/view/auth/reset_password_screen.dart';
 import 'package:moshaf/view/auth/signup_screen.dart';
+import 'package:moshaf/view/auth/verification%20_code.dart';
 
 void main() {
 
@@ -16,7 +17,16 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return  MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: ResetPasswordScreen(),
+      home: Scaffold(
+        body: Center(
+          child: VerificationCodeInput(
+            controller: TextEditingController(),
+            onCompleted: (value) {
+              print(value);
+            },
+          ),
+        ),
+      ),
     );
   }
 }
