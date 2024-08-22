@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:moshaf/view/HomeScreen.dart';
 import 'package:moshaf/view/auth/login_screen.dart';
+import 'package:moshaf/view/auth/reset_password_screen.dart';
 import 'package:moshaf/view/auth/signup_screen.dart';
 
 void main() {
@@ -14,7 +15,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  MaterialApp(
-      home: SignUpScreen(),
+      debugShowCheckedModeBanner: false,
+      home: ResetPasswordScreen(),
     );
   }
 }
