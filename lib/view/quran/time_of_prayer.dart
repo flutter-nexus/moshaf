@@ -207,13 +207,13 @@ class _QuranTimeScreenState extends State<QuranTimeScreen>
       ),
       child: Column(
         children: [
-          
+
           SizedBox(height: 16),
           ListView(
             padding: EdgeInsets.all(16),
             children: _prayerTimes!.entries.map((prayer) {
               return FadeTransition(
-                opacity: _fadeAnimation,
+                opacity: _fadeAnimation, 
                 child: Card(
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12),
