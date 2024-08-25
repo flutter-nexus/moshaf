@@ -221,6 +221,7 @@ class _QuranTimeScreenState extends State<QuranTimeScreen>
                   elevation: 8,
                   margin: EdgeInsets.symmetric(vertical: 8),
                   child: ListTile(
+                    
                     contentPadding:
                         EdgeInsets.symmetric(horizontal: 16, vertical: 10),
                     leading: Icon(Icons.access_time, color: Colors.teal.shade800),
