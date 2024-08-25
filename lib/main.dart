@@ -93,6 +93,7 @@ class DetailPage extends StatelessWidget {
         title: Text(title),
       ),
       body: Center(
+        
         child: Text('Welcome to $title'),
       ),
     );
