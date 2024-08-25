@@ -109,10 +109,12 @@ class _QuranTimeScreenState extends State<QuranTimeScreen>
       );
 
       final data = response.data;
-
+      log(latitude.toString());
+      log(longitude.toString());
       if (data['code'] == 200) {
         setState(() {
           _prayerTimes = {
+            
             'Fajr': convertTo12HourFormat(data['data']['timings']['Fajr']),
             'Dhuhr': convertTo12HourFormat(data['data']['timings']['Dhuhr']),
             'Asr': convertTo12HourFormat(data['data']['timings']['Asr']),
@@ -203,41 +205,47 @@ class _QuranTimeScreenState extends State<QuranTimeScreen>
           end: Alignment.bottomCenter,
         ),
       ),
-      child: ListView(
-        padding: EdgeInsets.all(16),
-        children: _prayerTimes!.entries.map((prayer) {
-          return FadeTransition(
-            opacity: _fadeAnimation,
-            child: Card(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(12),
-              ),
-              elevation: 8,
-              margin: EdgeInsets.symmetric(vertical: 8),
-              child: ListTile(
-                contentPadding:
-                    EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-                leading: Icon(Icons.access_time, color: Colors.teal.shade800),
-                title: Text(
-                  prayer.key,
-                  style: TextStyle(
-                    fontSize: 22,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.teal.shade800,
+      child: Column(
+        children: [
+          
+          SizedBox(height: 16),
+          ListView(
+            padding: EdgeInsets.all(16),
+            children: _prayerTimes!.entries.map((prayer) {
+              return FadeTransition(
+                opacity: _fadeAnimation,
+                child: Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  elevation: 8,
+                  margin: EdgeInsets.symmetric(vertical: 8),
+                  child: ListTile(
+                    contentPadding:
+                        EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+                    leading: Icon(Icons.access_time, color: Colors.teal.shade800),
+                    title: Text(
+                      prayer.key,
+                      style: TextStyle(
+                        fontSize: 22,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.teal.shade800,
+                      ),
+                    ),
+                    trailing: Text(
+                      prayer.value,
+                      style: TextStyle(
+                        fontSize: 22,
+                        fontWeight: FontWeight.bold,
+                        color: Colors.teal.shade800,
+                      ),
+                    ),
                   ),
                 ),
-                trailing: Text(
-                  prayer.value,
-                  style: TextStyle(
-                    fontSize: 22,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.teal.shade800,
-                  ),
-                ),
-              ),
-            ),
-          );
-        }).toList(),
+              );
+            }).toList(),
+          ),
+        ],
       ),
     );
   }
