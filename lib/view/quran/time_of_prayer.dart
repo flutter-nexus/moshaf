@@ -18,7 +18,8 @@ class _QuranTimeScreenState extends State<QuranTimeScreen>
   String? _errorMessage;
   late AnimationController _animationController;
   late Animation<double> _fadeAnimation;
-
+  String datehijri = "";
+  String datenepali = "";
   @override
   void initState() {
     super.initState();
@@ -109,12 +110,13 @@ class _QuranTimeScreenState extends State<QuranTimeScreen>
       );
 
       final data = response.data;
-      log(latitude.toString());
-      log(longitude.toString());
+      datehijri = data['data']['date']['readable'];
+      datenepali =
+          " ${data['data']['date']['hijri']['day']} ${data['data']['date']['hijri']['month']['en']} ${data['data']['date']['hijri']['year']}";
+
       if (data['code'] == 200) {
         setState(() {
           _prayerTimes = {
-            
             'Fajr': convertTo12HourFormat(data['data']['timings']['Fajr']),
             'Dhuhr': convertTo12HourFormat(data['data']['timings']['Dhuhr']),
             'Asr': convertTo12HourFormat(data['data']['timings']['Asr']),
@@ -207,44 +209,53 @@ class _QuranTimeScreenState extends State<QuranTimeScreen>
       ),
       child: Column(
         children: [
-
-          SizedBox(height: 16),
-          ListView(
-            padding: EdgeInsets.all(16),
-            children: _prayerTimes!.entries.map((prayer) {
-              return FadeTransition(
-                opacity: _fadeAnimation, 
-                child: Card(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  elevation: 8,
-                  margin: EdgeInsets.symmetric(vertical: 8),
-                  child: ListTile(
-                    
-                    contentPadding:
-                        EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-                    leading: Icon(Icons.access_time, color: Colors.teal.shade800),
-                    title: Text(
-                      prayer.key,
-                      style: TextStyle(
-                        fontSize: 22,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.teal.shade800,
+          Text(
+            "$datehijri \n $datenepali",
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
+            ),
+            textAlign: TextAlign.center,
+          ),
+          Expanded(
+            child: ListView(
+              padding: EdgeInsets.all(16),
+              children: _prayerTimes!.entries.map((prayer) {
+                return FadeTransition(
+                  opacity: _fadeAnimation,
+                  child: Card(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    elevation: 8,
+                    margin: EdgeInsets.symmetric(vertical: 8),
+                    child: ListTile(
+                      contentPadding:
+                          EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+                      leading:
+                          Icon(Icons.access_time, color: Colors.teal.shade800),
+                      title: Text(
+                        prayer.key,
+                        style: TextStyle(
+                          fontSize: 22,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.teal.shade800,
+                        ),
+                      ),
+                      trailing: Text(
+                        prayer.value,
+                        style: TextStyle(
+                          fontSize: 22,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.teal.shade800,
+                        ),
                       ),
                     ),
-                    trailing: Text(
-                      prayer.value,
-                      style: TextStyle(
-                        fontSize: 22,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.teal.shade800,
-                      ),
-                    ),
                   ),
-                ),
-              );
-            }).toList(),
+                );
+              }).toList(),
+            ),
           ),
         ],
       ),
