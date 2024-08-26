@@ -28,6 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
     double screenWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
+     
       appBar: AppBar(
         iconTheme: IconThemeData(
           color: Colors.white, // لون الأيقونة
