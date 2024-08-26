@@ -1,5 +1,4 @@
 import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:dio/dio.dart';
@@ -20,6 +19,7 @@ class _QuranTimeScreenState extends State<QuranTimeScreen>
   late Animation<double> _fadeAnimation;
   String datehijri = "";
   String datenepali = "";
+
   @override
   void initState() {
     super.initState();
@@ -54,20 +54,14 @@ class _QuranTimeScreenState extends State<QuranTimeScreen>
         _loading = false;
         _errorMessage = e.toString();
       });
+      _showErrorSnackBar(e.toString());
     }
   }
 
   String convertTo12HourFormat(String time24) {
-    // تحديد صيغة 24 ساعة
     final DateFormat timeFormat24 = DateFormat.Hm();
-
-    // تحديد صيغة 12 ساعة مع AM و PM
     final DateFormat timeFormat12 = DateFormat.jm();
-
-    // تحويل الوقت من 24 ساعة إلى DateTime object
     final DateTime dateTime = timeFormat24.parse(time24);
-
-    // إعادة تنسيق الوقت إلى صيغة 12 ساعة
     return timeFormat12.format(dateTime);
   }
 
@@ -134,7 +128,17 @@ class _QuranTimeScreenState extends State<QuranTimeScreen>
         _loading = false;
         _errorMessage = 'Failed to load prayer times: $e';
       });
+      _showErrorSnackBar(e.toString());
     }
+  }
+
+  void _showErrorSnackBar(String message) {
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(
+        content: Text(message),
+        backgroundColor: Colors.red,
+      ),
+    );
   }
 
   @override

@@ -1,9 +1,15 @@
 import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:moshaf/service/golobal_variabules.dart'; // Assume you have a global file where surah data is stored
 
 class QuranIndexPage extends StatelessWidget {
+  static const double _cardMargin = 5.0;
+  static const double _cardRadius = 15.0;
+  static const double _avatarFontSize = 18.0;
+  static const double _titleFontSize = 18.0;
+  static const double _subtitleFontSize = 12.0;
+  static const double _subtitleSpacing = 5.0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -12,58 +18,88 @@ class QuranIndexPage extends StatelessWidget {
         centerTitle: true,
       ),
       body: ListView.builder(
-        itemCount: surahData
-            .length, // Using surahData list containing more detailed information
+        itemCount: surahData.length,
         itemBuilder: (context, index) {
           final surah = surahData[index];
-          return Card(
-            margin: EdgeInsets.symmetric(vertical: 8.0, horizontal: 12.0),
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(15.0),
-            ),
-            elevation: 10,
-            child: ListTile(
-              contentPadding: EdgeInsets.all(1.0),
-              leading: CircleAvatar(
-                backgroundColor: Colors.teal,
-                child: Text(
-                  '${index + 1}',
-                  style: TextStyle(color: Colors.white, fontSize: 18),
-                ),
-              ),
-              title: Text(
-                surah['name'],
-                style: TextStyle(
-                  fontSize: 22,
-                  fontWeight: FontWeight.bold,
-                ),
-                textDirection: TextDirection.rtl,
-              ),
-              subtitle: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  SizedBox(height: 5.0),
-                  Text(
-                    'عدد الآيات: ${surah['ayahCount']}',
-                    style: TextStyle(fontSize: 16),
-                    textDirection: TextDirection.rtl,
-                  ),
-                  SizedBox(height: 4.0),
-                  Text(
-                    'مكان النزول: ${surah['revelationPlace']}',
-                    style: TextStyle(fontSize: 16),
-                    textDirection: TextDirection.rtl,
-                  ),
-                ],
-              ),
-              trailing: Icon(Icons.arrow_forward_ios, color: Colors.teal),
-              onTap: () {
-                log('surah tapped: ${surah['name']}');
-              },
-            ),
-          );
+          return _SurahCard(surah: surah, index: index);
         },
       ),
+    );
+  }
+}
+
+class _SurahCard extends StatelessWidget {
+  final Map<String, dynamic> surah;
+  final int index;
+
+  _SurahCard({required this.surah, required this.index});
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      margin: EdgeInsets.symmetric(
+          horizontal: QuranIndexPage._cardMargin,
+          vertical: QuranIndexPage._cardMargin),
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(QuranIndexPage._cardRadius),
+      ),
+      elevation: 10,
+      child: Stack(children: <Widget>[
+        // Align(
+        //   alignment: Alignment.topCenter,
+        //   child: Image.asset(
+        //     width: MediaQuery.of(context).size.width * 0.2,
+        //     height: MediaQuery.of(context).size.height * 0.2,
+        //     'assets/images/madina.png',
+        //   ),
+        // ),
+        ListTile(
+          contentPadding: EdgeInsets.all(1.0),
+          leading: CircleAvatar(
+            backgroundColor: Colors.teal,
+            child: Text(
+              '${index + 1}',
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: QuranIndexPage._avatarFontSize),
+            ),
+          ),
+          title: Text(
+            surah['name'],
+            style: TextStyle(
+              fontSize: QuranIndexPage._titleFontSize,
+              fontWeight: FontWeight.bold,
+            ),
+            textDirection: TextDirection.rtl,
+          ),
+          subtitle: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                ' ترتيب النزول: ${surah['revelationOrder']}',
+                style: TextStyle(fontSize: QuranIndexPage._subtitleFontSize),
+                textDirection: TextDirection.rtl,
+              ),
+              SizedBox(height: QuranIndexPage._subtitleSpacing),
+              Text(
+                'عدد الآيات: ${surah['ayahCount']}',
+                style: TextStyle(fontSize: QuranIndexPage._subtitleFontSize),
+                textDirection: TextDirection.rtl,
+              ),
+              SizedBox(height: QuranIndexPage._subtitleSpacing),
+              Text(
+                'مكان النزول: ${surah['revelationPlace']}',
+                style: TextStyle(fontSize: QuranIndexPage._subtitleFontSize),
+                textDirection: TextDirection.rtl,
+              ),
+            ],
+          ),
+          trailing: Icon(Icons.arrow_forward_ios, color: Colors.teal),
+          onTap: () {
+            log('Surah tapped: ${surah['name']} (Index: $index)');
+          },
+        ),
+      ]),
     );
   }
 }
