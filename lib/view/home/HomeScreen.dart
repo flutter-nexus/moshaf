@@ -28,7 +28,6 @@ class _HomeScreenState extends State<HomeScreen> {
     double screenWidth = MediaQuery.of(context).size.width;
 
     return Scaffold(
-     
       appBar: AppBar(
         iconTheme: IconThemeData(
           color: Colors.white, // لون الأيقونة
@@ -93,7 +92,7 @@ class _HomeScreenState extends State<HomeScreen> {
             ),
             home_page_container(
               title: "The Holy Quran",
-              subtitle: "The reading of the Holy Quran",
+              subtitle: "The reading of the Holy Quran and its recitations",
               onTap: () => Get.to(QuranIndexPage()),
             ),
             home_page_container(

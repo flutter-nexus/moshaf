@@ -18,6 +18,7 @@ class home_page_container extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
+        width: MediaQuery.of(context).size.width,
         decoration: BoxDecoration(boxShadow: [
           BoxShadow(
             color: Colors.blueGrey.withOpacity(0.6),
@@ -32,8 +33,9 @@ class home_page_container extends StatelessWidget {
           contentPadding: EdgeInsets.all(1.0),
           title: Text(
             title,
+            overflow: TextOverflow.ellipsis,
             style: TextStyle(
-              fontSize: 22,
+              fontSize: 20,
               fontWeight: FontWeight.bold,
             ),
           ),
@@ -42,15 +44,25 @@ class home_page_container extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               SizedBox(height: 6),
-              Text(
-                subtitle,
-                style: TextStyle(fontSize: 20),
-                textDirection: TextDirection.rtl,
-                softWrap: true,
+              SizedBox(
+                width: MediaQuery.of(context).size.width * 0.75,
+                child: Text(
+                  overflow: TextOverflow.ellipsis,
+                  maxLines: 2,
+
+                  subtitle,
+                  style: TextStyle(
+                    fontSize: 16,
+                  ),
+
+                  
+                  softWrap: true,
+                ),
               ),
               SizedBox(height: 4.0),
               Text(
                 '',
+                overflow: TextOverflow.ellipsis,
                 style: TextStyle(fontSize: 16),
                 textDirection: TextDirection.rtl,
               ),
