@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:moshaf/view/HomeScreen.dart';
+import 'package:moshaf/view/home/HomeScreen.dart';
 import 'package:moshaf/view/auth/login_screen.dart';
 import 'package:moshaf/view/auth/reset_password_screen.dart';
 import 'package:moshaf/view/auth/signup_screen.dart';
 import 'package:moshaf/view/auth/verification%20_code.dart';
 import 'package:moshaf/view/quran/index_quuran.dart';
-import 'package:moshaf/view/quran/time_of_prayer.dart';
+import 'package:moshaf/view/prayer_times/time_of_prayer.dart';
 import 'package:moshaf/view/settings/settings.dart';
+import 'package:get/get.dart';
+
+import 'view/hadith/hadith.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +20,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         body: HomePage(),
@@ -36,6 +39,7 @@ class HomePage extends StatelessWidget {
     'Settings Screen',
     'Time of Prayer Screen',
     'Quran Index Screen',
+    'Hadith Screen',
   ];
   final List<Widget> pages = [
     HomeScreen(),
@@ -49,8 +53,9 @@ class HomePage extends StatelessWidget {
       },
     ),
     SettingsScreen(),
-    QuranTimeScreen(),
-    QuranIndexPage()
+    PrayerTimeScreen(),
+    QuranIndexPage(),
+    Hadith(),
   ];
 
   @override
@@ -76,25 +81,6 @@ class HomePage extends StatelessWidget {
             );
           },
         ),
-      ),
-    );
-  }
-}
-
-class DetailPage extends StatelessWidget {
-  final String title;
-
-  DetailPage({required this.title});
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(title),
-      ),
-      body: Center(
-        
-        child: Text('Welcome to $title'),
       ),
     );
   }

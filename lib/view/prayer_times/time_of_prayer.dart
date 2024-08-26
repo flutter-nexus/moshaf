@@ -4,12 +4,12 @@ import 'package:geolocator/geolocator.dart';
 import 'package:dio/dio.dart';
 import 'package:intl/intl.dart';
 
-class QuranTimeScreen extends StatefulWidget {
+class PrayerTimeScreen extends StatefulWidget {
   @override
-  _QuranTimeScreenState createState() => _QuranTimeScreenState();
+  _PrayerTimeScreenState createState() => _PrayerTimeScreenState();
 }
 
-class _QuranTimeScreenState extends State<QuranTimeScreen>
+class _PrayerTimeScreenState extends State<PrayerTimeScreen>
     with SingleTickerProviderStateMixin {
   Position? _currentPosition;
   Map<String, String>? _prayerTimes;

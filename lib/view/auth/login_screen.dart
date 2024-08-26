@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:moshaf/view/HomeScreen.dart';
+import 'package:moshaf/view/home/HomeScreen.dart';
 import 'package:moshaf/view/auth/reset_password_screen.dart';
 import 'package:moshaf/view/auth/signup_screen.dart';
 
