@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:moshaf/view/HomeScreen.dart';
+import 'package:moshaf/view/home/HomeScreen.dart';
 import 'package:moshaf/view/auth/login_screen.dart';
 import 'package:moshaf/view/auth/reset_password_screen.dart';
 import 'package:moshaf/view/auth/signup_screen.dart';
@@ -7,6 +7,7 @@ import 'package:moshaf/view/auth/verification%20_code.dart';
 import 'package:moshaf/view/quran/index_quuran.dart';
 import 'package:moshaf/view/quran/time_of_prayer.dart';
 import 'package:moshaf/view/settings/settings.dart';
+import 'package:get/get.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         body: HomePage(),
