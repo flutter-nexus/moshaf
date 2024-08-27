@@ -31,14 +31,28 @@ class QuranIndexPage extends StatelessWidget {
   }
 }
 
-class _SurahCard extends StatelessWidget {
+class _SurahCard extends StatefulWidget {
   final Map<String, dynamic> surah;
   final int index;
 
   _SurahCard({required this.surah, required this.index});
 
   @override
+  State<_SurahCard> createState() => _SurahCardState();
+}
+
+class _SurahCardState extends State<_SurahCard> {
+  String? surahImage;
+
+  @override
   Widget build(BuildContext context) {
+    if (widget.surah['revelationPlace'] == "مكية") {
+      surahImage = 'mecca';
+    } else {
+      surahImage = 'madina';
+    }
+    ;
+
     return Card(
       margin: EdgeInsets.symmetric(
           horizontal: QuranIndexPage._cardMargin,
@@ -48,59 +62,77 @@ class _SurahCard extends StatelessWidget {
       ),
       elevation: 10,
       child: Stack(children: <Widget>[
-        ListTile(
-          contentPadding: EdgeInsets.all(1.0),
-          leading: CircleAvatar(
-            backgroundColor: Colors.teal,
-            child: Text(
-              '${index + 1}',
+        Container(
+          padding: EdgeInsets.symmetric(horizontal: 5),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(16),
+            image: DecorationImage(
+                image: AssetImage('assets/images/${surahImage}.jpg'),
+                fit: BoxFit.fitWidth),
+          ),
+          child: ListTile(
+            contentPadding: EdgeInsets.all(1.0),
+            leading: CircleAvatar(
+              backgroundColor: Colors.teal,
+              child: Text(
+                '${widget.index + 1}',
+                style: TextStyle(
+                    color: Colors.white,
+                    fontWeight: FontWeight.bold,
+                    fontSize: QuranIndexPage._avatarFontSize),
+              ),
+            ),
+            title: Text(
+              widget.surah['name'],
               style: TextStyle(
-                  color: Colors.white,
-                  fontSize: QuranIndexPage._avatarFontSize),
+                color: Colors.white,
+                fontSize: QuranIndexPage._titleFontSize,
+                fontWeight: FontWeight.bold,
+              ),
+              textDirection: TextDirection.rtl,
             ),
-          ),
-          title: Text(
-            surah['name'],
-            style: TextStyle(
-              fontSize: QuranIndexPage._titleFontSize,
-              fontWeight: FontWeight.bold,
+            subtitle: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  ' ترتيب النزول: ${widget.surah['revelationOrder']}',
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                      fontSize: QuranIndexPage._subtitleFontSize),
+                  textDirection: TextDirection.rtl,
+                ),
+                SizedBox(height: QuranIndexPage._subtitleSpacing),
+                Text(
+                  'عدد الآيات: ${widget.surah['ayahCount']}',
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                      fontSize: QuranIndexPage._subtitleFontSize),
+                  textDirection: TextDirection.rtl,
+                ),
+                SizedBox(height: QuranIndexPage._subtitleSpacing),
+                Text(
+                  'مكان النزول: ${widget.surah['revelationPlace']}',
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: Colors.white,
+                      fontSize: QuranIndexPage._subtitleFontSize),
+                  textDirection: TextDirection.rtl,
+                ),
+              ],
             ),
-            textDirection: TextDirection.rtl,
-          ),
-          subtitle: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                ' ترتيب النزول: ${surah['revelationOrder']}',
-                style: TextStyle(fontSize: QuranIndexPage._subtitleFontSize),
-                textDirection: TextDirection.rtl,
-              ),
-              SizedBox(height: QuranIndexPage._subtitleSpacing),
-              Text(
-                'عدد الآيات: ${surah['ayahCount']}',
-                style: TextStyle(fontSize: QuranIndexPage._subtitleFontSize),
-                textDirection: TextDirection.rtl,
-              ),
-              SizedBox(height: QuranIndexPage._subtitleSpacing),
-              Text(
-                'مكان النزول: ${surah['revelationPlace']}',
-                style: TextStyle(fontSize: QuranIndexPage._subtitleFontSize),
-                textDirection: TextDirection.rtl,
-              ),
-            ],
-          ),
-          trailing: Icon(Icons.arrow_forward_ios, color: Colors.teal),
-          onTap: () async {
-            log('Surah tapped: ${surah['name']} (Index: $index)');
+            trailing: Icon(Icons.arrow_forward_ios, color: Colors.teal),
+            onTap: () async {
+              log('Surah tapped: ${widget.surah['name']} (Index: ${widget.index})');
 
-            String fileContents =
-                await rootBundle.loadString('assets/quran.json');
+              String fileContents =
+                  await rootBundle.loadString('assets/quran.json');
 
-            // تحويل محتوى الملف من JSON إلى Map
-            final jsonData = jsonDecode(fileContents);
-           
-            
-          },
+              // تحويل محتوى الملف من JSON إلى Map
+              final jsonData = jsonDecode(fileContents);
+            },
+          ),
         ),
       ]),
     );

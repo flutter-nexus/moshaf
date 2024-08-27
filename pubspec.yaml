@@ -68,11 +68,8 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/images/
-<<<<<<< HEAD
     - assets/slider_images/
-=======
     - assets/quran.json
->>>>>>> 5d07a5bba1219a8516c7a65c8be858d3c5e3f0c8
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
   # For details regarding adding assets from package dependencies, see

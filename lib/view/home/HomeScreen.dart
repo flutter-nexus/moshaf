@@ -1,7 +1,12 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:moshaf/view/hadith/hadith.dart';
+import 'package:moshaf/view/prayer_times/time_of_prayer.dart';
 import 'package:moshaf/view/quran/index_quuran.dart';
+import 'package:moshaf/view/supplications/supplications.dart';
+import 'package:moshaf/view/teaching_ablution/teaching_ablution.dart';
+import 'package:moshaf/view/teaching_pray/teaching_pray.dart';
 import 'home_page_helper/home_page_container.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -105,35 +110,35 @@ class _HomeScreenState extends State<HomeScreen> {
               image: "pray_times1",
               title: "Prayer times",
               subtitle: "Prayer, fasting and iftar times",
-              onTap: () => Get.to(QuranIndexPage()),
+              onTap: () => Get.to(PrayerTimeScreen()),
             ),
             home_page_container(
               titleColor: Colors.white,
               image: "teaching_pray1",
               title: "Teaching prayer",
               subtitle: "On the Sunnah of our Prophet",
-              onTap: () => Get.to(QuranIndexPage()),
+              onTap: () => Get.to(TeachingPray()),
             ),
             home_page_container(
               titleColor: Colors.white,
               image: "ablution1",
               title: "Teaching ablution",
               subtitle: "On the Sunnah of our Prophet",
-              onTap: () => Get.to(QuranIndexPage()),
+              onTap: () => Get.to(TeachingAblution()),
             ),
             home_page_container(
               titleColor: Colors.white,
               image: "hadith1",
               title: "The noble hadith",
               subtitle: "The Hadith of the Prophet",
-              onTap: () => Get.to(QuranIndexPage()),
+              onTap: () => Get.to(Hadith()),
             ),
             home_page_container(
               titleColor: Colors.white,
               image: "doaa1",
               title: "Supplications page",
               subtitle: "Various supplications",
-              onTap: () => Get.to(QuranIndexPage()),
+              onTap: () => Get.to(Supplications()),
             ),
           ],
         ),
