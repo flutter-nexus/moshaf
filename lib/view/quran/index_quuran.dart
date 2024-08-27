@@ -1,5 +1,8 @@
+import 'dart:convert';
 import 'dart:developer';
+import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:moshaf/service/golobal_variabules.dart'; // Assume you have a global file where surah data is stored
 
 class QuranIndexPage extends StatelessWidget {
@@ -45,14 +48,6 @@ class _SurahCard extends StatelessWidget {
       ),
       elevation: 10,
       child: Stack(children: <Widget>[
-        // Align(
-        //   alignment: Alignment.topCenter,
-        //   child: Image.asset(
-        //     width: MediaQuery.of(context).size.width * 0.2,
-        //     height: MediaQuery.of(context).size.height * 0.2,
-        //     'assets/images/madina.png',
-        //   ),
-        // ),
         ListTile(
           contentPadding: EdgeInsets.all(1.0),
           leading: CircleAvatar(
@@ -95,8 +90,16 @@ class _SurahCard extends StatelessWidget {
             ],
           ),
           trailing: Icon(Icons.arrow_forward_ios, color: Colors.teal),
-          onTap: () {
+          onTap: () async {
             log('Surah tapped: ${surah['name']} (Index: $index)');
+
+            String fileContents =
+                await rootBundle.loadString('assets/quran.json');
+
+            // تحويل محتوى الملف من JSON إلى Map
+            final jsonData = jsonDecode(fileContents);
+           
+            
           },
         ),
       ]),

@@ -97,7 +97,7 @@ class _HomeScreenState extends State<HomeScreen> {
               titleColor: Colors.white,
               image: "quran2",
               title: "The Holy Quran",
-              subtitle: "The reading of the Holy Quran",
+              subtitle: "The reading of the Holy Quran and its recitations",
               onTap: () => Get.to(QuranIndexPage()),
             ),
             home_page_container(
