@@ -8,7 +8,6 @@ import 'package:moshaf/view/quran/index_quuran.dart';
 import 'package:moshaf/view/prayer_times/time_of_prayer.dart';
 import 'package:moshaf/view/settings/settings.dart';
 import 'package:get/get.dart';
-
 import 'view/hadith/hadith.dart';
 
 void main() {
