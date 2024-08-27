@@ -129,7 +129,7 @@ class _SurahCardState extends State<_SurahCard> {
             trailing: Icon(Icons.arrow_forward_ios, color: Colors.teal),
             onTap: () async {
               log('Surah tapped: ${widget.surah['name']} (Index: ${widget.index})');
-              Get.to(() => QuranPageVersePreview(indexSurah: widget.index + 1));
+              Get.to(() => QuranPageVersePreview(indexSurah: widget.index + 1, surahName: widget.surah['name']));
             },
           ),
         ),
