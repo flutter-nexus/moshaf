@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 
+import '../../service/navigation_bottom_bar.dart';
+
 class Supplications extends StatelessWidget {
   const Supplications({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: CustomBottomNavigationBar(),
       appBar: AppBar(
         title: const Text('Supplications'),
       ),

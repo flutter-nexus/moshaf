@@ -1,9 +1,10 @@
 import 'dart:convert';
 import 'dart:developer';
-import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:moshaf/service/golobal_variabules.dart'; // Assume you have a global file where surah data is stored
+import 'package:moshaf/service/golobal_variabules.dart';
+
+import '../../service/navigation_bottom_bar.dart'; // Assume you have a global file where surah data is stored
 
 class QuranIndexPage extends StatelessWidget {
   static const double _cardMargin = 5.0;
@@ -16,6 +17,7 @@ class QuranIndexPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: CustomBottomNavigationBar(),
       appBar: AppBar(
         title: Text('فهرس القرآن الكريم'),
         centerTitle: true,

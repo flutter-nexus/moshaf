@@ -3,6 +3,8 @@ import 'package:geolocator/geolocator.dart';
 import 'package:dio/dio.dart';
 import 'package:intl/intl.dart';
 
+import '../../service/navigation_bottom_bar.dart';
+
 class PrayerTimeScreen extends StatefulWidget {
   @override
   _PrayerTimeScreenState createState() => _PrayerTimeScreenState();
@@ -143,6 +145,7 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: CustomBottomNavigationBar(),
       appBar: AppBar(
         backgroundColor: Colors.teal,
         title: Text(

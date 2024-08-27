@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_switch/flutter_switch.dart';
 
+import '../../service/navigation_bottom_bar.dart';
+
 class SettingsScreen extends StatefulWidget {
   @override
   _SettingsScreenState createState() => _SettingsScreenState();
@@ -16,20 +18,15 @@ class _SettingsScreenState extends State<SettingsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      bottomNavigationBar: CustomBottomNavigationBar(),
       appBar: AppBar(
         title: Text('Settings'),
-        backgroundColor: Color.fromARGB(255, 157, 251, 243),
+        backgroundColor: Colors.teal,
       ),
       body: Container(
         height: MediaQuery.sizeOf(context).height,
         decoration: BoxDecoration(
-          gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: [
-                const Color.fromARGB(255, 157, 251, 243),
-                Colors.white,
-              ]),
+
         ),
         child: SafeArea(
           child: SingleChildScrollView(

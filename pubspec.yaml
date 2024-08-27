@@ -32,6 +32,7 @@ dependencies:
   dio: ^5.6.0
   flutter:
     sdk: flutter
+  flutter_islamic_icons: ^1.0.2
   flutter_svg: ^2.0.10+1
   flutter_switch: ^0.3.2
   geolocator: ^13.0.1
@@ -70,6 +71,7 @@ flutter:
     - assets/images/
     - assets/slider_images/
     - assets/quran.json
+    - assets/teaching_pray_images/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
   # For details regarding adding assets from package dependencies, see
