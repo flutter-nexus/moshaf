@@ -6,6 +6,7 @@ import 'package:moshaf/view/auth/signup_screen.dart';
 import 'package:moshaf/view/auth/verification%20_code.dart';
 import 'package:moshaf/view/quran/index_quuran.dart';
 import 'package:moshaf/view/prayer_times/time_of_prayer.dart';
+import 'package:moshaf/view/quran/quran_page_verse.dart';
 import 'package:moshaf/view/settings/settings.dart';
 import 'package:get/get.dart';
 import 'view/hadith/hadith.dart';
@@ -39,6 +40,7 @@ class HomePage extends StatelessWidget {
     'Time of Prayer Screen',
     'Quran Index Screen',
     'Hadith Screen',
+    'Quran Page Verse',
   ];
   final List<Widget> pages = [
     HomeScreen(),
@@ -55,6 +57,7 @@ class HomePage extends StatelessWidget {
     PrayerTimeScreen(),
     QuranIndexPage(),
     Hadith(),
+    QuranPageVersePreview( indexSurah: 1),
   ];
 
   @override

@@ -2,7 +2,9 @@ import 'dart:convert';
 import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 import 'package:moshaf/service/golobal_variabules.dart';
+import 'package:moshaf/view/quran/quran_page_verse.dart';
 
 import '../../service/navigation_bottom_bar.dart'; // Assume you have a global file where surah data is stored
 
@@ -127,12 +129,7 @@ class _SurahCardState extends State<_SurahCard> {
             trailing: Icon(Icons.arrow_forward_ios, color: Colors.teal),
             onTap: () async {
               log('Surah tapped: ${widget.surah['name']} (Index: ${widget.index})');
-
-              String fileContents =
-                  await rootBundle.loadString('assets/quran.json');
-
-              // تحويل محتوى الملف من JSON إلى Map
-              final jsonData = jsonDecode(fileContents);
+              Get.to(() => QuranPageVersePreview(indexSurah: widget.index + 1));
             },
           ),
         ),
