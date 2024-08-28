@@ -29,6 +29,7 @@ class HomePage extends StatelessWidget {
     'Time of Prayer Screen',
     'Quran Index Screen',
     'Hadith Screen',
+    'Quran Page Verse',
   ];
   final List<Widget> pages = [
     HomeScreen(),
@@ -45,6 +46,7 @@ class HomePage extends StatelessWidget {
     PrayerTimeScreen(),
     QuranIndexPage(),
     Hadith(),
+    QuranPageVersePreview(indexSurah: 1),
   ];
 
   @override
