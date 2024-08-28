@@ -1,6 +1,4 @@
-import 'package:flutter/material.dart';
-
-import '../../service/navigation_bottom_bar.dart';
+import '../../imports/imports.dart';
 
 class TeachingAblution extends StatelessWidget {
   const TeachingAblution({super.key});

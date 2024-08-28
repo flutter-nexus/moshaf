@@ -1,9 +1,8 @@
-import 'package:flutter/material.dart';
-import 'package:geolocator/geolocator.dart';
 import 'package:dio/dio.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:intl/intl.dart';
 
-import '../../service/navigation_bottom_bar.dart';
+import '../../imports/imports.dart';
 
 class PrayerTimeScreen extends StatefulWidget {
   @override

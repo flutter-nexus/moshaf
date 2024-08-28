@@ -1,5 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:pin_code_fields/pin_code_fields.dart';
+import '../../imports/imports.dart';
 
 class VerificationCodeInput extends StatelessWidget {
   final TextEditingController controller;

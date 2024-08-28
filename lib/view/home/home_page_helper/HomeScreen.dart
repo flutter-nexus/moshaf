@@ -1,14 +1,8 @@
-import 'package:carousel_slider/carousel_slider.dart';
-import 'package:flutter/material.dart';
-import 'package:get/get.dart';
-import 'package:moshaf/view/hadith/hadith.dart';
-import 'package:moshaf/view/prayer_times/time_of_prayer.dart';
-import 'package:moshaf/view/quran/index_quuran.dart';
-import 'package:moshaf/view/teaching_ablution/teaching_ablution.dart';
-import 'package:moshaf/view/teaching_pray/teaching_pray.dart';
-import '../../../service/navigation_bottom_bar.dart';
-import '../../do3a/supplications.dart';
-import 'home_page_container.dart';
+
+
+
+
+import '../../../imports/imports.dart';
 
 class HomeScreen extends StatefulWidget {
   HomeScreen({super.key});

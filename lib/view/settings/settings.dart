@@ -1,7 +1,7 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_switch/flutter_switch.dart';
 
-import '../../service/navigation_bottom_bar.dart';
+
+
+import '../../imports/imports.dart';
 
 class SettingsScreen extends StatefulWidget {
   @override
