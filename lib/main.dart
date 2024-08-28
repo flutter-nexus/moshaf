@@ -1,15 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:moshaf/view/home/home_page_helper/HomeScreen.dart';
-import 'package:moshaf/view/auth/login_screen.dart';
-import 'package:moshaf/view/auth/reset_password_screen.dart';
-import 'package:moshaf/view/auth/signup_screen.dart';
-import 'package:moshaf/view/auth/verification%20_code.dart';
-import 'package:moshaf/view/quran/index_quuran.dart';
-import 'package:moshaf/view/prayer_times/time_of_prayer.dart';
-import 'package:moshaf/view/quran/quran_page_verse.dart';
-import 'package:moshaf/view/settings/settings.dart';
-import 'package:get/get.dart';
-import 'view/hadith/hadith.dart';
+import 'imports/imports.dart';
 
 void main() {
   runApp(const MyApp());
@@ -23,7 +12,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        body: HomePage(),
+        body: TeachingPrayScreen(),
       ),
     );
   }
@@ -57,7 +46,7 @@ class HomePage extends StatelessWidget {
     PrayerTimeScreen(),
     QuranIndexPage(),
     Hadith(),
-    QuranPageVersePreview( indexSurah: 1, surahName: 'Al-Fatihah'),
+    QuranPageVersePreview( indexSurah: 1),
   ];
 
   @override

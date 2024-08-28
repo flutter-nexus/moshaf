@@ -1,5 +1,6 @@
-import 'package:flutter/material.dart';
-import 'package:moshaf/view/auth/verification%20_code.dart';
+
+
+import '../../imports/imports.dart';
 
 class ResetPasswordScreen extends StatelessWidget {
   final ResetPasswordController _controller = ResetPasswordController();

@@ -1,12 +1,5 @@
-import 'package:flutter/material.dart';
-import 'package:flutter_islamic_icons/flutter_islamic_icons.dart';
-import 'package:get/get.dart';
-import 'package:moshaf/view/hadith/hadith.dart';
-import '../view/home/home_page_helper/HomeScreen.dart';
-import '../view/prayer_times/time_of_prayer.dart';
-import '../view/quran/index_quuran.dart';
-import '../view/teaching_ablution/teaching_ablution.dart';
-import '../view/teaching_pray/teaching_pray.dart';
+
+import '../imports/imports.dart';
 
 class CustomBottomNavigationBar extends StatefulWidget {
   const CustomBottomNavigationBar({
@@ -75,7 +68,7 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
           icon: IconButton(
             icon: const Icon(FlutterIslamicIcons.solidSajadah),
             onPressed: () {
-              Get.off(() => TeachingPray());
+              Get.off(() => TeachingPrayScreen());
             },
           ),
           label: 'Teaching Pray',
