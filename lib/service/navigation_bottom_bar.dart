@@ -68,7 +68,7 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
           icon: IconButton(
             icon: const Icon(FlutterIslamicIcons.solidSajadah),
             onPressed: () {
-              Get.off(() => TeachingPray());
+              Get.off(() => TeachingPrayScreen());
             },
           ),
           label: 'Teaching Pray',

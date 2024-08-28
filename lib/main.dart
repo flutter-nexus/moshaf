@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        body: FullScreenSlider(),
+        body: TeachingPrayScreen(),
       ),
     );
   }

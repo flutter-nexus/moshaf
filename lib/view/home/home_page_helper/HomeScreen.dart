@@ -1,7 +1,3 @@
-
-
-
-
 import '../../../imports/imports.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -113,7 +109,7 @@ class _HomeScreenState extends State<HomeScreen> {
               image: "teaching_pray1",
               title: "Teaching prayer",
               subtitle: "On the Sunnah of our Prophet",
-              onTap: () => Get.to(TeachingPray()),
+              onTap: () => Get.to(TeachingPrayScreen()),
             ),
             home_page_container(
               titleColor: Colors.white,
