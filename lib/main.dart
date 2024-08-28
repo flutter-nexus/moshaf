@@ -46,7 +46,7 @@ class HomePage extends StatelessWidget {
     PrayerTimeScreen(),
     QuranIndexPage(),
     Hadith(),
-    QuranPageVersePreview( indexSurah: 1),
+    QuranPageVersePreview( indexSurah: 1, surahName: 'Al-Fatihah'),
   ];
 
   @override

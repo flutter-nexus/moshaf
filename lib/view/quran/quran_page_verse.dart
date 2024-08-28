@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
+import 'package:moshaf/service/golobal_variabules.dart';
 
 class QuranPageVersePreview extends StatefulWidget {
   QuranPageVersePreview(
@@ -18,13 +19,24 @@ class QuranPageVersePreview extends StatefulWidget {
 class _QuranPageVersePreviewState extends State<QuranPageVersePreview> {
   List<dynamic> ayahs = [];
   bool isLoading = true;
-   Map<String, dynamic> exegesis = {};
+  int ayaNumber = 0;
+  Map<dynamic, dynamic> exegesis = {};
 
   @override
   void initState() {
     super.initState();
     loadQuranData();
     fetchExegesis();
+    ayahNumber(widget.indexSurah);
+  }
+
+  ayahNumber(int index) {
+    for (var i = 0; i < index-1; i++) {
+      ayaNumber = surahData[i]["ayahCount"] + ayaNumber;
+    }
+    
+    ;
+    log(ayaNumber.toString());
   }
 
   Future<Map<String, dynamic>> getExegesisSurah() async {
@@ -32,7 +44,7 @@ class _QuranPageVersePreviewState extends State<QuranPageVersePreview> {
     final response = await dio.get(
       'https://cdn.jsdelivr.net/gh/fawazahmed0/quran-api@1/editions/ara-jalaladdinalmah.min.json',
     );
-     exegesis =await response.data;
+    exegesis = await response.data;
     return response.data;
   }
 
@@ -79,17 +91,8 @@ class _QuranPageVersePreviewState extends State<QuranPageVersePreview> {
                       children: [
                         GestureDetector(
                           onTap: () async {
-                            try {
-                             
-                              if (exegesis != null) {
-                                var quranText = exegesis['quran'][ayahs[index]]['text'];
-                                log(quranText);
-                              } else {
-                                log('Exegesis data not available');
-                              }
-                            } catch (e) {
-                              log('Error accessing exegesis data: $e');
-                            }
+                            log('${ayaNumber + index}');
+                            
                           },
                           child: ListTile(
                             title: Row(
