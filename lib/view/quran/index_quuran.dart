@@ -3,7 +3,10 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
+import 'package:moshaf/imports/imports.dart';
 import 'package:moshaf/service/golobal_variabules.dart';
+import 'package:moshaf/view/quran/whole_surah_quran.dart';
+import 'package:moshaf/view/quran/helper/quran_bottom_sheet_container.dart';
 import 'package:moshaf/view/quran/quran_page_verse.dart';
 
 import '../../service/navigation_bottom_bar.dart'; // Assume you have a global file where surah data is stored
@@ -128,8 +131,61 @@ class _SurahCardState extends State<_SurahCard> {
             ),
             trailing: Icon(Icons.arrow_forward_ios, color: Colors.teal),
             onTap: () async {
-              log('Surah tapped: ${widget.surah['name']} (Index: ${widget.index})');
-              Get.to(() => QuranPageVersePreview(indexSurah: widget.index + 1, surahName: widget.surah['name']));
+              Get.bottomSheet(
+                Container(
+                  margin: EdgeInsets.symmetric(horizontal: 8),
+                  decoration: BoxDecoration(
+                    color: Colors.green[50],
+                    borderRadius: BorderRadius.circular(16),
+                  ),
+                  width: double.infinity,
+                  height: MediaQuery.of(context).size.height * 0.5,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Spacer(
+                        flex: 1,
+                      ),
+                      BottomSheetContainer(
+                        content: 'السورة كاملة ',
+                        icon: Icon(
+                          FlutterIslamicIcons.quran,
+                          color: Colors.white,
+                          size: 25,
+                        ),
+                        onTap: () {
+                          Get.back();
+                          Get.to(() => WholeQuranSurah());
+                        },
+                      ),
+                      Spacer(
+                        flex: 1,
+                      ),
+                      BottomSheetContainer(
+                        content: "آيات السورة بالتفسير",
+                        icon: Icon(
+                          FlutterIslamicIcons.quran2,
+                          color: Colors.white,
+                          size: 25,
+                        ),
+                        onTap: () async {
+                          Get.back();
+                          log('Surah tapped: ${widget.surah['name']} (Index: ${widget.index})');
+                          Get.to(() => QuranPageVersePreview(
+                              indexSurah: widget.index + 1,
+                              surahName: widget.surah['name']));
+                        },
+                      ),
+                      Spacer(
+                        flex: 1,
+                      ),
+                    ],
+                  ),
+                ),
+                isScrollControlled: true,
+                enableDrag: true,
+              );
             },
           ),
         ),
