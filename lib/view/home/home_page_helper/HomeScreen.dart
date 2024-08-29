@@ -36,45 +36,33 @@ class _HomeScreenState extends State<HomeScreen> {
         child: Column(
           children: [
             home_page_container(
-              titleColor: Colors.white,
-              image: "quran2",
               title: "The Holy Quran",
               subtitle: "The reading of the Holy Quran and its recitations",
               onTap: () => Get.to(QuranIndexPage()),
             ),
             home_page_container(
-              titleColor: Colors.white,
-              image: "pray_times1",
               title: "Prayer times",
               subtitle: "Prayer, fasting and iftar times",
               onTap: () => Get.to(PrayerTimeScreen()),
             ),
             home_page_container(
-              titleColor: Colors.white,
-              image: "teaching_pray1",
               title: "Teaching prayer",
               subtitle: "On the Sunnah of our Prophet",
               onTap: () => Get.to(() => TeachingPrayScreen(),
                   arguments: "Teaching Pray"),
             ),
             home_page_container(
-              titleColor: Colors.white,
-              image: "ablution1",
               title: "Teaching ablution",
               subtitle: "On the Sunnah of our Prophet",
               onTap: () => Get.to(() => TeachingPrayScreen(),
                   arguments: "Teaching Ablution"),
             ),
             home_page_container(
-              titleColor: Colors.white,
-              image: "hadith1",
               title: "The noble hadith",
               subtitle: "The Hadith of the Prophet",
               onTap: () => Get.to(Hadith()),
             ),
             home_page_container(
-              titleColor: Colors.white,
-              image: "doaa1",
               title: "Supplications page",
               subtitle: "Various supplications",
               onTap: () => Get.to(Supplications()),

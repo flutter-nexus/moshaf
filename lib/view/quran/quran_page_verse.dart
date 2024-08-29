@@ -80,7 +80,10 @@ class _QuranPageVersePreviewState extends State<QuranPageVersePreview> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('${widget.surahName}'),
+        title: Text(
+          '${widget.surahName}',
+          style: TextStyle(fontFamily: 'UthmanicHafs'),
+        ),
       ),
       body: isLoading
           ? Center(child: CircularProgressIndicator())
@@ -93,12 +96,7 @@ class _QuranPageVersePreviewState extends State<QuranPageVersePreview> {
                         GestureDetector(
                           onTap: () async {
                             log('${ayaNumber + index}');
-                            try {
-                             log("${exegesis?.data[ayaNumber + index]['text']}");
-                            } on Exception catch (e) {
-                              // TODO
-                              log(e.toString());
-                            }
+                            
                           },
                           child: ListTile(
                             title: Row(
@@ -107,16 +105,20 @@ class _QuranPageVersePreviewState extends State<QuranPageVersePreview> {
                                 Stack(
                                   alignment: Alignment.center,
                                   children: [
-                                    Icon(
-                                      Icons.circle,
-                                      size: 30,
-                                      color: Colors.grey,
+                                    Image.asset(
+                                      'assets/images/icon_number.png',
+                                      height:
+                                          MediaQuery.of(context).size.height *
+                                              0.06,
+                                      width: MediaQuery.of(context).size.width *
+                                          0.06,
                                     ),
                                     Positioned(
                                       child: Text(
                                         '${ayahs[index]['verse']}', // Verse number
                                         style: TextStyle(
                                           fontSize: 12,
+                                          fontFamily: 'UthmanicHafs',
                                           color: Colors.black,
                                         ),
                                       ),
@@ -128,7 +130,10 @@ class _QuranPageVersePreviewState extends State<QuranPageVersePreview> {
                                   child: Text(
                                     ayahs[index]['text'],
                                     textAlign: TextAlign.right,
-                                    style: TextStyle(fontSize: 24),
+                                    style: TextStyle(
+                                      fontSize: 24,
+                                      fontFamily: 'UthmanicHafs',
+                                    ),
                                   ),
                                 ),
                               ],
