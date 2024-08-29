@@ -20,7 +20,7 @@ class _QuranPageVersePreviewState extends State<QuranPageVersePreview> {
   List<dynamic> ayahs = [];
   bool isLoading = true;
   int ayaNumber = 0;
-  Map<dynamic, dynamic> exegesis = {};
+   Response? exegesis;
 
   @override
   void initState() {
@@ -31,20 +31,21 @@ class _QuranPageVersePreviewState extends State<QuranPageVersePreview> {
   }
 
   ayahNumber(int index) {
-    for (var i = 0; i < index-1; i++) {
+    for (var i = 0; i < index - 1; i++) {
       ayaNumber = surahData[i]["ayahCount"] + ayaNumber;
     }
-    
+
     ;
     log(ayaNumber.toString());
   }
 
-  Future<Map<String, dynamic>> getExegesisSurah() async {
+  Future<dynamic> getExegesisSurah() async {
     final dio = Dio();
     final response = await dio.get(
-      'https://cdn.jsdelivr.net/gh/fawazahmed0/quran-api@1/editions/ara-jalaladdinalmah.min.json',
+      'https://cdn.jsdelivr.net/gh/fawazahmed0/quran-api@1/editions/ara-kingfahadquranc.json',
     );
     exegesis = await response.data;
+    
     return response.data;
   }
 
@@ -92,7 +93,12 @@ class _QuranPageVersePreviewState extends State<QuranPageVersePreview> {
                         GestureDetector(
                           onTap: () async {
                             log('${ayaNumber + index}');
-                            
+                            try {
+                             log("${exegesis?.data[ayaNumber + index]['text']}");
+                            } on Exception catch (e) {
+                              // TODO
+                              log(e.toString());
+                            }
                           },
                           child: ListTile(
                             title: Row(
