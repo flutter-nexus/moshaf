@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        body: TeachingPrayScreen(),
+        body: HomeScreen(),
       ),
     );
   }
@@ -46,10 +46,11 @@ class HomePage extends StatelessWidget {
     PrayerTimeScreen(),
     QuranIndexPage(),
     Hadith(),
-    QuranPageVersePreview( indexSurah: 1, surahName: 'Al-Fatihah'),
+    QuranPageVersePreview(indexSurah: 1, surahName: 'Al-Fatihah'),
   ];
 
   @override
+
   /// Displays a list of pages, each with a title and an onTap
   /// function that navigates to the corresponding page in the
   /// [pages] list.

@@ -1,4 +1,3 @@
-
 import '../imports/imports.dart';
 
 class CustomBottomNavigationBar extends StatefulWidget {
@@ -46,41 +45,23 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
         ),
         BottomNavigationBarItem(
           icon: IconButton(
-              onPressed: () {
-                Get.off(() => Hadith());
-              },
-              icon: Icon(
-                FlutterIslamicIcons.solidMohammad,
-                size: 30,
-              )),
-          label: 'Hadith',
-        ),
-        BottomNavigationBarItem(
-          icon: IconButton(
             icon: const Icon(FlutterIslamicIcons.prayingPerson),
             onPressed: () {
-              Get.off(() => PrayerTimeScreen());
+              Get.to(() => PrayerTimeScreen());
             },
           ),
           label: 'Prayer times',
         ),
         BottomNavigationBarItem(
           icon: IconButton(
-            icon: const Icon(FlutterIslamicIcons.solidSajadah),
-            onPressed: () {
-              Get.off(() => TeachingPrayScreen());
-            },
-          ),
-          label: 'Teaching Pray',
-        ),
-        BottomNavigationBarItem(
-          icon: IconButton(
-            icon: Icon(FlutterIslamicIcons.solidWudhu),
-            onPressed: () {
-              Get.off(() => TeachingAblution());
-            },
-          ),
-          label: 'Teaching Ablution',
+              onPressed: () {
+                Get.to(() => SettingsScreen());
+              },
+              icon: Icon(
+                Icons.settings_outlined,
+                size: 30,
+              )),
+          label: 'Settings',
         ),
       ],
       currentIndex: _selectedIndex, //New

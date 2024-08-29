@@ -1,4 +1,4 @@
-List<Map<String, String>> pages = [
+List<Map<String, String>> prayList = [
   {
     'image': 'assets/images/muslim-prayer.png',
     'text':

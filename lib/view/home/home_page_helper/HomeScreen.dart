@@ -54,14 +54,16 @@ class _HomeScreenState extends State<HomeScreen> {
               image: "teaching_pray1",
               title: "Teaching prayer",
               subtitle: "On the Sunnah of our Prophet",
-              onTap: () => Get.to(TeachingPrayScreen()),
+              onTap: () => Get.to(() => TeachingPrayScreen(),
+                  arguments: "Teaching Pray"),
             ),
             home_page_container(
               titleColor: Colors.white,
               image: "ablution1",
               title: "Teaching ablution",
               subtitle: "On the Sunnah of our Prophet",
-              onTap: () => Get.to(TeachingAblution()),
+              onTap: () => Get.to(() => TeachingPrayScreen(),
+                  arguments: "Teaching Ablution"),
             ),
             home_page_container(
               titleColor: Colors.white,
