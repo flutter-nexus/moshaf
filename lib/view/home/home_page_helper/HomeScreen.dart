@@ -16,13 +16,9 @@ class _HomeScreenState extends State<HomeScreen> {
     'assets/slider_images/hadith2.jpg',
     'assets/slider_images/doaa2.jpg',
   ];
-  int _currentIndex = 0;
 
   @override
   Widget build(BuildContext context) {
-    double screenHeight = MediaQuery.of(context).size.height;
-    double screenWidth = MediaQuery.of(context).size.width;
-
     return Scaffold(
       bottomNavigationBar: CustomBottomNavigationBar(),
       appBar: AppBar(
@@ -39,57 +35,6 @@ class _HomeScreenState extends State<HomeScreen> {
         physics: BouncingScrollPhysics(),
         child: Column(
           children: [
-            Container(
-              width: screenWidth,
-              height: screenHeight / 4, // التلت
-              child: CarouselSlider(
-                options: CarouselOptions(
-                  height: screenHeight / 3, // التلت
-
-                  autoPlay: true,
-                  autoPlayAnimationDuration: Duration(seconds: 1),
-                  enlargeCenterPage: true,
-                  onPageChanged: (index, reason) {
-                    setState(() {
-                      _currentIndex = index;
-                    });
-                  },
-                ),
-                items: imageList
-                    .map((item) => Container(
-                          margin:
-                              EdgeInsets.symmetric(horizontal: 0, vertical: 8),
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(10),
-                            child: Image.asset(item,
-                                fit: BoxFit.fitWidth,
-                                width: MediaQuery.of(context).size.width),
-                          ),
-                        ))
-                    .toList(),
-              ),
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: imageList.asMap().entries.map((entry) {
-                return GestureDetector(
-                  onTap: () {
-                    _currentIndex = entry.key;
-                  },
-                  child: Container(
-                    width: MediaQuery.of(context).size.width * 0.04,
-                    height: MediaQuery.of(context).size.width * 0.04,
-                    margin: EdgeInsets.symmetric(vertical: 12, horizontal: 12),
-                    decoration: BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: _currentIndex == entry.key
-                          ? Colors.blue
-                          : Colors.grey,
-                    ),
-                  ),
-                );
-              }).toList(),
-            ),
             home_page_container(
               titleColor: Colors.white,
               image: "quran2",

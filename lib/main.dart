@@ -50,6 +50,9 @@ class HomePage extends StatelessWidget {
   ];
 
   @override
+  /// Displays a list of pages, each with a title and an onTap
+  /// function that navigates to the corresponding page in the
+  /// [pages] list.
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(

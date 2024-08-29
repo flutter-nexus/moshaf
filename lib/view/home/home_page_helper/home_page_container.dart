@@ -20,6 +20,7 @@ class home_page_container extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
+        height: MediaQuery.of(context).size.height * 0.1,
         decoration: BoxDecoration(
             boxShadow: [
               BoxShadow(
