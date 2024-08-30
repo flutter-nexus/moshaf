@@ -34,7 +34,7 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
       indicatorColor: navyBlue,
       paddingR: EdgeInsets.all(2),
       unselectedItemColor: lightBeige,
-      backgroundColor: tealBlue,
+      backgroundColor: tealBlue.withOpacity(0.7),
       outlineBorderColor: lightBlue,
       marginR: EdgeInsets.all(10),
       borderRadius: 30,

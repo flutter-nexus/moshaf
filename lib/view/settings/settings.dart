@@ -1,3 +1,7 @@
+import 'dart:developer';
+
+import 'package:quran/quran.dart';
+
 import '../../imports/imports.dart';
 
 class SettingsScreen extends StatefulWidget {
@@ -110,6 +114,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   title: 'About Us',
                   subtitle: 'Learn more about our app',
                   onTap: () {
+                    log("clicked");
+                    log("${getPageData(3).toString()}");
+                    log("end");
                     // Navigate to About Us page
                   },
                 ),
