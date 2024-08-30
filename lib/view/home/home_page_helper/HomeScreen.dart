@@ -20,11 +20,12 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: lightBeige,
       appBar: AppBar(
         iconTheme: IconThemeData(
           color: Colors.white, // لون الأيقونة
         ),
-        backgroundColor: Colors.teal,
+        backgroundColor: tealBlue,
         title: Text(
           'The Home Page',
           style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
@@ -49,13 +50,13 @@ class _HomeScreenState extends State<HomeScreen> {
                 title: "Teaching prayer",
                 subtitle: "On the Sunnah of our Prophet",
                 onTap: () => Get.to(() => TeachingPrayScreen(),
-                    arguments: "Teaching Pray"),
+                    arguments: "تعليم الصلاة"),
               ),
               home_page_container(
                 title: "Teaching ablution",
                 subtitle: "On the Sunnah of our Prophet",
                 onTap: () => Get.to(() => TeachingPrayScreen(),
-                    arguments: "Teaching Ablution"),
+                    arguments: "تعليم الوضوء"),
               ),
               home_page_container(
                 title: "The noble hadith",

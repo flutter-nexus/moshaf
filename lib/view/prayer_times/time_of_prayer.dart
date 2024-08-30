@@ -85,7 +85,10 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen>
     }
 
     return await Geolocator.getCurrentPosition(
-        desiredAccuracy: LocationAccuracy.high);
+      locationSettings: LocationSettings(
+        accuracy: LocationAccuracy.high,
+      ),
+    );
   }
 
   Future<void> _fetchPrayerTimes(Position position) async {
@@ -146,7 +149,8 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen>
     return Scaffold(
       bottomNavigationBar: CustomBottomNavigationBar(),
       appBar: AppBar(
-        backgroundColor: Colors.teal,
+        iconTheme: IconThemeData(color: Colors.white),
+        backgroundColor: tealBlue,
         title: Text(
           'مواقيت الصلاة',
           style: TextStyle(
@@ -165,7 +169,7 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen>
   Widget _buildLoadingView() {
     return Center(
       child: CircularProgressIndicator(
-        valueColor: AlwaysStoppedAnimation<Color>(Colors.teal),
+        valueColor: AlwaysStoppedAnimation<Color>(tealBlue),
       ),
     );
   }
@@ -206,12 +210,10 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen>
   Widget _buildPrayerTimesList() {
     return Container(
       decoration: BoxDecoration(
-        gradient: LinearGradient(
-          colors: [Colors.teal.shade300, Colors.teal.shade600],
-          begin: Alignment.topCenter,
-          end: Alignment.bottomCenter,
-        ),
-      ),
+          gradient: LinearGradient(
+              colors: [tealBlue2, tealBlue],
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter)),
       child: Column(
         children: [
           Text(
@@ -238,14 +240,13 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen>
                     child: ListTile(
                       contentPadding:
                           EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-                      leading:
-                          Icon(Icons.access_time, color: Colors.teal.shade800),
+                      leading: Icon(Icons.access_time, color: navyBlue),
                       title: Text(
                         prayer.key,
                         style: TextStyle(
                           fontSize: 22,
                           fontWeight: FontWeight.bold,
-                          color: Colors.teal.shade800,
+                          color: navyBlue,
                         ),
                       ),
                       trailing: Text(
@@ -253,7 +254,7 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen>
                         style: TextStyle(
                           fontSize: 22,
                           fontWeight: FontWeight.bold,
-                          color: Colors.teal.shade800,
+                          color: navyBlue,
                         ),
                       ),
                     ),

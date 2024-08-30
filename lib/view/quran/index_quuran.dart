@@ -24,7 +24,12 @@ class QuranIndexPage extends StatelessWidget {
     return Scaffold(
       bottomNavigationBar: CustomBottomNavigationBar(),
       appBar: AppBar(
-        title: Text('فهرس القرآن الكريم'),
+        iconTheme: IconThemeData(color: Colors.white),
+        backgroundColor: tealBlue,
+        title: Text(
+          'فهرس القرآن الكريم',
+          style: TextStyle(color: Colors.white),
+        ),
         centerTitle: true,
       ),
       body: ListView.builder(

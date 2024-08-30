@@ -19,41 +19,49 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
     setState(() {
       _selectedIndex = index;
     });
+    Get.off(_pages[index]);
   }
+
+  final List<Widget> _pages = [
+    HomeScreen(),
+    QuranIndexPage(),
+    PrayerTimeScreen(),
+    SettingsScreen(),
+  ];
 
   @override
   Widget build(BuildContext context) {
     return CrystalNavigationBar(
       duration: Duration(milliseconds: 300),
       currentIndex: _selectedIndex,
-      indicatorColor: Colors.white,
+      indicatorColor: navyBlue,
       paddingR: EdgeInsets.all(2),
-      unselectedItemColor: Colors.white70,
-      backgroundColor: Colors.grey.withOpacity(0.6),
-      outlineBorderColor: Colors.white.withOpacity(0.5),
+      unselectedItemColor: lightBeige,
+      backgroundColor: tealBlue,
+      outlineBorderColor: lightBlue,
       marginR: EdgeInsets.all(10),
-      borderRadius: 500,
+      borderRadius: 30,
       onTap: _handleIndexChanged,
       items: [
         /// Home
         CrystalNavigationBarItem(
           icon: Icons.home_filled,
           unselectedIcon: Icons.home_filled,
-          selectedColor: Colors.teal,
+          selectedColor: navyBlue,
         ),
 
         /// Favourite
         CrystalNavigationBarItem(
           icon: FlutterIslamicIcons.quran,
           unselectedIcon: FlutterIslamicIcons.quran,
-          selectedColor: Colors.teal,
+          selectedColor: navyBlue,
         ),
 
         /// Add
         CrystalNavigationBarItem(
           icon: FlutterIslamicIcons.prayingPerson,
           unselectedIcon: FlutterIslamicIcons.prayingPerson,
-          selectedColor: Colors.teal,
+          selectedColor: navyBlue,
         ),
 
         /// Search
@@ -66,7 +74,7 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
         CrystalNavigationBarItem(
           icon: Icons.settings,
           unselectedIcon: Icons.settings,
-          selectedColor: Colors.teal,
+          selectedColor: navyBlue,
         ),
       ],
     );

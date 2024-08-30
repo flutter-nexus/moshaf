@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:moshaf/imports/imports.dart';
 
 class home_page_container extends StatelessWidget {
   home_page_container({
@@ -16,14 +17,20 @@ class home_page_container extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        decoration: BoxDecoration(boxShadow: [
-          BoxShadow(
-            color: Colors.blueGrey.withOpacity(0.6),
-            spreadRadius: 5,
-            blurRadius: 7,
-            offset: Offset(0, 3), // changes position of shadow
-          ),
-        ], borderRadius: BorderRadius.circular(10.0), color: Colors.teal),
+        decoration: BoxDecoration(
+            image: DecorationImage(
+              image: AssetImage('assets/images/background1.png'),
+              fit: BoxFit.fill,
+            ),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.blueGrey.withOpacity(0.6),
+                spreadRadius: 5,
+                blurRadius: 7,
+                offset: Offset(0, 3), // changes position of shadow
+              ),
+            ],
+            borderRadius: BorderRadius.circular(10.0)),
         margin: EdgeInsets.all(10.0),
         padding: EdgeInsets.symmetric(horizontal: 10.0),
         child: ListTile(

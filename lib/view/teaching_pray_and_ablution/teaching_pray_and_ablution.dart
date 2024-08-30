@@ -19,10 +19,8 @@ class _TeachingPrayScreenState extends State<TeachingPrayScreen> {
 
   void _updateContent() {
     setState(() {
-      title = Get.arguments == 'Teaching Pray'
-          ? 'Teaching Pray'
-          : 'Ablution Instructions';
-      content = Get.arguments == 'Teaching Pray' ? prayList : ablutionList;
+      title = Get.arguments == 'تعليم الصلاة' ? 'تعليم الصلاة' : 'تعليم الوضوء';
+      content = Get.arguments == 'تعليم الصلاة' ? prayList : ablutionList;
     });
   }
 
@@ -103,9 +101,16 @@ class _TeachingPrayScreenState extends State<TeachingPrayScreen> {
     return Scaffold(
       bottomNavigationBar: CustomBottomNavigationBar(),
       appBar: AppBar(
-        title: Text(title),
-        centerTitle: true,
-        backgroundColor: Colors.teal,
+        iconTheme: IconThemeData(color: Colors.white),
+        centerTitle: false,
+        title: Align(
+          alignment: Alignment.centerRight,
+          child: Text(
+            title,
+            style: TextStyle(color: Colors.white),
+          ),
+        ),
+        backgroundColor: tealBlue,
         actions: [
           IconButton(
             icon: Icon(Icons.first_page),

@@ -1,6 +1,3 @@
-
-
-
 import '../../imports/imports.dart';
 
 class SettingsScreen extends StatefulWidget {
@@ -18,16 +15,21 @@ class _SettingsScreenState extends State<SettingsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: CustomBottomNavigationBar(),
       appBar: AppBar(
-        title: Text('Settings'),
-        backgroundColor: Colors.teal,
+        iconTheme: IconThemeData(
+          color: Colors.white,
+        ),
+        title: Text(
+          'Settings',
+          style: TextStyle(
+            color: Colors.white,
+          ),
+        ),
+        backgroundColor: tealBlue,
       ),
       body: Container(
         height: MediaQuery.sizeOf(context).height,
-        decoration: BoxDecoration(
-
-        ),
+        decoration: BoxDecoration(),
         child: SafeArea(
           child: SingleChildScrollView(
             padding: EdgeInsets.all(10.0),

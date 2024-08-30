@@ -20,7 +20,7 @@ class _QuranPageVersePreviewState extends State<QuranPageVersePreview> {
   List<dynamic> ayahs = [];
   bool isLoading = true;
   int ayaNumber = 0;
-   Response? exegesis;
+  Response? exegesis;
 
   @override
   void initState() {
@@ -45,7 +45,7 @@ class _QuranPageVersePreviewState extends State<QuranPageVersePreview> {
       'https://cdn.jsdelivr.net/gh/fawazahmed0/quran-api@1/editions/ara-kingfahadquranc.json',
     );
     exegesis = await response.data;
-    
+
     return response.data;
   }
 
@@ -79,6 +79,7 @@ class _QuranPageVersePreviewState extends State<QuranPageVersePreview> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         title: Text(
           '${widget.surahName}',
@@ -88,67 +89,83 @@ class _QuranPageVersePreviewState extends State<QuranPageVersePreview> {
       body: isLoading
           ? Center(child: CircularProgressIndicator())
           : ayahs.isNotEmpty
-              ? ListView.builder(
-                  itemCount: ayahs.length,
-                  itemBuilder: (context, index) {
-                    return Column(
-                      children: [
-                        GestureDetector(
-                          onTap: () async {
-                            log('${ayaNumber + index}');
-                            
-                          },
-                          child: ListTile(
-                            title: Row(
-                              mainAxisAlignment: MainAxisAlignment.end,
-                              children: [
-                                Stack(
-                                  alignment: Alignment.center,
-                                  children: [
-                                    Image.asset(
-                                      'assets/images/icon_number.png',
-                                      height:
-                                          MediaQuery.of(context).size.height *
-                                              0.06,
-                                      width: MediaQuery.of(context).size.width *
-                                          0.06,
-                                    ),
-                                    Positioned(
-                                      child: Text(
-                                        '${ayahs[index]['verse']}', // Verse number
-                                        style: TextStyle(
-                                          fontSize: 12,
-                                          fontFamily: 'UthmanicHafs',
-                                          color: Colors.black,
+              ? Column(
+                  children: [
+                    Text(
+                      "بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ",
+                      style: TextStyle(
+                          fontFamily: 'UthmanicHafs',
+                          fontSize: 30,
+                          fontWeight: FontWeight.w500),
+                    ),
+                    Expanded(
+                      child: ListView.builder(
+                        itemCount: ayahs.length,
+                        itemBuilder: (context, index) {
+                          return Column(
+                            children: [
+                              GestureDetector(
+                                onTap: () async {
+                                  log('${ayaNumber + index}');
+                                },
+                                child: ListTile(
+                                  title: Row(
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    children: [
+                                      Stack(
+                                        alignment: Alignment.center,
+                                        children: [
+                                          Image.asset(
+                                            'assets/images/icon_number.png',
+                                            height: MediaQuery.of(context)
+                                                    .size
+                                                    .height *
+                                                0.06,
+                                            width: MediaQuery.of(context)
+                                                    .size
+                                                    .width *
+                                                0.06,
+                                          ),
+                                          Positioned(
+                                            child: Text(
+                                              '${ayahs[index]['verse']}', // Verse number
+                                              style: TextStyle(
+                                                fontSize: 12,
+                                                fontFamily: 'UthmanicHafs',
+                                                color: Colors.black,
+                                                fontWeight: FontWeight.w600,
+                                              ),
+                                            ),
+                                          ),
+                                        ],
+                                      ),
+                                      SizedBox(width: 10),
+                                      Expanded(
+                                        child: Text(
+                                          ayahs[index]['text'],
+                                          textAlign: TextAlign.right,
+                                          style: TextStyle(
+                                            fontSize: 24,
+                                            fontFamily: 'UthmanicHafs',
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                  ],
-                                ),
-                                SizedBox(width: 10),
-                                Expanded(
-                                  child: Text(
-                                    ayahs[index]['text'],
-                                    textAlign: TextAlign.right,
-                                    style: TextStyle(
-                                      fontSize: 24,
-                                      fontFamily: 'UthmanicHafs',
-                                    ),
+                                    ],
                                   ),
                                 ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        Divider(
-                          color: Colors.grey,
-                          thickness: 2,
-                          indent: 40,
-                          endIndent: 40,
-                        ),
-                      ],
-                    );
-                  },
+                              ),
+                              Divider(
+                                color: Colors.grey,
+                                thickness: 2,
+                                indent: 40,
+                                endIndent: 40,
+                              ),
+                            ],
+                          );
+                        },
+                      ),
+                    ),
+                  ],
                 )
               : Center(child: Text('No data available')),
     );
