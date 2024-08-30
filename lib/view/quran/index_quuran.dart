@@ -1,15 +1,9 @@
-import 'dart:convert';
 import 'dart:developer';
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:get/get.dart';
-import 'package:moshaf/imports/imports.dart';
-import 'package:moshaf/service/golobal_variabules.dart';
-import 'package:moshaf/view/quran/whole_surah_quran.dart';
-import 'package:moshaf/view/quran/helper/quran_bottom_sheet_container.dart';
-import 'package:moshaf/view/quran/quran_page_verse.dart';
 
-import '../../service/navigation_bottom_bar.dart'; // Assume you have a global file where surah data is stored
+import 'package:moshaf/imports/imports.dart';
+
+import 'package:moshaf/view/quran/whole_surah_quran.dart';
+// Assume you have a global file where surah data is stored
 
 class QuranIndexPage extends StatelessWidget {
   static const double _cardMargin = 5.0;

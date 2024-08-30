@@ -8,19 +8,10 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final List<String> imageList = [
-    'assets/slider_images/quran1.jpg',
-    'assets/slider_images/pray_times2.jpg',
-    'assets/slider_images/teaching_pray2.jpg',
-    'assets/slider_images/ablution2.jpg',
-    'assets/slider_images/hadith2.jpg',
-    'assets/slider_images/doaa2.jpg',
-  ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: lightBeige,
+      backgroundColor: Colors.white,
       appBar: AppBar(
         iconTheme: IconThemeData(
           color: Colors.white, // لون الأيقونة
@@ -32,41 +23,51 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
       ),
       body: Stack(children: [
-        SingleChildScrollView(
-          physics: BouncingScrollPhysics(),
+        Padding(
+          padding: const EdgeInsets.all(16.0),
           child: Column(
             children: [
-              home_page_container(
-                title: "The Holy Quran",
-                subtitle: "The reading of the Holy Quran and its recitations",
-                onTap: () => Get.to(QuranIndexPage()),
+              buildGridItem(
+                label: "Qur'an",
+                icon: FlutterIslamicIcons.quran,
+                onTap: () {
+                  Get.to(() => QuranIndexPage());
+                },
               ),
-              home_page_container(
-                title: "Prayer times",
-                subtitle: "Prayer, fasting and iftar times",
-                onTap: () => Get.to(PrayerTimeScreen()),
-              ),
-              home_page_container(
-                title: "Teaching prayer",
-                subtitle: "On the Sunnah of our Prophet",
-                onTap: () => Get.to(() => TeachingPrayScreen(),
-                    arguments: "تعليم الصلاة"),
-              ),
-              home_page_container(
-                title: "Teaching ablution",
-                subtitle: "On the Sunnah of our Prophet",
-                onTap: () => Get.to(() => TeachingPrayScreen(),
-                    arguments: "تعليم الوضوء"),
-              ),
-              home_page_container(
-                title: "The noble hadith",
-                subtitle: "The Hadith of the Prophet",
-                onTap: () => Get.to(Hadith()),
-              ),
-              home_page_container(
-                title: "Supplications page",
-                subtitle: "Various supplications",
-                onTap: () => Get.to(Supplications()),
+              Expanded(
+                child: GridView.count(
+                  crossAxisCount: 2, // عدد الأعمدة
+                  mainAxisSpacing: 16,
+                  crossAxisSpacing: 16,
+                  children: [
+                    buildGridItem(
+                        label: "Prayer Times",
+                        icon: FlutterIslamicIcons.prayingPerson,
+                        onTap: () {
+                          Get.to(() => PrayerTimeScreen());
+                        }),
+                    buildGridItem(
+                        label: "Teaching Prayer",
+                        icon: FlutterIslamicIcons.sajadah,
+                        onTap: () {
+                          Get.to(() => TeachingPrayScreen(),
+                              arguments: 'تعليم الصلاة');
+                        }),
+                    buildGridItem(
+                        label: "Teaching Wudu",
+                        icon: FlutterIslamicIcons.wudhu,
+                        onTap: () {
+                          Get.to(() => TeachingPrayScreen(),
+                              arguments: "تعليم الوضوء");
+                        }),
+                    buildGridItem(
+                        label: "Settings",
+                        icon: Icons.settings,
+                        onTap: () {
+                          Get.to(() => SettingsScreen());
+                        }),
+                  ],
+                ),
               ),
             ],
           ),
@@ -74,7 +75,7 @@ class _HomeScreenState extends State<HomeScreen> {
         Align(
           alignment: Alignment.bottomCenter,
           child: CustomBottomNavigationBar(),
-        )
+        ),
       ]),
     );
   }

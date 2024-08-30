@@ -1,61 +1,33 @@
-import 'package:flutter/material.dart';
-import 'package:moshaf/imports/imports.dart';
+import '../../../imports/imports.dart';
 
-class home_page_container extends StatelessWidget {
-  home_page_container({
-    required this.title,
-    required this.subtitle,
-    super.key,
-    required this.onTap,
-  });
-  final String title;
-  final String subtitle;
-  final Function() onTap;
-
-  @override
-  Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        decoration: BoxDecoration(
-            image: DecorationImage(
-              image: AssetImage('assets/images/background1.png'),
-              fit: BoxFit.fill,
-            ),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.blueGrey.withOpacity(0.6),
-                spreadRadius: 5,
-                blurRadius: 7,
-                offset: Offset(0, 3), // changes position of shadow
-              ),
-            ],
-            borderRadius: BorderRadius.circular(10.0)),
-        margin: EdgeInsets.all(10.0),
-        padding: EdgeInsets.symmetric(horizontal: 10.0),
-        child: ListTile(
-          contentPadding: EdgeInsets.all(1.0),
-          title: Text(
-            title,
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 22,
-              fontWeight: FontWeight.bold,
-            ),
-          ),
-          subtitle: Text(
-            subtitle,
-            style: TextStyle(
-              fontSize: 20,
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
-            ),
-            textDirection: TextDirection.rtl,
-            softWrap: true,
-          ),
-          trailing: Icon(Icons.arrow_forward_ios_rounded, size: 25.0),
-        ),
+Widget buildGridItem({
+  required IconData icon,
+  required String label,
+  required VoidCallback onTap,
+}) {
+  return GestureDetector(
+    onTap: onTap,
+    child: Container(
+      margin: EdgeInsets.all(10),
+      height: MediaQuery.of(Get.context!).size.height * 0.19,
+      width: double.infinity,
+      decoration: BoxDecoration(
+        boxShadow: [BoxShadow(color: tealBlue2, blurRadius: 10)],
+        color: tealBlue5, // لون الخلفية
+        borderRadius: BorderRadius.circular(10),
       ),
-    );
-  }
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Icon(icon, size: 50, color: navyBlue),
+          SizedBox(height: 10),
+          Text(
+            label,
+            style: TextStyle(
+                color: navyBlue, fontSize: 16, fontWeight: FontWeight.bold),
+          ),
+        ],
+      ),
+    ),
+  );
 }

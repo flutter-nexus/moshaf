@@ -1,7 +1,4 @@
-import 'package:bottom_navy_bar/bottom_navy_bar.dart';
 import 'package:crystal_navigation_bar/crystal_navigation_bar.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_islamic_icons/flutter_islamic_icons.dart';
 import 'package:moshaf/imports/imports.dart';
 
 class CustomBottomNavigationBar extends StatefulWidget {
