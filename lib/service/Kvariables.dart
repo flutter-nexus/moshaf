@@ -13,3 +13,7 @@ Color lightGreen = Color(0xFFb9d3c2);
 Color coral = Color(0xFFFF6F61);
 Color navyBlue = Color(0xFF001F3F);
 Color darkNavyBlue = Color(0xFF004B8D);
+Color tealBlue3 = Color(0xFF1a2626);
+Color tealBlue4 = Color(0xFFEEF7FF);
+Color tealBlue5 = Color(0xFFE7E7DE);
+Color lightBeige2 = Color.fromARGB(255, 183, 182, 182);
