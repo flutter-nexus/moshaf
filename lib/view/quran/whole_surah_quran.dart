@@ -2,14 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 
 class WholeQuranSurah extends StatefulWidget {
-   WholeQuranSurah({super.key, this.intialPageNumber=0});
-int intialPageNumber ;
+  WholeQuranSurah({super.key, this.intialPageNumber = 0});
+  int intialPageNumber;
   @override
   State<WholeQuranSurah> createState() => _WholeQuranSurahState();
 }
 
 class _WholeQuranSurahState extends State<WholeQuranSurah> {
-  final PdfViewerController _pdfViewerController = PdfViewerController(); // Controller for PDF library
+  final PdfViewerController _pdfViewerController =
+      PdfViewerController(); // Controller for PDF library
 
   static const double _zoomLevel = 1; // Constant for zoom level
 
@@ -21,7 +22,8 @@ class _WholeQuranSurahState extends State<WholeQuranSurah> {
         title: const Text(
           'القرآن الكريم',
           style: TextStyle(
-            fontFamily: "UthmanicHafs", // Ensure the font is added to the project
+            fontFamily:
+                "UthmanicHafs", // Ensure the font is added to the project
           ),
         ),
         centerTitle: true,
@@ -35,10 +37,12 @@ class _WholeQuranSurahState extends State<WholeQuranSurah> {
             maxZoomLevel: _zoomLevel,
             initialPageNumber: widget.intialPageNumber,
 
-            initialZoomLevel: _zoomLevel, // Initial zoom level (can be adjusted as needed)
+            initialZoomLevel:
+                _zoomLevel, // Initial zoom level (can be adjusted as needed)
             pageLayoutMode: PdfPageLayoutMode.single, // Single page mode
             pageSpacing: 0, // Remove spacing between pages
-            scrollDirection: PdfScrollDirection.horizontal, // Horizontal scrolling
+            scrollDirection:
+                PdfScrollDirection.horizontal, // Horizontal scrolling
             enableDoubleTapZooming: true, // Enable zoom on double tap
           );
         },
