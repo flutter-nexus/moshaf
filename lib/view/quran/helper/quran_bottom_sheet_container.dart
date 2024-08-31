@@ -21,7 +21,9 @@ class BottomSheetContainer extends StatelessWidget {
           padding: EdgeInsets.all(20),
           width: double.infinity,
           decoration: BoxDecoration(
-              color: Colors.teal, borderRadius: BorderRadius.circular(8)),
+              boxShadow: [BoxShadow(color: lightBlue, blurRadius: 10)],
+              color: tealBlue,
+              borderRadius: BorderRadius.circular(8)),
           child: ListTile(
             leading: icon,
             title: Text(
@@ -29,7 +31,8 @@ class BottomSheetContainer extends StatelessWidget {
               style: const TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
-                  fontSize: 24),
+                  fontSize: 24,
+                  fontFamily: "UthmanicHafs"),
               textAlign: TextAlign.right,
             ),
           )),

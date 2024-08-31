@@ -13,7 +13,7 @@ Widget buildGridItem({
       width: double.infinity,
       decoration: BoxDecoration(
         image: DecorationImage(
-          image: AssetImage("assets/images/quran-5385906_1280.jpg"),
+          image: AssetImage("assets/images/peakpx.jpg"),
           fit: BoxFit.fill,
         ),
         boxShadow: [BoxShadow(color: tealBlue2, blurRadius: 10)],
@@ -28,7 +28,10 @@ Widget buildGridItem({
           Text(
             label,
             style: TextStyle(
-                color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold),
+                color: Colors.white,
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                fontFamily: "UthmanicHafs"),
           ),
         ],
       ),

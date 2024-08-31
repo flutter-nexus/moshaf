@@ -1,6 +1,7 @@
 import 'dart:developer';
 
 import 'package:quran/quran.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../imports/imports.dart';
 
@@ -15,6 +16,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
   double _playbackSpeed = 1.0;
   String _selectedLanguage = 'English';
   ThemeMode _selectedTheme = ThemeMode.light;
+  void initState() {
+    super.initState();
+    getSettingsData();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -47,8 +52,12 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   subtitle: _selectedLanguage,
                   trailing: _buildDropdown(
                     value: _selectedLanguage,
-                    onChanged: (String? newValue) =>
-                        setState(() => _selectedLanguage = newValue!),
+                    onChanged: (String? newValue) async {
+                      SharedPreferences prefs =
+                          await SharedPreferences.getInstance();
+                      prefs.setString('language', newValue!);
+                      setState(() => _selectedLanguage = newValue);
+                    },
                     items: ['English', 'Arabic', 'French', 'Spanish'],
                   ),
                 ),
@@ -59,8 +68,17 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       _selectedTheme == ThemeMode.light ? 'Light' : 'Dark',
                   trailing: _buildDropdown(
                     value: _selectedTheme,
-                    onChanged: (ThemeMode? newValue) =>
-                        setState(() => _selectedTheme = newValue!),
+                    onChanged: (ThemeMode? newValue) async {
+                      SharedPreferences prefs =
+                          await SharedPreferences.getInstance();
+
+                      // تخزين ThemeMode في SharedPreferences
+                      String themeModeString =
+                          newValue == ThemeMode.light ? 'light' : 'dark';
+                      prefs.setString('themeMode', themeModeString);
+
+                      setState(() => _selectedTheme = newValue!);
+                    },
                     items: [ThemeMode.light, ThemeMode.dark],
                     itemBuilder: (value) =>
                         Text(value == ThemeMode.light ? 'Light' : 'Dark'),
@@ -73,7 +91,12 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   subtitle: _recitationEnabled ? 'Enabled' : 'Disabled',
                   trailing: _buildSwitch(
                     value: _recitationEnabled,
-                    onToggle: (val) => setState(() => _recitationEnabled = val),
+                    onToggle: (val) async {
+                      SharedPreferences prefs =
+                          await SharedPreferences.getInstance();
+                      prefs.setBool('recitation', val);
+                      setState(() => _recitationEnabled = val);
+                    },
                   ),
                 ),
                 _buildListTile(
@@ -82,8 +105,12 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   subtitle: '${_playbackSpeed}x',
                   trailing: _buildSlider(
                     value: _playbackSpeed,
-                    onChanged: (value) =>
-                        setState(() => _playbackSpeed = value),
+                    onChanged: (value) async {
+                      SharedPreferences prefs =
+                          await SharedPreferences.getInstance();
+                      prefs.setDouble('playbackSpeed', value);
+                      setState(() => _playbackSpeed = value);
+                    },
                     min: 0.5,
                     max: 2.0,
                     divisions: 3,
@@ -96,8 +123,12 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   subtitle: _notificationsEnabled ? 'Enabled' : 'Disabled',
                   trailing: _buildSwitch(
                     value: _notificationsEnabled,
-                    onToggle: (val) =>
-                        setState(() => _notificationsEnabled = val),
+                    onToggle: (val) async {
+                      SharedPreferences prefs =
+                          await SharedPreferences.getInstance();
+                      prefs.setBool('notifications', val);
+                      setState(() => _notificationsEnabled = val);
+                    },
                   ),
                 ),
                 _buildListTile(
@@ -241,5 +272,19 @@ class _SettingsScreenState extends State<SettingsScreen> {
         onChanged: onChanged,
       ),
     );
+  }
+
+  getSettingsData() async {
+    final prefs = await SharedPreferences.getInstance();
+
+    setState(() {
+      _selectedLanguage = prefs.getString('language') ?? 'English';
+      _playbackSpeed = prefs.getDouble('playbackSpeed') ?? 1.0;
+      _recitationEnabled = prefs.getBool('recitation') ?? false;
+      _notificationsEnabled = prefs.getBool('notifications') ?? false;
+      String? themeModeString = prefs.getString('themeMode');
+      _selectedTheme =
+          themeModeString == 'dark' ? ThemeMode.dark : ThemeMode.light;
+    });
   }
 }

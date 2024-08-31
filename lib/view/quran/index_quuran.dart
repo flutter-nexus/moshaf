@@ -134,7 +134,7 @@ class _SurahCardState extends State<_SurahCard> {
                 Container(
                   margin: EdgeInsets.symmetric(horizontal: 8),
                   decoration: BoxDecoration(
-                    color: Colors.green[50],
+                    color: tealBlue5,
                     borderRadius: BorderRadius.circular(16),
                   ),
                   width: double.infinity,

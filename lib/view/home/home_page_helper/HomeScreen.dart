@@ -18,7 +18,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         backgroundColor: tealBlue,
         title: Text(
-          'The Home Page',
+          'الصفحة الرئيسية',
           style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
         ),
       ),
@@ -28,7 +28,7 @@ class _HomeScreenState extends State<HomeScreen> {
           child: Column(
             children: [
               buildGridItem(
-                label: "Qur'an",
+                label: "القرآن الكريم",
                 icon: FlutterIslamicIcons.quran,
                 onTap: () {
                   Get.to(() => QuranIndexPage());
@@ -41,27 +41,27 @@ class _HomeScreenState extends State<HomeScreen> {
                   crossAxisSpacing: 16,
                   children: [
                     buildGridItem(
-                        label: "Prayer Times",
+                        label: "مواقيت الصلاة",
                         icon: FlutterIslamicIcons.prayingPerson,
                         onTap: () {
                           Get.to(() => PrayerTimeScreen());
                         }),
                     buildGridItem(
-                        label: "Teaching Prayer",
+                        label: "تعليم الصلاة",
                         icon: FlutterIslamicIcons.sajadah,
                         onTap: () {
                           Get.to(() => TeachingPrayScreen(),
                               arguments: 'تعليم الصلاة');
                         }),
                     buildGridItem(
-                        label: "Teaching Wudu",
+                        label: "تعليم الوضوء",
                         icon: FlutterIslamicIcons.wudhu,
                         onTap: () {
                           Get.to(() => TeachingPrayScreen(),
                               arguments: "تعليم الوضوء");
                         }),
                     buildGridItem(
-                        label: "Settings",
+                        label: "الاعدادات",
                         icon: Icons.settings,
                         onTap: () {
                           Get.to(() => SettingsScreen());
