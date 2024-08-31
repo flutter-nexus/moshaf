@@ -134,62 +134,15 @@ class _SurahCardState extends State<_SurahCard> {
             ),
             trailing: Icon(Icons.arrow_forward_ios, color: tealBlue),
             onTap: () async {
-              Get.bottomSheet(
-                Container(
-                  margin: EdgeInsets.symmetric(horizontal: 8),
-                  decoration: BoxDecoration(
-                    color: tealBlue5,
-                    borderRadius: BorderRadius.circular(16),
-                  ),
-                  width: double.infinity,
-                  height: MediaQuery.of(context).size.height * 0.5,
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Spacer(
-                        flex: 1,
-                      ),
-                      BottomSheetContainer(
-                        content: ' السورة كاملة في المصحف',
-                        icon: Icon(
-                          FlutterIslamicIcons.quran,
-                          color: Colors.white,
-                          size: 22,
-                        ),
-                        onTap: () {
-                          Get.back();
-                          Get.to(() => WholeQuranSurah(
-                              intialPageNumber: widget.surah["pageNumber"]));
-                        },
-                      ),
-                      Spacer(
-                        flex: 1,
-                      ),
-                      BottomSheetContainer(
-                        content: "آيات السورة بالتفسير",
-                        icon: Icon(
-                          FlutterIslamicIcons.quran2,
-                          color: Colors.white,
-                          size: 25,
-                        ),
-                        onTap: () async {
-                          Get.back();
-                          log('Surah tapped: ${widget.surah['name']} (Index: ${widget.index})');
-                          Get.to(() => QuranPageVersePreview(
-                              indexSurah: widget.index + 1,
-                              surahName: widget.surah['name']));
-                        },
-                      ),
-                      Spacer(
-                        flex: 1,
-                      ),
-                    ],
-                  ),
-                ),
-                isScrollControlled: true,
-                enableDrag: true,
-              );
+              if (Get.arguments == "القرآن الكريم") {
+                Get.to(() => WholeQuranSurah(
+                    intialPageNumber: widget.surah["pageNumber"]));
+              } else {
+                log('Surah tapped: ${widget.surah['name']} (Index: ${widget.index})');
+                Get.to(() => QuranPageVersePreview(
+                    indexSurah: widget.index + 1,
+                    surahName: widget.surah['name']));
+              }
             },
           ),
         ),
