@@ -12,6 +12,10 @@ Widget buildGridItem({
       height: MediaQuery.of(Get.context!).size.height * 0.19,
       width: double.infinity,
       decoration: BoxDecoration(
+        image: DecorationImage(
+          image: AssetImage("assets/images/quran-5385906_1280.jpg"),
+          fit: BoxFit.fill,
+        ),
         boxShadow: [BoxShadow(color: tealBlue2, blurRadius: 10)],
         color: tealBlue5, // لون الخلفية
         borderRadius: BorderRadius.circular(10),
@@ -19,12 +23,12 @@ Widget buildGridItem({
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(icon, size: 50, color: navyBlue),
+          Icon(icon, size: 50, color: Colors.white),
           SizedBox(height: 10),
           Text(
             label,
             style: TextStyle(
-                color: navyBlue, fontSize: 16, fontWeight: FontWeight.bold),
+                color: Colors.white, fontSize: 16, fontWeight: FontWeight.bold),
           ),
         ],
       ),
