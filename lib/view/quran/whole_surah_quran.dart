@@ -1,10 +1,5 @@
-<<<<<<< HEAD
-import 'dart:async';
-import 'package:google_fonts/google_fonts.dart';
-=======
->>>>>>> 41662ca83b452c35fccf34b7caed4d7ef308e954
-import 'package:moshaf/imports/imports.dart';
-import 'package:pdfrx/pdfrx.dart';
+import 'package:flutter/material.dart';
+import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 
 class WholeQuranSurah extends StatefulWidget {
   const WholeQuranSurah({super.key});
@@ -14,24 +9,36 @@ class WholeQuranSurah extends StatefulWidget {
 }
 
 class _WholeQuranSurahState extends State<WholeQuranSurah> {
+  final PdfViewerController _pdfViewerController =
+      PdfViewerController(); // تعريف الـ Controller لمكتبة الـ PDF
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        title: const Text('Pdfrx example'),
+        title: const Text(
+          'القرآن الكريم',
+          style: TextStyle(
+              fontFamily: "UthmanicHafs"), // تأكد من أن الخط مضاف في المشروع
+        ),
+        centerTitle: true,
       ),
-      body: Container(
-          height: MediaQuery.of(context).size.height,
-          width: MediaQuery.of(context).size.width,
-          child: SingleChildScrollView(
-              child: PdfViewer.asset(
-                initialPageNumber: 2,
-                params: PdfViewerParams(
-                  
-                ),
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+          // استخدام LayoutBuilder لتحديد حجم الـ Container بناءً على حجم الشاشة
+          return SfPdfViewer.asset(
             'assets/quran.pdf',
-            controller: PdfViewerController(),
-          ))),
+            controller: _pdfViewerController,
+            initialZoomLevel:
+                1.0, // مستوى التكبير الابتدائي (يمكنك تعديله حسب الحاجة)
+            pageLayoutMode: PdfPageLayoutMode.single, // وضع الصفحة الفردية
+            pageSpacing: 0, // إزالة المسافات بين الصفحات
+            scrollDirection: PdfScrollDirection.horizontal, // التمرير الأفقي
+            enableDoubleTapZooming: true, // تمكين التكبير عند النقر المزدوج
+          );
+        },
+      ),
     );
   }
 }
