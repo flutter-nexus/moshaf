@@ -1,3 +1,5 @@
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import '../../imports/imports.dart';
 
 class TeachingPrayScreen extends StatefulWidget {
@@ -6,22 +8,27 @@ class TeachingPrayScreen extends StatefulWidget {
 }
 
 class _TeachingPrayScreenState extends State<TeachingPrayScreen> {
-  PageController _pageController = PageController();
+  late PageController _pageController;
   int _currentPage = 0;
   late String title;
   late List<Map<String, String>> content;
 
   @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
+  void initState() {
+    super.initState();
+    _pageController = PageController();
     _updateContent();
   }
 
+  @override
+  void dispose() {
+    _pageController.dispose();
+    super.dispose();
+  }
+
   void _updateContent() {
-    setState(() {
-      title = Get.arguments == 'تعليم الصلاة' ? 'تعليم الصلاة' : 'تعليم الوضوء';
-      content = Get.arguments == 'تعليم الصلاة' ? prayList : ablutionList;
-    });
+    title = Get.arguments == 'تعليم الصلاة' ? 'تعليم الصلاة' : 'تعليم الوضوء';
+    content = Get.arguments == 'تعليم الصلاة' ? prayList : ablutionList;
   }
 
   void _nextPage() {
@@ -46,7 +53,6 @@ class _TeachingPrayScreenState extends State<TeachingPrayScreen> {
     _pageController.jumpToPage(0);
   }
 
-  // Function to apply custom text styling for specific items
   RichText _customText(String text) {
     final List<String> highlighted = [
       'استحضار النيّة',
@@ -97,23 +103,22 @@ class _TeachingPrayScreenState extends State<TeachingPrayScreen> {
 
   @override
   Widget build(BuildContext context) {
-    _updateContent();
     return Scaffold(
-      bottomNavigationBar: CustomBottomNavigationBar(),
+      bottomNavigationBar: const CustomBottomNavigationBar(),
       appBar: AppBar(
-        iconTheme: IconThemeData(color: Colors.white),
+        iconTheme: const IconThemeData(color: Colors.white),
         centerTitle: false,
         title: Align(
           alignment: Alignment.centerRight,
           child: Text(
             title,
-            style: TextStyle(color: Colors.white),
+            style: const TextStyle(color: Colors.white),
           ),
         ),
         backgroundColor: tealBlue,
         actions: [
           IconButton(
-            icon: Icon(Icons.first_page),
+            icon: const Icon(Icons.first_page),
             onPressed: _firstPage,
           ),
         ],
@@ -138,7 +143,7 @@ class _TeachingPrayScreenState extends State<TeachingPrayScreen> {
                       width: double.infinity,
                       fit: BoxFit.cover,
                     ),
-                    SizedBox(height: 8),
+                    const SizedBox(height: 8),
                     Padding(
                       padding: const EdgeInsets.all(16.0),
                       child: _customText(content[index]['text']!),
@@ -154,14 +159,14 @@ class _TeachingPrayScreenState extends State<TeachingPrayScreen> {
               bottom: 16,
               child: IconButton(
                   onPressed: _previousPage,
-                  icon: Icon(Icons.keyboard_double_arrow_left_rounded)),
+                  icon: const Icon(Icons.keyboard_double_arrow_left_rounded)),
             ),
           if (_currentPage < content.length - 1)
             Positioned(
               right: 16,
               bottom: 16,
               child: IconButton(
-                  onPressed: _nextPage, icon: Icon(Icons.double_arrow)),
+                  onPressed: _nextPage, icon: const Icon(Icons.double_arrow)),
             ),
         ],
       ),
