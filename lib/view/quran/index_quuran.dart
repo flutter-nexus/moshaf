@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:moshaf/imports/imports.dart';
 
 import 'package:moshaf/view/quran/whole_surah_quran.dart';
@@ -16,23 +17,26 @@ class QuranIndexPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: CustomBottomNavigationBar(),
+      extendBodyBehindAppBar: true,
       appBar: AppBar(
         iconTheme: IconThemeData(color: Colors.white),
-        backgroundColor: tealBlue,
+        backgroundColor: tealBlue.withOpacity(0.7),
         title: Text(
           'فهرس القرآن الكريم',
           style: TextStyle(color: Colors.white),
         ),
         centerTitle: true,
       ),
-      body: ListView.builder(
-        itemCount: surahData.length,
-        itemBuilder: (context, index) {
-          final surah = surahData[index];
-          return _SurahCard(surah: surah, index: index);
-        },
-      ),
+      body: Stack(alignment: Alignment.bottomCenter, children: [
+        ListView.builder(
+          itemCount: surahData.length,
+          itemBuilder: (context, index) {
+            final surah = surahData[index];
+            return _SurahCard(surah: surah, index: index);
+          },
+        ),
+        CustomBottomNavigationBar()
+      ]),
     );
   }
 }
@@ -79,7 +83,7 @@ class _SurahCardState extends State<_SurahCard> {
           child: ListTile(
             contentPadding: EdgeInsets.all(1.0),
             leading: CircleAvatar(
-              backgroundColor: Colors.teal,
+              backgroundColor: tealBlue,
               child: Text(
                 '${widget.index + 1}',
                 style: TextStyle(
@@ -128,7 +132,7 @@ class _SurahCardState extends State<_SurahCard> {
                 ),
               ],
             ),
-            trailing: Icon(Icons.arrow_forward_ios, color: Colors.teal),
+            trailing: Icon(Icons.arrow_forward_ios, color: tealBlue),
             onTap: () async {
               Get.bottomSheet(
                 Container(
@@ -147,15 +151,16 @@ class _SurahCardState extends State<_SurahCard> {
                         flex: 1,
                       ),
                       BottomSheetContainer(
-                        content: 'السورة كاملة ',
+                        content: ' السورة كاملة في المصحف',
                         icon: Icon(
                           FlutterIslamicIcons.quran,
                           color: Colors.white,
-                          size: 25,
+                          size: 22,
                         ),
                         onTap: () {
                           Get.back();
-                          Get.to(() => WholeQuranSurah(intialPageNumber:widget.surah["pageNumber"]));
+                          Get.to(() => WholeQuranSurah(
+                              intialPageNumber: widget.surah["pageNumber"]));
                         },
                       ),
                       Spacer(

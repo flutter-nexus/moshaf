@@ -147,7 +147,6 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen>
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: CustomBottomNavigationBar(),
       appBar: AppBar(
         iconTheme: IconThemeData(color: Colors.white),
         backgroundColor: tealBlue,
@@ -158,11 +157,14 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen>
         ),
         centerTitle: true,
       ),
-      body: _loading
-          ? _buildLoadingView()
-          : _errorMessage != null
-              ? _buildErrorView()
-              : _buildPrayerTimesList(),
+      body: Stack(alignment: Alignment.bottomCenter, children: [
+        _loading
+            ? _buildLoadingView()
+            : _errorMessage != null
+                ? _buildErrorView()
+                : _buildPrayerTimesList(),
+        CustomBottomNavigationBar()
+      ]),
     );
   }
 

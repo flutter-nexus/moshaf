@@ -36,142 +36,153 @@ class _SettingsScreenState extends State<SettingsScreen> {
         ),
         backgroundColor: tealBlue,
       ),
-      body: Container(
-        height: MediaQuery.sizeOf(context).height,
-        decoration: BoxDecoration(),
-        child: SafeArea(
-          child: SingleChildScrollView(
-            padding: EdgeInsets.all(10.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                _buildSectionHeader('General Settings'),
-                _buildListTile(
-                  icon: Icons.language,
-                  title: 'Language',
-                  subtitle: _selectedLanguage,
-                  trailing: _buildDropdown(
-                    value: _selectedLanguage,
-                    onChanged: (String? newValue) async {
-                      SharedPreferences prefs =
-                          await SharedPreferences.getInstance();
-                      prefs.setString('language', newValue!);
-                      setState(() => _selectedLanguage = newValue);
-                    },
-                    items: ['English', 'Arabic', 'French', 'Spanish'],
+      body: Stack(alignment: Alignment.bottomCenter, children: <Widget>[
+        Container(
+          height: MediaQuery.sizeOf(context).height,
+          decoration: BoxDecoration(color: tealBlue),
+          child: SafeArea(
+            child: SingleChildScrollView(
+              padding: EdgeInsets.all(10.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  _buildSectionHeader('General Settings'),
+                  _buildListTile(
+                    icon: Icons.language,
+                    title: 'Language',
+                    subtitle: _selectedLanguage,
+                    trailing: _buildDropdown(
+                      value: _selectedLanguage,
+                      onChanged: (String? newValue) async {
+                        SharedPreferences prefs =
+                            await SharedPreferences.getInstance();
+                        prefs.setString('language', newValue!);
+                        setState(() => _selectedLanguage = newValue);
+                      },
+                      items: ['English', 'Arabic', 'French', 'Spanish'],
+                    ),
                   ),
-                ),
-                _buildListTile(
-                  icon: Icons.brightness_medium,
-                  title: 'Theme',
-                  subtitle:
-                      _selectedTheme == ThemeMode.light ? 'Light' : 'Dark',
-                  trailing: _buildDropdown(
-                    value: _selectedTheme,
-                    onChanged: (ThemeMode? newValue) async {
-                      SharedPreferences prefs =
-                          await SharedPreferences.getInstance();
+                  _buildListTile(
+                    icon: Icons.brightness_medium,
+                    title: 'Theme',
+                    subtitle:
+                        _selectedTheme == ThemeMode.light ? 'Light' : 'Dark',
+                    trailing: _buildDropdown(
+                      value: _selectedTheme,
+                      onChanged: (ThemeMode? newValue) async {
+                        SharedPreferences prefs =
+                            await SharedPreferences.getInstance();
 
-                      // تخزين ThemeMode في SharedPreferences
-                      String themeModeString =
-                          newValue == ThemeMode.light ? 'light' : 'dark';
-                      prefs.setString('themeMode', themeModeString);
+                        // تخزين ThemeMode في SharedPreferences
+                        String themeModeString =
+                            newValue == ThemeMode.light ? 'light' : 'dark';
+                        prefs.setString('themeMode', themeModeString);
 
-                      setState(() => _selectedTheme = newValue!);
-                    },
-                    items: [ThemeMode.light, ThemeMode.dark],
-                    itemBuilder: (value) =>
-                        Text(value == ThemeMode.light ? 'Light' : 'Dark'),
+                        setState(() => _selectedTheme = newValue!);
+                      },
+                      items: [ThemeMode.light, ThemeMode.dark],
+                      itemBuilder: (value) =>
+                          Text(value == ThemeMode.light ? 'Light' : 'Dark'),
+                    ),
                   ),
-                ),
-                _buildSectionHeader('Audio Settings'),
-                _buildListTile(
-                  icon: Icons.volume_up,
-                  title: 'Recitation',
-                  subtitle: _recitationEnabled ? 'Enabled' : 'Disabled',
-                  trailing: _buildSwitch(
-                    value: _recitationEnabled,
-                    onToggle: (val) async {
-                      SharedPreferences prefs =
-                          await SharedPreferences.getInstance();
-                      prefs.setBool('recitation', val);
-                      setState(() => _recitationEnabled = val);
+                  _buildSectionHeader('Audio Settings'),
+                  _buildListTile(
+                    icon: Icons.volume_up,
+                    title: 'Recitation',
+                    subtitle: _recitationEnabled ? 'Enabled' : 'Disabled',
+                    trailing: _buildSwitch(
+                      value: _recitationEnabled,
+                      onToggle: (val) async {
+                        SharedPreferences prefs =
+                            await SharedPreferences.getInstance();
+                        prefs.setBool('recitation', val);
+                        setState(() => _recitationEnabled = val);
+                      },
+                    ),
+                  ),
+                  _buildListTile(
+                    icon: Icons.speed,
+                    title: 'Playback Speed',
+                    subtitle: '${_playbackSpeed}x',
+                    trailing: _buildSlider(
+                      value: _playbackSpeed,
+                      onChanged: (value) async {
+                        SharedPreferences prefs =
+                            await SharedPreferences.getInstance();
+                        prefs.setDouble('playbackSpeed', value);
+                        setState(() => _playbackSpeed = value);
+                      },
+                      min: 0.5,
+                      max: 2.0,
+                      divisions: 3,
+                    ),
+                  ),
+                  _buildSectionHeader('Advanced Settings'),
+                  _buildListTile(
+                    icon: Icons.notifications,
+                    title: 'Notifications',
+                    subtitle: _notificationsEnabled ? 'Enabled' : 'Disabled',
+                    trailing: _buildSwitch(
+                      value: _notificationsEnabled,
+                      onToggle: (val) async {
+                        SharedPreferences prefs =
+                            await SharedPreferences.getInstance();
+                        prefs.setBool('notifications', val);
+                        setState(() => _notificationsEnabled = val);
+                      },
+                    ),
+                  ),
+                  _buildListTile(
+                    icon: Icons.cloud_upload,
+                    title: 'Backup & Restore',
+                    subtitle: 'Last backup: 2 days ago',
+                    onTap: () {
+                      // Handle backup & restore
                     },
                   ),
-                ),
-                _buildListTile(
-                  icon: Icons.speed,
-                  title: 'Playback Speed',
-                  subtitle: '${_playbackSpeed}x',
-                  trailing: _buildSlider(
-                    value: _playbackSpeed,
-                    onChanged: (value) async {
-                      SharedPreferences prefs =
-                          await SharedPreferences.getInstance();
-                      prefs.setDouble('playbackSpeed', value);
-                      setState(() => _playbackSpeed = value);
-                    },
-                    min: 0.5,
-                    max: 2.0,
-                    divisions: 3,
-                  ),
-                ),
-                _buildSectionHeader('Advanced Settings'),
-                _buildListTile(
-                  icon: Icons.notifications,
-                  title: 'Notifications',
-                  subtitle: _notificationsEnabled ? 'Enabled' : 'Disabled',
-                  trailing: _buildSwitch(
-                    value: _notificationsEnabled,
-                    onToggle: (val) async {
-                      SharedPreferences prefs =
-                          await SharedPreferences.getInstance();
-                      prefs.setBool('notifications', val);
-                      setState(() => _notificationsEnabled = val);
+                  _buildSectionHeader('Information'),
+                  _buildListTile(
+                    icon: Icons.info,
+                    title: 'About Us',
+                    subtitle: 'Learn more about our app',
+                    onTap: () {
+                      log("clicked");
+                      log("${getPageData(3).toString()}");
+                      log("end");
+                      // Navigate to About Us page
                     },
                   ),
-                ),
-                _buildListTile(
-                  icon: Icons.cloud_upload,
-                  title: 'Backup & Restore',
-                  subtitle: 'Last backup: 2 days ago',
-                  onTap: () {
-                    // Handle backup & restore
-                  },
-                ),
-                _buildSectionHeader('Information'),
-                _buildListTile(
-                  icon: Icons.info,
-                  title: 'About Us',
-                  subtitle: 'Learn more about our app',
-                  onTap: () {
-                    log("clicked");
-                    log("${getPageData(3).toString()}");
-                    log("end");
-                    // Navigate to About Us page
-                  },
-                ),
-                _buildListTile(
-                  icon: Icons.privacy_tip,
-                  title: 'Privacy Policy',
-                  subtitle: 'View our privacy policy',
-                  onTap: () {
-                    // Navigate to Privacy Policy page
-                  },
-                ),
-                _buildListTile(
-                  icon: Icons.help,
-                  title: 'Help & Support',
-                  subtitle: 'Get help and support',
-                  onTap: () {
-                    // Navigate to Help & Support page
-                  },
-                ),
-              ],
+                  _buildListTile(
+                    icon: Icons.privacy_tip,
+                    title: 'Privacy Policy',
+                    subtitle: 'View our privacy policy',
+                    onTap: () {
+                      // Navigate to Privacy Policy page
+                    },
+                  ),
+                  _buildListTile(
+                    icon: Icons.help,
+                    title: 'Help & Support',
+                    subtitle: 'Get help and support',
+                    onTap: () {
+                      // Navigate to Help & Support page
+                    },
+                  ),
+                  _buildListTile(
+                    icon: Icons.help,
+                    title: '',
+                    subtitle: '',
+                    onTap: () {
+                      // Navigate to Help & Support page
+                    },
+                  ),
+                ],
+              ),
             ),
           ),
         ),
-      ),
+        CustomBottomNavigationBar()
+      ]),
     );
   }
 
@@ -181,7 +192,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
       style: TextStyle(
         fontSize: 22,
         fontWeight: FontWeight.bold,
-        color: Colors.teal,
+        color: Colors.black,
       ),
     );
   }
@@ -196,13 +207,14 @@ class _SettingsScreenState extends State<SettingsScreen> {
     return ListTile(
       leading: Icon(
         icon,
-        color: Colors.teal,
+        color: Colors.white,
       ),
       title: Text(
         title,
         style: TextStyle(
           fontSize: 16,
           fontWeight: FontWeight.w500,
+          color: Colors.white,
         ),
       ),
       subtitle: Text(
@@ -263,7 +275,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
     return SizedBox(
       width: 150,
       child: Slider(
-        activeColor: Colors.teal,
+        activeColor: Colors.blueAccent,
         value: value,
         min: min,
         max: max,
