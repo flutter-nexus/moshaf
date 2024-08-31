@@ -18,6 +18,7 @@ class QuranPageVersePreview extends StatefulWidget {
 
 class _QuranPageVersePreviewState extends State<QuranPageVersePreview> {
   List<dynamic> ayahs = [];
+  List<dynamic> exegesisList = [];
   bool isLoading = true;
   int ayaNumber = 0;
   Response? exegesis;
@@ -26,7 +27,7 @@ class _QuranPageVersePreviewState extends State<QuranPageVersePreview> {
   void initState() {
     super.initState();
     loadQuranData();
-    fetchExegesis();
+    loadQuranExegesis();
     ayahNumber(widget.indexSurah);
   }
 
@@ -37,25 +38,6 @@ class _QuranPageVersePreviewState extends State<QuranPageVersePreview> {
 
     ;
     log(ayaNumber.toString());
-  }
-
-  Future<dynamic> getExegesisSurah() async {
-    final dio = Dio();
-    final response = await dio.get(
-      'https://cdn.jsdelivr.net/gh/fawazahmed0/quran-api@1/editions/ara-kingfahadquranc.json',
-    );
-    exegesis = await response.data;
-
-    return response.data;
-  }
-
-  Future<void> fetchExegesis() async {
-    try {
-      exegesis = await getExegesisSurah();
-      setState(() {}); // Refresh UI after fetching data
-    } catch (e) {
-      print("Error fetching exegesis data: $e");
-    }
   }
 
   Future<void> loadQuranData() async {
@@ -70,6 +52,25 @@ class _QuranPageVersePreviewState extends State<QuranPageVersePreview> {
       });
     } catch (e) {
       print("Error loading Quran data: $e");
+      setState(() {
+        isLoading = false;
+      });
+    }
+  }
+
+  Future<void> loadQuranExegesis() async {
+    try {
+      // Read data from JSON file
+      String fileContents =
+          await rootBundle.loadString('assets/ara-jalaladdinalmah.json');
+      final jsonExegesis = jsonDecode(fileContents);
+
+      setState(() {
+        exegesisList = jsonExegesis["quran"];
+        isLoading = false;
+      });
+    } catch (e) {
+      print("Error loading Quran exegesis: $e");
       setState(() {
         isLoading = false;
       });
@@ -106,6 +107,20 @@ class _QuranPageVersePreviewState extends State<QuranPageVersePreview> {
                             children: [
                               GestureDetector(
                                 onTap: () async {
+                                  //moaaaaaaaaaaaaaaaaaaa
+                                  //moaaaaaaaaaaaaaaaaaaa
+                                  //moaaaaaaaaaaaaaaaaaaa
+                                  //moaaaaaaaaaaaaaaaaaaa
+                                  //moaaaaaaaaaaaaaaaaaaa
+                                  //moaaaaaaaaaaaaaaaaaaa
+                                  Dialog(
+                                      child: Container(
+                                    child: Text(
+                                      ' ${exegesisList[ayaNumber + index]["text"]}',
+                                      
+                                    ),
+                                  ));
+
                                   log('${ayaNumber + index}');
                                 },
                                 child: ListTile(

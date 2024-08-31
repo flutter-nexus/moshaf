@@ -80,6 +80,7 @@ flutter:
     - assets/images/
     - assets/quran.json
     - assets/quran.pdf
+    - assets/ara-jalaladdinalmah.json
     - assets/teaching_pray_images/
     - assets/teaching_ablution_images/
   # An image asset can refer to one or more resolution-specific "variants", see
