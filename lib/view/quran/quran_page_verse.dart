@@ -1,9 +1,10 @@
 import 'dart:convert';
 import 'dart:developer';
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:moshaf/service/golobal_variabules.dart';
+
+import '../../imports/imports.dart';
 
 class QuranPageVersePreview extends StatefulWidget {
   QuranPageVersePreview(
@@ -21,7 +22,6 @@ class _QuranPageVersePreviewState extends State<QuranPageVersePreview> {
   List<dynamic> exegesisList = [];
   bool isLoading = true;
   int ayaNumber = 0;
-  Response? exegesis;
 
   @override
   void initState() {
@@ -82,9 +82,12 @@ class _QuranPageVersePreviewState extends State<QuranPageVersePreview> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+        backgroundColor: tealBlue,
+        centerTitle: true,
+        iconTheme: IconThemeData(color: Colors.white),
         title: Text(
           '${widget.surahName}',
-          style: TextStyle(fontFamily: 'UthmanicHafs'),
+          style: TextStyle(fontFamily: 'UthmanicHafs', color: Colors.white),
         ),
       ),
       body: isLoading
@@ -92,6 +95,7 @@ class _QuranPageVersePreviewState extends State<QuranPageVersePreview> {
           : ayahs.isNotEmpty
               ? Column(
                   children: [
+                    SizedBox(height: 22),
                     Text(
                       "بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ",
                       style: TextStyle(
@@ -99,6 +103,7 @@ class _QuranPageVersePreviewState extends State<QuranPageVersePreview> {
                           fontSize: 30,
                           fontWeight: FontWeight.w500),
                     ),
+                    SizedBox(height: 22),
                     Expanded(
                       child: ListView.builder(
                         itemCount: ayahs.length,
@@ -108,18 +113,25 @@ class _QuranPageVersePreviewState extends State<QuranPageVersePreview> {
                               GestureDetector(
                                 onTap: () async {
                                   //moaaaaaaaaaaaaaaaaaaa
-                                  //moaaaaaaaaaaaaaaaaaaa
-                                  //moaaaaaaaaaaaaaaaaaaa
-                                  //moaaaaaaaaaaaaaaaaaaa
-                                  //moaaaaaaaaaaaaaaaaaaa
-                                  //moaaaaaaaaaaaaaaaaaaa
-                                  Dialog(
-                                      child: Container(
-                                    child: Text(
-                                      ' ${exegesisList[ayaNumber + index]["text"]}',
-                                      
+                                  Get.bottomSheet(
+                                    Container(
+                                      padding: EdgeInsets.symmetric(
+                                          vertical: 20, horizontal: 20),
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(10),
+                                        color: Colors.white,
+                                      ),
+                                      child: Text(
+                                        ' ${exegesisList[ayaNumber + index]["text"]},',
+                                        style: TextStyle(
+                                            fontSize: 22,
+                                            fontFamily: "UthmanicHafs",
+                                            color: navyBlue),
+                                        textDirection: TextDirection.rtl,
+                                      ),
                                     ),
-                                  ));
+                                    isScrollControlled: true,
+                                  );
 
                                   log('${ayaNumber + index}');
                                 },
