@@ -155,7 +155,7 @@ class _SurahCardState extends State<_SurahCard> {
                         ),
                         onTap: () {
                           Get.back();
-                          Get.to(() => WholeQuranSurah());
+                          Get.to(() => WholeQuranSurah(intialPageNumber:widget.surah["pageNumber"]));
                         },
                       ),
                       Spacer(

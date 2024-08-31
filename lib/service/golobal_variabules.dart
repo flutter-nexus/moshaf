@@ -3,688 +3,801 @@ final List<Map<String, dynamic>> surahData = [
     'name': 'الفاتحة',
     'ayahCount': 7,
     'revelationPlace': 'مكية',
-    'revelationOrder': 5
+    'revelationOrder': 5,
+    'pageNumber': 1
   },
   {
     'name': 'البقرة',
     'ayahCount': 286,
     'revelationPlace': 'مدنية',
-    'revelationOrder': 87
+    'revelationOrder': 87,
+    'pageNumber': 2
   },
   {
     'name': 'آل عمران',
     'ayahCount': 200,
     'revelationPlace': 'مدنية',
-    'revelationOrder': 89
+    'revelationOrder': 89,
+    'pageNumber': 50
   },
   {
     'name': 'النساء',
     'ayahCount': 176,
     'revelationPlace': 'مدنية',
-    'revelationOrder': 92
+    'revelationOrder': 92,
+    'pageNumber': 77
   },
   {
     'name': 'المائدة',
     'ayahCount': 120,
     'revelationPlace': 'مدنية',
-    'revelationOrder': 112
+    'revelationOrder': 112,
+    'pageNumber': 106
   },
   {
     'name': 'الأنعام',
     'ayahCount': 165,
     'revelationPlace': 'مكية',
-    'revelationOrder': 55
+    'revelationOrder': 55,
+    'pageNumber': 128
   },
   {
     'name': 'الأعراف',
     'ayahCount': 206,
     'revelationPlace': 'مكية',
-    'revelationOrder': 39
+    'revelationOrder': 39,
+    'pageNumber': 151
   },
   {
     'name': 'الأنفال',
     'ayahCount': 75,
     'revelationPlace': 'مدنية',
-    'revelationOrder': 88
+    'revelationOrder': 88,
+    'pageNumber': 177
   },
   {
     'name': 'التوبة',
     'ayahCount': 129,
     'revelationPlace': 'مدنية',
-    'revelationOrder': 113
+    'revelationOrder': 113,
+    'pageNumber': 187
   },
   {
     'name': 'يونس',
     'ayahCount': 109,
     'revelationPlace': 'مكية',
-    'revelationOrder': 51
+    'revelationOrder': 51,
+    'pageNumber': 208
   },
   {
     'name': 'هود',
     'ayahCount': 123,
     'revelationPlace': 'مكية',
-    'revelationOrder': 52
+    'revelationOrder': 52,
+    'pageNumber': 221
   },
   {
     'name': 'يوسف',
     'ayahCount': 111,
     'revelationPlace': 'مكية',
-    'revelationOrder': 53
+    'revelationOrder': 53,
+    'pageNumber': 235
   },
   {
     'name': 'الرعد',
     'ayahCount': 43,
     'revelationPlace': 'مدنية',
-    'revelationOrder': 96
+    'revelationOrder': 96,
+    'pageNumber': 249
   },
   {
     'name': 'إبراهيم',
     'ayahCount': 52,
     'revelationPlace': 'مكية',
-    'revelationOrder': 72
+    'revelationOrder': 72,
+    'pageNumber': 255
   },
   {
     'name': 'الحجر',
     'ayahCount': 99,
     'revelationPlace': 'مكية',
-    'revelationOrder': 54
+    'revelationOrder': 54,
+    'pageNumber': 262
   },
   {
     'name': 'النحل',
     'ayahCount': 128,
     'revelationPlace': 'مكية',
-    'revelationOrder': 70
+    'revelationOrder': 70,
+    'pageNumber': 267
   },
   {
     'name': 'الإسراء',
     'ayahCount': 111,
     'revelationPlace': 'مكية',
-    'revelationOrder': 50
+    'revelationOrder': 50,
+    'pageNumber': 282
   },
   {
     'name': 'الكهف',
     'ayahCount': 110,
     'revelationPlace': 'مكية',
-    'revelationOrder': 69
+    'revelationOrder': 69,
+    'pageNumber': 293
   },
   {
     'name': 'مريم',
     'ayahCount': 98,
     'revelationPlace': 'مكية',
-    'revelationOrder': 44
+    'revelationOrder': 44,
+    'pageNumber': 305
   },
   {
     'name': 'طه',
     'ayahCount': 135,
     'revelationPlace': 'مكية',
-    'revelationOrder': 45
+    'revelationOrder': 45,
+    'pageNumber': 312
   },
   {
     'name': 'الأنبياء',
     'ayahCount': 112,
     'revelationPlace': 'مكية',
-    'revelationOrder': 73
+    'revelationOrder': 73,
+    'pageNumber': 322
   },
   {
     'name': 'الحج',
     'ayahCount': 78,
     'revelationPlace': 'مدنية',
-    'revelationOrder': 103
+    'revelationOrder': 103,
+    'pageNumber': 332
   },
   {
     'name': 'المؤمنون',
     'ayahCount': 118,
     'revelationPlace': 'مكية',
-    'revelationOrder': 74
+    'revelationOrder': 74,
+    'pageNumber': 342
   },
   {
     'name': 'النور',
     'ayahCount': 64,
     'revelationPlace': 'مدنية',
-    'revelationOrder': 102
+    'revelationOrder': 102,
+    'pageNumber': 350
   },
   {
     'name': 'الفرقان',
     'ayahCount': 77,
     'revelationPlace': 'مكية',
-    'revelationOrder': 42
+    'revelationOrder': 42,
+    'pageNumber': 359
   },
   {
     'name': 'الشعراء',
     'ayahCount': 227,
     'revelationPlace': 'مكية',
-    'revelationOrder': 47
+    'revelationOrder': 47,
+    'pageNumber': 367
   },
   {
     'name': 'النمل',
     'ayahCount': 93,
     'revelationPlace': 'مكية',
-    'revelationOrder': 48
+    'revelationOrder': 48,
+    'pageNumber': 377
   },
   {
     'name': 'القصص',
     'ayahCount': 88,
     'revelationPlace': 'مكية',
-    'revelationOrder': 49
+    'revelationOrder': 49,
+    'pageNumber': 385
   },
   {
     'name': 'العنكبوت',
     'ayahCount': 69,
     'revelationPlace': 'مكية',
-    'revelationOrder': 85
+    'revelationOrder': 85,
+    'pageNumber': 396
   },
   {
     'name': 'الروم',
     'ayahCount': 60,
     'revelationPlace': 'مكية',
-    'revelationOrder': 84
+    'revelationOrder': 84,
+    'pageNumber': 404
   },
   {
     'name': 'لقمان',
     'ayahCount': 34,
     'revelationPlace': 'مكية',
-    'revelationOrder': 57
+    'revelationOrder': 57,
+    'pageNumber': 411
   },
   {
     'name': 'السجدة',
     'ayahCount': 30,
     'revelationPlace': 'مكية',
-    'revelationOrder': 75
+    'revelationOrder': 75,
+    'pageNumber': 415
   },
   {
     'name': 'الأحزاب',
     'ayahCount': 73,
     'revelationPlace': 'مدنية',
-    'revelationOrder': 90
+    'revelationOrder': 90,
+    'pageNumber': 418
   },
   {
     'name': 'سبأ',
     'ayahCount': 54,
     'revelationPlace': 'مكية',
-    'revelationOrder': 58
+    'revelationOrder': 58,
+    'pageNumber': 428
   },
   {
     'name': 'فاطر',
     'ayahCount': 45,
     'revelationPlace': 'مكية',
-    'revelationOrder': 43
+    'revelationOrder': 43,
+    'pageNumber': 434
   },
   {
     'name': 'يس',
     'ayahCount': 83,
     'revelationPlace': 'مكية',
-    'revelationOrder': 41
+    'revelationOrder': 41,
+    'pageNumber': 440
   },
   {
     'name': 'الصافات',
     'ayahCount': 182,
     'revelationPlace': 'مكية',
-    'revelationOrder': 56
+    'revelationOrder': 56,
+    'pageNumber': 446
   },
   {
     'name': 'ص',
     'ayahCount': 88,
     'revelationPlace': 'مكية',
-    'revelationOrder': 38
+    'revelationOrder': 38,
+    'pageNumber': 453
   },
   {
     'name': 'الزمر',
     'ayahCount': 75,
     'revelationPlace': 'مكية',
-    'revelationOrder': 59
+    'revelationOrder': 59,
+    'pageNumber': 458
   },
   {
     'name': 'غافر',
     'ayahCount': 85,
     'revelationPlace': 'مكية',
-    'revelationOrder': 60
+    'revelationOrder': 60,
+    'pageNumber': 467
   },
   {
     'name': 'فصلت',
     'ayahCount': 54,
     'revelationPlace': 'مكية',
-    'revelationOrder': 61
+    'revelationOrder': 61,
+    'pageNumber': 477
   },
   {
     'name': 'الشورى',
     'ayahCount': 53,
     'revelationPlace': 'مكية',
-    'revelationOrder': 62
+    'revelationOrder': 62,
+    'pageNumber': 483
   },
   {
     'name': 'الزخرف',
     'ayahCount': 89,
     'revelationPlace': 'مكية',
-    'revelationOrder': 63
+    'revelationOrder': 63,
+    'pageNumber': 489
   },
   {
     'name': 'الدخان',
     'ayahCount': 59,
     'revelationPlace': 'مكية',
-    'revelationOrder': 64
+    'revelationOrder': 64,
+    'pageNumber': 496
   },
   {
     'name': 'الجاثية',
     'ayahCount': 37,
     'revelationPlace': 'مكية',
-    'revelationOrder': 65
+    'revelationOrder': 65,
+    'pageNumber': 499
   },
   {
     'name': 'الأحقاف',
     'ayahCount': 35,
     'revelationPlace': 'مكية',
-    'revelationOrder': 66
+    'revelationOrder': 66,
+    'pageNumber': 502
   },
   {
     'name': 'محمد',
     'ayahCount': 38,
     'revelationPlace': 'مدنية',
-    'revelationOrder': 95
+    'revelationOrder': 95,
+    'pageNumber': 507
   },
   {
     'name': 'الفتح',
     'ayahCount': 29,
     'revelationPlace': 'مدنية',
-    'revelationOrder': 111
+    'revelationOrder': 111,
+    'pageNumber': 511
   },
   {
     'name': 'الحجرات',
     'ayahCount': 18,
     'revelationPlace': 'مدنية',
-    'revelationOrder': 106
+    'revelationOrder': 106,
+    'pageNumber': 515
   },
   {
     'name': 'ق',
     'ayahCount': 45,
     'revelationPlace': 'مكية',
-    'revelationOrder': 34
+    'revelationOrder': 34,
+    'pageNumber': 518
   },
   {
     'name': 'الذاريات',
     'ayahCount': 60,
     'revelationPlace': 'مكية',
-    'revelationOrder': 67
+    'revelationOrder': 67,
+    'pageNumber': 520
   },
   {
     'name': 'الطور',
     'ayahCount': 49,
     'revelationPlace': 'مكية',
-    'revelationOrder': 76
+    'revelationOrder': 76,
+    'pageNumber': 523
   },
   {
     'name': 'النجم',
     'ayahCount': 62,
     'revelationPlace': 'مكية',
-    'revelationOrder': 23
+    'revelationOrder': 23,
+    'pageNumber': 526
   },
   {
     'name': 'القمر',
     'ayahCount': 55,
     'revelationPlace': 'مكية',
-    'revelationOrder': 37
+    'revelationOrder': 37,
+    'pageNumber': 528
   },
   {
     'name': 'الرحمن',
     'ayahCount': 78,
     'revelationPlace': 'مدنية',
-    'revelationOrder': 97
+    'revelationOrder': 97,
+    'pageNumber': 531
   },
   {
     'name': 'الواقعة',
     'ayahCount': 96,
     'revelationPlace': 'مكية',
-    'revelationOrder': 46
+    'revelationOrder': 46,
+    'pageNumber': 534
   },
   {
     'name': 'الحديد',
     'ayahCount': 29,
     'revelationPlace': 'مدنية',
-    'revelationOrder': 94
+    'revelationOrder': 94,
+    'pageNumber': 537
   },
   {
     'name': 'المجادلة',
     'ayahCount': 22,
     'revelationPlace': 'مدنية',
-    'revelationOrder': 105
+    'revelationOrder': 105,
+    'pageNumber': 542
   },
   {
     'name': 'الحشر',
     'ayahCount': 24,
     'revelationPlace': 'مدنية',
-    'revelationOrder': 101
+    'revelationOrder': 101,
+    'pageNumber': 545
   },
   {
     'name': 'الممتحنة',
     'ayahCount': 13,
     'revelationPlace': 'مدنية',
-    'revelationOrder': 91
+    'revelationOrder': 91,
+    'pageNumber': 549
   },
   {
     'name': 'الصف',
     'ayahCount': 14,
     'revelationPlace': 'مدنية',
-    'revelationOrder': 109
+    'revelationOrder': 109,
+    'pageNumber': 551
   },
   {
     'name': 'الجمعة',
     'ayahCount': 11,
     'revelationPlace': 'مدنية',
-    'revelationOrder': 110
+    'revelationOrder': 110,
+    'pageNumber': 553
   },
   {
     'name': 'المنافقون',
     'ayahCount': 11,
     'revelationPlace': 'مدنية',
-    'revelationOrder': 104
+    'revelationOrder': 104,
+    'pageNumber': 554
   },
   {
     'name': 'التغابن',
     'ayahCount': 18,
     'revelationPlace': 'مدنية',
-    'revelationOrder': 108
+    'revelationOrder': 108,
+    'pageNumber': 556
   },
   {
     'name': 'الطلاق',
     'ayahCount': 12,
     'revelationPlace': 'مدنية',
-    'revelationOrder': 99
+    'revelationOrder': 99,
+    'pageNumber': 558
   },
   {
     'name': 'التحريم',
     'ayahCount': 12,
     'revelationPlace': 'مدنية',
-    'revelationOrder': 107
+    'revelationOrder': 107,
+    'pageNumber': 560
   },
   {
     'name': 'الملك',
     'ayahCount': 30,
     'revelationPlace': 'مكية',
-    'revelationOrder': 77
+    'revelationOrder': 77,
+    'pageNumber': 562
   },
   {
     'name': 'القلم',
     'ayahCount': 52,
     'revelationPlace': 'مكية',
-    'revelationOrder': 2
+    'revelationOrder': 2,
+    'pageNumber': 564
   },
   {
     'name': 'الحاقة',
     'ayahCount': 52,
     'revelationPlace': 'مكية',
-    'revelationOrder': 78
+    'revelationOrder': 78,
+    'pageNumber': 566
   },
   {
     'name': 'المعارج',
     'ayahCount': 44,
     'revelationPlace': 'مكية',
-    'revelationOrder': 79
+    'revelationOrder': 79,
+    'pageNumber': 568
   },
   {
     'name': 'نوح',
     'ayahCount': 28,
     'revelationPlace': 'مكية',
-    'revelationOrder': 71
+    'revelationOrder': 71,
+    'pageNumber': 570
   },
   {
     'name': 'الجن',
     'ayahCount': 28,
     'revelationPlace': 'مكية',
-    'revelationOrder': 40
+    'revelationOrder': 40,
+    'pageNumber': 572
   },
   {
     'name': 'المزمل',
     'ayahCount': 20,
     'revelationPlace': 'مكية',
-    'revelationOrder': 3
+    'revelationOrder': 3,
+    'pageNumber': 574
   },
   {
     'name': 'المدثر',
     'ayahCount': 56,
     'revelationPlace': 'مكية',
-    'revelationOrder': 4
+    'revelationOrder': 4,
+    'pageNumber': 575
   },
   {
     'name': 'القيامة',
     'ayahCount': 40,
     'revelationPlace': 'مكية',
-    'revelationOrder': 31
+    'revelationOrder': 31,
+    'pageNumber': 577
   },
   {
     'name': 'الإنسان',
     'ayahCount': 31,
     'revelationPlace': 'مدنية',
-    'revelationOrder': 98
+    'revelationOrder': 98,
+    'pageNumber': 578
   },
   {
     'name': 'المرسلات',
     'ayahCount': 50,
     'revelationPlace': 'مكية',
-    'revelationOrder': 33
+    'revelationOrder': 33,
+    'pageNumber': 580
   },
   {
     'name': 'النبأ',
     'ayahCount': 40,
     'revelationPlace': 'مكية',
-    'revelationOrder': 80
+    'revelationOrder': 80,
+    'pageNumber': 582
   },
   {
     'name': 'النازعات',
     'ayahCount': 46,
     'revelationPlace': 'مكية',
-    'revelationOrder': 81
+    'revelationOrder': 81,
+    'pageNumber': 583
   },
   {
     'name': 'عبس',
     'ayahCount': 42,
     'revelationPlace': 'مكية',
-    'revelationOrder': 24
+    'revelationOrder': 24,
+    'pageNumber': 585
   },
   {
     'name': 'التكوير',
     'ayahCount': 29,
     'revelationPlace': 'مكية',
-    'revelationOrder': 7
+    'revelationOrder': 7,
+    'pageNumber': 586
   },
   {
-    'name': 'الإنفطار',
+    'name': 'الانفطار',
     'ayahCount': 19,
     'revelationPlace': 'مكية',
-    'revelationOrder': 82
+    'revelationOrder': 82,
+    'pageNumber': 587
   },
   {
     'name': 'المطففين',
     'ayahCount': 36,
     'revelationPlace': 'مكية',
-    'revelationOrder': 86
+    'revelationOrder': 86,
+    'pageNumber': 588
   },
   {
-    'name': 'الإنشقاق',
+    'name': 'الانشقاق',
     'ayahCount': 25,
     'revelationPlace': 'مكية',
-    'revelationOrder': 83
+    'revelationOrder': 83,
+    'pageNumber': 589
   },
   {
     'name': 'البروج',
     'ayahCount': 22,
     'revelationPlace': 'مكية',
-    'revelationOrder': 27
+    'revelationOrder': 27,
+    'pageNumber': 590
   },
   {
     'name': 'الطارق',
     'ayahCount': 17,
     'revelationPlace': 'مكية',
-    'revelationOrder': 36
+    'revelationOrder': 36,
+    'pageNumber': 591
   },
   {
     'name': 'الأعلى',
     'ayahCount': 19,
     'revelationPlace': 'مكية',
-    'revelationOrder': 8
+    'revelationOrder': 8,
+    'pageNumber': 591
   },
   {
     'name': 'الغاشية',
     'ayahCount': 26,
     'revelationPlace': 'مكية',
-    'revelationOrder': 68
+    'revelationOrder': 67,
+    'pageNumber': 592
   },
   {
     'name': 'الفجر',
     'ayahCount': 30,
     'revelationPlace': 'مكية',
-    'revelationOrder': 10
+    'revelationOrder': 10,
+    'pageNumber': 592
   },
   {
     'name': 'البلد',
     'ayahCount': 20,
     'revelationPlace': 'مكية',
-    'revelationOrder': 35
+    'revelationOrder': 35,
+    'pageNumber': 593
   },
   {
     'name': 'الشمس',
     'ayahCount': 15,
     'revelationPlace': 'مكية',
-    'revelationOrder': 26
+    'revelationOrder': 26,
+    'pageNumber': 594
   },
   {
     'name': 'الليل',
     'ayahCount': 21,
     'revelationPlace': 'مكية',
-    'revelationOrder': 9
+    'revelationOrder': 9,
+    'pageNumber': 595
   },
   {
     'name': 'الضحى',
     'ayahCount': 11,
     'revelationPlace': 'مكية',
-    'revelationOrder': 11
+    'revelationOrder': 11,
+    'pageNumber': 596
   },
   {
     'name': 'الشرح',
     'ayahCount': 8,
     'revelationPlace': 'مكية',
-    'revelationOrder': 12
+    'revelationOrder': 12,
+    'pageNumber': 596
   },
   {
     'name': 'التين',
     'ayahCount': 8,
     'revelationPlace': 'مكية',
-    'revelationOrder': 28
+    'revelationOrder': 28,
+    'pageNumber': 597
   },
   {
     'name': 'العلق',
     'ayahCount': 19,
     'revelationPlace': 'مكية',
-    'revelationOrder': 1
+    'revelationOrder': 1,
+    'pageNumber': 597
   },
   {
     'name': 'القدر',
     'ayahCount': 5,
     'revelationPlace': 'مكية',
-    'revelationOrder': 25
+    'revelationOrder': 25,
+    'pageNumber': 598
   },
   {
     'name': 'البينة',
     'ayahCount': 8,
     'revelationPlace': 'مدنية',
-    'revelationOrder': 100
+    'revelationOrder': 100,
+    'pageNumber': 598
   },
   {
     'name': 'الزلزلة',
     'ayahCount': 8,
     'revelationPlace': 'مدنية',
-    'revelationOrder': 93
+    'revelationOrder': 93,
+    'pageNumber': 599
   },
   {
     'name': 'العاديات',
     'ayahCount': 11,
     'revelationPlace': 'مكية',
-    'revelationOrder': 14
+    'revelationOrder': 14,
+    'pageNumber': 599
   },
   {
     'name': 'القارعة',
     'ayahCount': 11,
     'revelationPlace': 'مكية',
-    'revelationOrder': 30
+    'revelationOrder': 30,
+    'pageNumber': 600
   },
   {
     'name': 'التكاثر',
     'ayahCount': 8,
     'revelationPlace': 'مكية',
-    'revelationOrder': 16
+    'revelationOrder': 16,
+    'pageNumber': 600
   },
   {
     'name': 'العصر',
     'ayahCount': 3,
     'revelationPlace': 'مكية',
-    'revelationOrder': 13
+    'revelationOrder': 13,
+    'pageNumber': 601
   },
   {
     'name': 'الهمزة',
     'ayahCount': 9,
     'revelationPlace': 'مكية',
-    'revelationOrder': 32
+    'revelationOrder': 32,
+    'pageNumber': 601
   },
   {
     'name': 'الفيل',
     'ayahCount': 5,
     'revelationPlace': 'مكية',
-    'revelationOrder': 19
+    'revelationOrder': 19,
+    'pageNumber': 601
   },
   {
     'name': 'قريش',
     'ayahCount': 4,
     'revelationPlace': 'مكية',
-    'revelationOrder': 29
+    'revelationOrder': 29,
+    'pageNumber': 602
   },
   {
     'name': 'الماعون',
     'ayahCount': 7,
     'revelationPlace': 'مكية',
-    'revelationOrder': 17
+    'revelationOrder': 17,
+    'pageNumber': 602
   },
   {
     'name': 'الكوثر',
     'ayahCount': 3,
     'revelationPlace': 'مكية',
-    'revelationOrder': 15
+    'revelationOrder': 15,
+    'pageNumber': 602
   },
   {
     'name': 'الكافرون',
     'ayahCount': 6,
     'revelationPlace': 'مكية',
-    'revelationOrder': 18
+    'revelationOrder': 18,
+    'pageNumber': 603
   },
   {
     'name': 'النصر',
     'ayahCount': 3,
     'revelationPlace': 'مدنية',
-    'revelationOrder': 114
+    'revelationOrder': 114,
+    'pageNumber': 603
   },
   {
     'name': 'المسد',
     'ayahCount': 5,
     'revelationPlace': 'مكية',
-    'revelationOrder': 6
+    'revelationOrder': 6,
+    'pageNumber': 603
   },
   {
     'name': 'الإخلاص',
     'ayahCount': 4,
     'revelationPlace': 'مكية',
-    'revelationOrder': 22
+    'revelationOrder': 22,
+    'pageNumber': 604
   },
   {
     'name': 'الفلق',
     'ayahCount': 5,
     'revelationPlace': 'مكية',
-    'revelationOrder': 20
+    'revelationOrder': 20,
+    'pageNumber': 604
   },
   {
     'name': 'الناس',
     'ayahCount': 6,
     'revelationPlace': 'مكية',
-    'revelationOrder': 21
-  },
+    'revelationOrder': 21,
+    'pageNumber': 604
+  }
 ];
-
 List<Map<String, String>> ablutionList = [
   {
     'image': 'assets/teaching_ablution_images/ablution_page.png',

@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        body: SettingsScreen(),
+        body: HomeScreen(),
       ),
     );
   }

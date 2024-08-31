@@ -2,15 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 
 class WholeQuranSurah extends StatefulWidget {
-  const WholeQuranSurah({super.key});
-
+   WholeQuranSurah({super.key, this.intialPageNumber=0});
+int intialPageNumber ;
   @override
   State<WholeQuranSurah> createState() => _WholeQuranSurahState();
 }
 
 class _WholeQuranSurahState extends State<WholeQuranSurah> {
-  final PdfViewerController _pdfViewerController =
-      PdfViewerController(); // تعريف الـ Controller لمكتبة الـ PDF
+  final PdfViewerController _pdfViewerController = PdfViewerController(); // Controller for PDF library
+
+  static const double _zoomLevel = 1; // Constant for zoom level
 
   @override
   Widget build(BuildContext context) {
@@ -20,22 +21,25 @@ class _WholeQuranSurahState extends State<WholeQuranSurah> {
         title: const Text(
           'القرآن الكريم',
           style: TextStyle(
-              fontFamily: "UthmanicHafs"), // تأكد من أن الخط مضاف في المشروع
+            fontFamily: "UthmanicHafs", // Ensure the font is added to the project
+          ),
         ),
         centerTitle: true,
       ),
       body: LayoutBuilder(
         builder: (context, constraints) {
-          // استخدام LayoutBuilder لتحديد حجم الـ Container بناءً على حجم الشاشة
+          // Use LayoutBuilder to determine the Container size based on screen size
           return SfPdfViewer.asset(
             'assets/quran.pdf',
             controller: _pdfViewerController,
-            initialZoomLevel:
-                1.0, // مستوى التكبير الابتدائي (يمكنك تعديله حسب الحاجة)
-            pageLayoutMode: PdfPageLayoutMode.single, // وضع الصفحة الفردية
-            pageSpacing: 0, // إزالة المسافات بين الصفحات
-            scrollDirection: PdfScrollDirection.horizontal, // التمرير الأفقي
-            enableDoubleTapZooming: true, // تمكين التكبير عند النقر المزدوج
+            maxZoomLevel: _zoomLevel,
+            initialPageNumber: widget.intialPageNumber,
+
+            initialZoomLevel: _zoomLevel, // Initial zoom level (can be adjusted as needed)
+            pageLayoutMode: PdfPageLayoutMode.single, // Single page mode
+            pageSpacing: 0, // Remove spacing between pages
+            scrollDirection: PdfScrollDirection.horizontal, // Horizontal scrolling
+            enableDoubleTapZooming: true, // Enable zoom on double tap
           );
         },
       ),
