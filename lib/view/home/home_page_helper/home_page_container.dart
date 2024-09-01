@@ -4,13 +4,14 @@ Widget buildGridItem({
   required IconData icon,
   required String label,
   required VoidCallback onTap,
+  required double width,
 }) {
   return GestureDetector(
     onTap: onTap,
     child: Container(
       margin: EdgeInsets.all(10),
-      height: MediaQuery.of(Get.context!).size.height * 0.19,
-      width: double.infinity,
+      height: MediaQuery.of(Get.context!).size.height * 0.17,
+      width: width,
       decoration: BoxDecoration(
         image: DecorationImage(
           image: AssetImage("assets/images/peakpx.jpg"),

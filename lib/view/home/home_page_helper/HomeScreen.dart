@@ -1,7 +1,6 @@
-import 'package:moshaf/view/do3a/supplications.dart';
-
 import '../../../imports/imports.dart';
-import 'package:flutter/src/painting/alignment.dart';
+import '../../do3a/supplications.dart';
+
 class HomeScreen extends StatefulWidget {
   HomeScreen({super.key});
 
@@ -36,6 +35,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   onTap: () {
                     Get.to(() => QuranIndexPage(), arguments: "القرآن الكريم");
                   },
+                  width: double.infinity,
                 ),
                 buildGridItem(
                   label: "تفسير القرآن الكريم",
@@ -44,51 +44,64 @@ class _HomeScreenState extends State<HomeScreen> {
                     Get.to(() => QuranIndexPage(),
                         arguments: "تفسير القرآن الكريم");
                   },
+                  width: double.infinity,
                 ),
-                Container(
-                  height: MediaQuery.of(context).size.height * 0.5,
-                  child: GridView.count(
-                    physics:  NeverScrollableScrollPhysics(),
-                    crossAxisCount: 2, // عدد الأعمدة
-                    mainAxisSpacing: 16,
-                    crossAxisSpacing: 16,
-                    children: [
-                      buildGridItem(
-                          label: "مواقيت الصلاة",
-                          icon: FlutterIslamicIcons.prayingPerson,
-                          onTap: () {
-                            Get.to(() => PrayerTimeScreen());
-                          }),
-                      buildGridItem(
-                          label: "تعليم الصلاة",
-                          icon: FlutterIslamicIcons.sajadah,
-                          onTap: () {
-                            Get.to(() => TeachingPrayScreen(),
-                                arguments: 'تعليم الصلاة');
-                          }),
-                      buildGridItem(
-                          label: "تعليم الوضوء",
-                          icon: FlutterIslamicIcons.wudhu,
-                          onTap: () {
-                            Get.to(() => TeachingPrayScreen(),
-                                arguments: "تعليم الوضوء");
-                          }),
-                      buildGridItem(
-                          label: "الاعدادات",
-                          icon: Icons.settings,
-                          onTap: () {
-                            Get.to(() => SettingsScreen());
-                          }),
-                           buildGridItem(
-                          label: "دعاء",
-                          icon: Icons.settings,
-                          onTap: () {
-                            Get.to(() => Supplications());
-                          }),
-                    ],
-                    
-                  ),
+                Row(
+                  children: [
+                    buildGridItem(
+                      label: "مواقيت الصلاة",
+                      icon: FlutterIslamicIcons.prayingPerson,
+                      onTap: () {
+                        Get.to(() => PrayerTimeScreen());
+                      },
+                      width: MediaQuery.of(context).size.width * 0.4,
+                    ),
+                    buildGridItem(
+                      label: "تعليم الصلاة",
+                      icon: FlutterIslamicIcons.sajadah,
+                      onTap: () {
+                        Get.to(() => TeachingPrayScreen(),
+                            arguments: 'تعليم الصلاة');
+                      },
+                      width: MediaQuery.of(context).size.width * 0.4,
+                    ),
+                  ],
                 ),
+                Row(
+                  children: [
+                    buildGridItem(
+                      label: "تعليم الوضوء",
+                      icon: FlutterIslamicIcons.wudhu,
+                      onTap: () {
+                        Get.to(() => TeachingPrayScreen(),
+                            arguments: "تعليم الوضوء");
+                      },
+                      width: MediaQuery.of(context).size.width * 0.4,
+                    ),
+                    buildGridItem(
+                      label: "أدعية",
+                      icon: FlutterIslamicIcons.prayer,
+                      onTap: () {
+                        Get.to(() => Supplications());
+                      },
+                      width: MediaQuery.of(context).size.width * 0.4,
+                    ),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    buildGridItem(
+                      label: "الاعدادات",
+                      icon: Icons.settings,
+                      onTap: () {
+                        Get.to(() => SettingsScreen());
+                      },
+                      width: MediaQuery.of(context).size.width * 0.5,
+                    ),
+                  ],
+                ),
+                SizedBox(height: MediaQuery.of(context).size.height * 0.085),
               ],
             ),
           ),
