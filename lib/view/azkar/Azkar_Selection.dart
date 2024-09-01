@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:moshaf/view/do3a/duaa%20view/al-sabah.dart';
+import 'package:moshaf/view/azkar/azkar%20view/all_azkar.dart';
 import '../../imports/imports.dart';
 
 class Supplications extends StatelessWidget {

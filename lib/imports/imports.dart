@@ -1,5 +1,5 @@
 export 'package:get/get.dart';
-import 'package:moshaf/view/do3a/supplications.dart';
+import 'package:moshaf/view/azkar/Azkar_Selection.dart';
 
 export 'package:moshaf/service/navigation_bottom_bar.dart';
 export 'package:moshaf/view/home/home_page_helper/HomeScreen.dart';
