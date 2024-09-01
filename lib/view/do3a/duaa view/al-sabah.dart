@@ -4,6 +4,9 @@ import 'package:flutter/services.dart' as rootBundle;
 import 'package:moshaf/imports/imports.dart';
 
 class AzkaeAlSabahScreen extends StatefulWidget {
+  AzkaeAlSabahScreen({super.key, required this.fileName});
+  String fileName;
+  String title = '';
   @override
   _AzkaeAlSabahScreenState createState() => _AzkaeAlSabahScreenState();
 }
@@ -19,11 +22,12 @@ class _AzkaeAlSabahScreenState extends State<AzkaeAlSabahScreen> {
 
   Future<void> loadAzkar() async {
     // تحميل بيانات JSON من الملف
-    final jsonData =
-        await rootBundle.rootBundle.loadString('assets/json/azkar_sabah.json');
+    final jsonData = await rootBundle.rootBundle
+        .loadString('assets/json/${widget.fileName}.json');
     final decodedData = json.decode(jsonData);
 
     setState(() {
+      widget.title = decodedData['title'];
       azkarList = (decodedData['content'] as List)
           .map((item) => ZekrModel.fromJson(item))
           .toList();
@@ -35,7 +39,7 @@ class _AzkaeAlSabahScreenState extends State<AzkaeAlSabahScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text(
-          'أذكار الصباح',
+          '${widget.title}',
           style: TextStyle(color: Colors.white),
         ),
         backgroundColor: tealBlue,

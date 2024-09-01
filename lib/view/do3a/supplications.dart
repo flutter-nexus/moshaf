@@ -3,8 +3,12 @@ import 'package:moshaf/view/do3a/duaa%20view/al-sabah.dart';
 import '../../imports/imports.dart';
 
 class Supplications extends StatelessWidget {
-  const Supplications({super.key});
-
+   Supplications({super.key});
+  List<String> choices = [
+    'azkar_sabah',
+    'PostPrayer_azkar',
+    'azkar_massa'
+  ];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -20,42 +24,29 @@ class Supplications extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             _buildChoiceItem(
-              context,
-              '  Azkar Al-Sabah  ',
-              Icons.wb_sunny,
-              Colors.orange,
-              (){
-                Get.to(AzkaeAlSabahScreen());
-              }
-            ),
+                context, '  Azkar Al-Sabah  ', Icons.wb_sunny, Colors.orange,
+                () {
+              Get.to(AzkaeAlSabahScreen(fileName: choices[0],));
+            }),
             const SizedBox(height: 20),
             _buildChoiceItem(
-              context,
-              'Post Prayer Azkar',
-              Icons.access_time,
-              Colors.green,
-              (){
-                Get.to(AzkaeAlSabahScreen());
-              }
-            ),
+                context, 'Post Prayer Azkar', Icons.access_time, Colors.green,
+                () {
+              Get.to(AzkaeAlSabahScreen(fileName: choices[1],));
+            }),
             const SizedBox(height: 20),
-            _buildChoiceItem(
-              context,
-              '  Azkar Al-Massa  ',
-              Icons.nightlight_round,
-              Colors.blue,
-              (){
-                Get.to(AzkaeAlSabahScreen());
-              }
-            ),
+            _buildChoiceItem(context, '  Azkar Al-Massa  ',
+                Icons.nightlight_round, Colors.blue, () {
+              Get.to(AzkaeAlSabahScreen(fileName: choices[2],));
+            }),
           ],
         ),
       ),
     );
   }
 
-  Widget _buildChoiceItem(
-      BuildContext context, String title, IconData icon, Color color,Function onTap) {
+  Widget _buildChoiceItem(BuildContext context, String title, IconData icon,
+      Color color, Function onTap) {
     return TweenAnimationBuilder(
       tween: Tween<double>(begin: 0, end: 1),
       duration: const Duration(milliseconds: 800),
