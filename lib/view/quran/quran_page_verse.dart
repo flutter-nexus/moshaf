@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
+import 'package:just_audio/just_audio.dart';
 import 'package:moshaf/service/golobal_variabules.dart';
 
 import '../../imports/imports.dart';
@@ -112,7 +113,13 @@ class _QuranPageVersePreviewState extends State<QuranPageVersePreview> {
                             children: [
                               GestureDetector(
                                 onTap: () async {
-                                  //moaaaaaaaaaaaaaaaaaaa
+                                  final player =
+                                      AudioPlayer(); // Create a player
+                                  final duration = await player.setUrl(
+                                      // Load a URL
+                                      "https://cdn.islamic.network/quran/audio/64/ar.alafasy/${ayaNumber + index+1}.mp3");
+                                  await player.play();
+                                 
                                   Get.bottomSheet(
                                     Container(
                                       padding: EdgeInsets.symmetric(
