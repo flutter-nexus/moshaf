@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:moshaf/view/do3a/duaa%20view/al-sabah.dart';
 import '../../imports/imports.dart';
 
 class Supplications extends StatelessWidget {
@@ -23,6 +24,9 @@ class Supplications extends StatelessWidget {
               '  Azkar Al-Sabah  ',
               Icons.wb_sunny,
               Colors.orange,
+              (){
+                Get.to(AzkaeAlSabahScreen());
+              }
             ),
             const SizedBox(height: 20),
             _buildChoiceItem(
@@ -30,6 +34,9 @@ class Supplications extends StatelessWidget {
               'Post Prayer Azkar',
               Icons.access_time,
               Colors.green,
+              (){
+                Get.to(AzkaeAlSabahScreen());
+              }
             ),
             const SizedBox(height: 20),
             _buildChoiceItem(
@@ -37,6 +44,9 @@ class Supplications extends StatelessWidget {
               '  Azkar Al-Massa  ',
               Icons.nightlight_round,
               Colors.blue,
+              (){
+                Get.to(AzkaeAlSabahScreen());
+              }
             ),
           ],
         ),
@@ -45,7 +55,7 @@ class Supplications extends StatelessWidget {
   }
 
   Widget _buildChoiceItem(
-      BuildContext context, String title, IconData icon, Color color) {
+      BuildContext context, String title, IconData icon, Color color,Function onTap) {
     return TweenAnimationBuilder(
       tween: Tween<double>(begin: 0, end: 1),
       duration: const Duration(milliseconds: 800),
@@ -60,10 +70,7 @@ class Supplications extends StatelessWidget {
       },
       child: GestureDetector(
         onTap: () {
-          // Handle item tap
-          ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(content: Text('Selected: $title')),
-          );
+          onTap();
         },
         child: Container(
           padding: const EdgeInsets.all(16),
