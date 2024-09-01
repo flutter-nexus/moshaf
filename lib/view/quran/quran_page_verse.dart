@@ -113,13 +113,6 @@ class _QuranPageVersePreviewState extends State<QuranPageVersePreview> {
                             children: [
                               GestureDetector(
                                 onTap: () async {
-                                  final player =
-                                      AudioPlayer(); // Create a player
-                                  final duration = await player.setUrl(
-                                      // Load a URL
-                                      "https://cdn.islamic.network/quran/audio/64/ar.alafasy/${ayaNumber + index+1}.mp3");
-                                  await player.play();
-                                 
                                   Get.bottomSheet(
                                     Container(
                                       padding: EdgeInsets.symmetric(
@@ -139,7 +132,12 @@ class _QuranPageVersePreviewState extends State<QuranPageVersePreview> {
                                     ),
                                     isScrollControlled: true,
                                   );
-
+                                  final player =
+                                      AudioPlayer(); // Create a player
+                                  final duration = await player.setUrl(
+                                      // Load a URL
+                                      "https://cdn.islamic.network/quran/audio/64/ar.alafasy/${ayaNumber + index + 1}.mp3");
+                                  await player.play();
                                   log('${ayaNumber + index}');
                                 },
                                 child: ListTile(
