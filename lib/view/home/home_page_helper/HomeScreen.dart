@@ -83,7 +83,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       width: MediaQuery.of(context).size.width * 0.4,
                     ),
                     buildGridItem(
-                      label: "أدعية",
+                      label: "أذكار",
                       icon: FlutterIslamicIcons.prayer,
                       onTap: () {
                         Get.to(() => Supplications());

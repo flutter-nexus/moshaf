@@ -3,18 +3,14 @@ import 'package:moshaf/view/azkar/azkar%20view/all_azkar.dart';
 import '../../imports/imports.dart';
 
 class Supplications extends StatelessWidget {
-   Supplications({super.key});
-  List<String> choices = [
-    'azkar_sabah',
-    'PostPrayer_azkar',
-    'azkar_massa'
-  ];
+  Supplications({super.key});
+  List<String> choices = ['azkar_sabah', 'PostPrayer_azkar', 'azkar_massa'];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Supplications',
+          'الأذكار',
           style: TextStyle(color: Colors.white),
         ),
         backgroundColor: tealBlue,
@@ -24,20 +20,24 @@ class Supplications extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             _buildChoiceItem(
-                context, '  Azkar Al-Sabah  ', Icons.wb_sunny, Colors.orange,
-                () {
-              Get.to(AzkaeAlSabahScreen(fileName: choices[0],));
+                context, '  أذكار الصباح  ', Icons.wb_sunny, Colors.orange, () {
+              Get.to(AzkaeAlSabahScreen(
+                fileName: choices[0],
+              ));
             }),
             const SizedBox(height: 20),
             _buildChoiceItem(
-                context, 'Post Prayer Azkar', Icons.access_time, Colors.green,
-                () {
-              Get.to(AzkaeAlSabahScreen(fileName: choices[1],));
+                context, 'أذكار الصلاة', Icons.access_time, Colors.green, () {
+              Get.to(AzkaeAlSabahScreen(
+                fileName: choices[1],
+              ));
             }),
             const SizedBox(height: 20),
-            _buildChoiceItem(context, '  Azkar Al-Massa  ',
+            _buildChoiceItem(context, '  أذكار المساء  ',
                 Icons.nightlight_round, Colors.blue, () {
-              Get.to(AzkaeAlSabahScreen(fileName: choices[2],));
+              Get.to(AzkaeAlSabahScreen(
+                fileName: choices[2],
+              ));
             }),
           ],
         ),
