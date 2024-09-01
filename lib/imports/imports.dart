@@ -14,7 +14,6 @@ export 'package:moshaf/view/teaching_pray_and_ablution/teaching_pray_and_ablutio
 export 'package:moshaf/view/hadith/hadith.dart';
 export 'package:flutter/material.dart';
 export 'package:pin_code_fields/pin_code_fields.dart';
-export 'package:carousel_slider/carousel_slider.dart';
 export 'package:moshaf/view/home/home_page_helper/home_page_container.dart';
 export 'package:flutter_islamic_icons/flutter_islamic_icons.dart';
 export 'package:flutter_switch/flutter_switch.dart';

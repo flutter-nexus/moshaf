@@ -1,6 +1,5 @@
 import 'dart:developer';
 import 'package:flutter/material.dart';
-import 'package:quran/quran.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../imports/imports.dart';
 
@@ -137,7 +136,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       subtitle: 'Learn more about our app',
                       onTap: () {
                         log("clicked");
-                        log("${getPageData(3).toString()}");
+                       
                         log("end");
                         // Navigate to About Us page
                       },
@@ -171,7 +170,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               ),
             ),
           ),
-          const CustomBottomNavigationBar()
+           CustomBottomNavigationBar()
         ],
       ),
     );

@@ -104,7 +104,7 @@ class _TeachingPrayScreenState extends State<TeachingPrayScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: const CustomBottomNavigationBar(),
+      bottomNavigationBar:  CustomBottomNavigationBar(),
       appBar: AppBar(
         iconTheme: const IconThemeData(color: Colors.white),
         centerTitle: false,
