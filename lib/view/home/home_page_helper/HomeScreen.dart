@@ -46,6 +46,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 Container(
                   height: MediaQuery.of(context).size.height * 0.5,
                   child: GridView.count(
+                    physics:  NeverScrollableScrollPhysics(),
                     crossAxisCount: 2, // عدد الأعمدة
                     mainAxisSpacing: 16,
                     crossAxisSpacing: 16,
