@@ -113,6 +113,8 @@ class _QuranPageVersePreviewState extends State<QuranPageVersePreview> {
                             children: [
                               GestureDetector(
                                 onTap: () async {
+
+                                
                                   Get.bottomSheet(
                                     Container(
                                       padding: EdgeInsets.symmetric(
