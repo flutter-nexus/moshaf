@@ -9,9 +9,12 @@ class Supplications extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        iconTheme: const IconThemeData(color: Colors.white),
+        centerTitle: true,
         title: const Text(
           'الأذكار',
-          style: TextStyle(color: Colors.white),
+          style: TextStyle(
+              fontSize: 26, color: Colors.white, fontFamily: "UthmanicHafs"),
         ),
         backgroundColor: tealBlue,
       ),
@@ -20,20 +23,22 @@ class Supplications extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             _buildChoiceItem(
-                context, '  أذكار الصباح  ', Icons.wb_sunny, Colors.orange, () {
+                context, '  أذكار الصباح   ', Icons.wb_sunny, Colors.orange,
+                () {
               Get.to(AzkaeAlSabahScreen(
                 fileName: choices[0],
               ));
             }),
             const SizedBox(height: 20),
             _buildChoiceItem(
-                context, 'أذكار الصلاة', Icons.access_time, Colors.green, () {
+                context, '  أذكار الصلاة    ', Icons.access_time, Colors.green,
+                () {
               Get.to(AzkaeAlSabahScreen(
                 fileName: choices[1],
               ));
             }),
             const SizedBox(height: 20),
-            _buildChoiceItem(context, '  أذكار المساء  ',
+            _buildChoiceItem(context, '  أذكار المساء   ',
                 Icons.nightlight_round, Colors.blue, () {
               Get.to(AzkaeAlSabahScreen(
                 fileName: choices[2],
@@ -81,6 +86,7 @@ class Supplications extends StatelessWidget {
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
                   color: color,
+                  fontFamily: "UthmanicHafs",
                 ),
               ),
             ],

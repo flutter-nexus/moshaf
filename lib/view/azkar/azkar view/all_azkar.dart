@@ -38,9 +38,11 @@ class _AzkaeAlSabahScreenState extends State<AzkaeAlSabahScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
+        iconTheme: IconThemeData(color: Colors.white),
         title: Text(
           '${widget.title}',
-          style: TextStyle(color: Colors.white),
+          style: TextStyle(color: Colors.white, fontFamily: "UthmanicHafs"),
         ),
         backgroundColor: tealBlue,
       ),
@@ -89,7 +91,10 @@ class ZekrWidget extends StatelessWidget {
           children: [
             Text(
               zekr.zekr,
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
               textAlign: TextAlign.right,
             ),
             SizedBox(height: 10),
