@@ -137,6 +137,7 @@ class _SurahCardState extends State<_SurahCard> {
               if (Get.arguments == "القرآن الكريم") {
                 Get.to(() => WholeQuranSurah(
                       intialPageNumber: widget.surah["pageNumber"],
+                      surahNumber: widget.index + 1,
                     ));
               } else {
                 log('Surah tapped: ${widget.surah['name']} (Index: ${widget.index})');

@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 
 class WholeQuranSurah extends StatefulWidget {
-  WholeQuranSurah({super.key, this.intialPageNumber = 0});
+  WholeQuranSurah({super.key, this.intialPageNumber = 0,required this.surahNumber });
   int intialPageNumber;
+  int surahNumber ;
   @override
   State<WholeQuranSurah> createState() => _WholeQuranSurahState();
 }
