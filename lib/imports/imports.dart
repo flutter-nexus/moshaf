@@ -1,4 +1,6 @@
 export 'package:get/get.dart';
+import 'package:moshaf/view/do3a/supplications.dart';
+
 export 'package:moshaf/service/navigation_bottom_bar.dart';
 export 'package:moshaf/view/home/home_page_helper/HomeScreen.dart';
 export 'package:moshaf/view/auth/login_screen.dart';
@@ -10,7 +12,6 @@ export 'package:moshaf/view/prayer_times/time_of_prayer.dart';
 export 'package:moshaf/view/settings/settings.dart';
 export 'package:moshaf/view/teaching_pray_and_ablution/teaching_pray_and_ablution.dart';
 export 'package:moshaf/view/hadith/hadith.dart';
-export 'package:moshaf/view/do3a/supplications.dart';
 export 'package:flutter/material.dart';
 export 'package:pin_code_fields/pin_code_fields.dart';
 export 'package:carousel_slider/carousel_slider.dart';

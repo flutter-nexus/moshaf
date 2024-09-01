@@ -9,36 +9,18 @@ class PrayerTimeScreen extends StatefulWidget {
   _PrayerTimeScreenState createState() => _PrayerTimeScreenState();
 }
 
-class _PrayerTimeScreenState extends State<PrayerTimeScreen>
-    with SingleTickerProviderStateMixin {
+class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
   Position? _currentPosition;
   Map<String, String>? _prayerTimes;
   bool _loading = true;
   String? _errorMessage;
-  late AnimationController _animationController;
-  late Animation<double> _fadeAnimation;
   String datehijri = "";
   String datenepali = "";
 
   @override
   void initState() {
     super.initState();
-    _animationController = AnimationController(
-      duration: const Duration(milliseconds: 500),
-      vsync: this,
-    );
-    _fadeAnimation = CurvedAnimation(
-      parent: _animationController,
-      curve: Curves.easeIn,
-    );
-    _animationController.forward();
     _getCurrentLocation();
-  }
-
-  @override
-  void dispose() {
-    _animationController.dispose();
-    super.dispose();
   }
 
   Future<void> _getCurrentLocation() async {
@@ -231,33 +213,30 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen>
             child: ListView(
               padding: EdgeInsets.all(16),
               children: _prayerTimes!.entries.map((prayer) {
-                return FadeTransition(
-                  opacity: _fadeAnimation,
-                  child: Card(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    elevation: 8,
-                    margin: EdgeInsets.symmetric(vertical: 8),
-                    child: ListTile(
-                      contentPadding:
-                          EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-                      leading: Icon(Icons.access_time, color: navyBlue),
-                      title: Text(
-                        prayer.key,
-                        style: TextStyle(
-                          fontSize: 22,
-                          fontWeight: FontWeight.bold,
-                          color: navyBlue,
-                        ),
+                return Card(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  elevation: 8,
+                  margin: EdgeInsets.symmetric(vertical: 8),
+                  child: ListTile(
+                    contentPadding:
+                        EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+                    leading: Icon(Icons.access_time, color: navyBlue),
+                    title: Text(
+                      prayer.key,
+                      style: TextStyle(
+                        fontSize: 22,
+                        fontWeight: FontWeight.bold,
+                        color: navyBlue,
                       ),
-                      trailing: Text(
-                        prayer.value,
-                        style: TextStyle(
-                          fontSize: 22,
-                          fontWeight: FontWeight.bold,
-                          color: navyBlue,
-                        ),
+                    ),
+                    trailing: Text(
+                      prayer.value,
+                      style: TextStyle(
+                        fontSize: 22,
+                        fontWeight: FontWeight.bold,
+                        color: navyBlue,
                       ),
                     ),
                   ),

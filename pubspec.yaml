@@ -80,6 +80,7 @@ flutter:
     - assets/images/
     - assets/quran.json
     - assets/quran.pdf
+    - assets/json/
     - assets/ara-jalaladdinalmah.json
     - assets/teaching_pray_images/
     - assets/teaching_ablution_images/

@@ -1,5 +1,7 @@
-import '../../../imports/imports.dart';
+import 'package:moshaf/view/do3a/supplications.dart';
 
+import '../../../imports/imports.dart';
+import 'package:flutter/src/painting/alignment.dart';
 class HomeScreen extends StatefulWidget {
   HomeScreen({super.key});
 
@@ -77,7 +79,14 @@ class _HomeScreenState extends State<HomeScreen> {
                           onTap: () {
                             Get.to(() => SettingsScreen());
                           }),
+                           buildGridItem(
+                          label: "دعاء",
+                          icon: Icons.settings,
+                          onTap: () {
+                            Get.to(() => Supplications());
+                          }),
                     ],
+                    
                   ),
                 ),
               ],
