@@ -23,36 +23,37 @@ class _QuranPageVersePreviewState extends State<QuranPageVersePreview> {
   List<dynamic> exegesisList = [];
   bool isLoading = true;
   int ayaNumber = 0;
+  late AudioPlayer player; // Declare the player once
 
   @override
   void initState() {
     super.initState();
+    player = AudioPlayer(); // Initialize the player once
     loadQuranData();
     loadQuranExegesis();
-    ayahNumber(widget.indexSurah);
+    calculateAyahNumber(widget.indexSurah);
   }
 
-  ayahNumber(int index) {
-    for (var i = 0; i < index - 1; i++) {
-      ayaNumber = surahData[i]["ayahCount"] + ayaNumber;
-    }
+  @override
+  void dispose() {
+    player.dispose(); // Dispose of the player when the widget is disposed
+    super.dispose();
+  }
 
-    ;
+  void calculateAyahNumber(int index) {
+    ayaNumber = surahData.sublist(0, index - 1).fold(0, (prev, element) => prev + element["ayahCount"] as int);
     log(ayaNumber.toString());
   }
 
   Future<void> loadQuranData() async {
     try {
-      // Read data from JSON file
       String fileContents = await rootBundle.loadString('assets/quran.json');
       final jsonData = jsonDecode(fileContents);
 
-      setState(() {
-        ayahs = jsonData[widget.indexSurah.toString()];
-        isLoading = false;
-      });
+      ayahs = jsonData[widget.indexSurah.toString()];
     } catch (e) {
       print("Error loading Quran data: $e");
+    } finally {
       setState(() {
         isLoading = false;
       });
@@ -61,20 +62,22 @@ class _QuranPageVersePreviewState extends State<QuranPageVersePreview> {
 
   Future<void> loadQuranExegesis() async {
     try {
-      // Read data from JSON file
-      String fileContents =
-          await rootBundle.loadString('assets/ara-jalaladdinalmah.json');
+      String fileContents = await rootBundle.loadString('assets/ara-jalaladdinalmah.json');
       final jsonExegesis = jsonDecode(fileContents);
 
-      setState(() {
-        exegesisList = jsonExegesis["quran"];
-        isLoading = false;
-      });
+      exegesisList = jsonExegesis["quran"];
     } catch (e) {
       print("Error loading Quran exegesis: $e");
-      setState(() {
-        isLoading = false;
-      });
+    }
+  }
+
+  Future<void> playAudio(int index) async {
+    try {
+      final url = "https://cdn.islamic.network/quran/audio/64/ar.alafasy/${ayaNumber + index + 1}.mp3";
+      await player.setUrl(url);
+      await player.play();
+    } catch (e) {
+      print("Error playing audio: $e");
     }
   }
 
@@ -106,95 +109,84 @@ class _QuranPageVersePreviewState extends State<QuranPageVersePreview> {
                     ),
                     SizedBox(height: 22),
                     Expanded(
-                      child: ListView.builder(
+                      child: ListView.separated(
                         itemCount: ayahs.length,
+                        separatorBuilder: (context, index) => Divider(
+                          color: Colors.grey,
+                          thickness: 2,
+                          indent: 40,
+                          endIndent: 40,
+                        ),
                         itemBuilder: (context, index) {
-                          return Column(
-                            children: [
-                              GestureDetector(
-                                onTap: () async {
-
-                                
-                                  Get.bottomSheet(
-                                    Container(
-                                      padding: EdgeInsets.symmetric(
-                                          vertical: 20, horizontal: 20),
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(10),
-                                        color: Colors.white,
-                                      ),
-                                      child: Text(
-                                        ' ${exegesisList[ayaNumber + index]["text"]},',
-                                        style: TextStyle(
-                                            fontSize: 22,
-                                            fontFamily: "UthmanicHafs",
-                                            color: navyBlue),
-                                        textDirection: TextDirection.rtl,
-                                      ),
-                                    ),
-                                    isScrollControlled: true,
-                                  );
-                                  final player =
-                                      AudioPlayer(); // Create a player
-                                  final duration = await player.setUrl(
-                                      // Load a URL
-                                      "https://cdn.islamic.network/quran/audio/64/ar.alafasy/${ayaNumber + index + 1}.mp3");
-                                  await player.play();
-                                  log('${ayaNumber + index}');
-                                },
-                                child: ListTile(
-                                  title: Row(
-                                    mainAxisAlignment: MainAxisAlignment.end,
+                          return GestureDetector(
+                            onTap: () async {
+                              Get.bottomSheet(
+                                Container(
+                                  padding: EdgeInsets.symmetric(
+                                      vertical: 20, horizontal: 20),
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10),
+                                    color: Colors.white,
+                                  ),
+                                  child: Text(
+                                    ' ${exegesisList[ayaNumber + index]["text"]},',
+                                    style: TextStyle(
+                                        fontSize: 22,
+                                        fontFamily: "UthmanicHafs",
+                                        color: navyBlue),
+                                    textDirection: TextDirection.rtl,
+                                  ),
+                                ),
+                                isScrollControlled: true,
+                              );
+                              await playAudio(index);
+                              log('${ayaNumber + index}');
+                            },
+                            child: ListTile(
+                              title: Row(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                children: [
+                                  Stack(
+                                    alignment: Alignment.center,
                                     children: [
-                                      Stack(
-                                        alignment: Alignment.center,
-                                        children: [
-                                          Image.asset(
-                                            'assets/images/icon_number.png',
-                                            height: MediaQuery.of(context)
-                                                    .size
-                                                    .height *
-                                                0.06,
-                                            width: MediaQuery.of(context)
-                                                    .size
-                                                    .width *
-                                                0.06,
-                                          ),
-                                          Positioned(
-                                            child: Text(
-                                              '${ayahs[index]['verse']}', // Verse number
-                                              style: TextStyle(
-                                                fontSize: 12,
-                                                fontFamily: 'UthmanicHafs',
-                                                color: Colors.black,
-                                                fontWeight: FontWeight.w600,
-                                              ),
-                                            ),
-                                          ),
-                                        ],
+                                      Image.asset(
+                                        'assets/images/icon_number.png',
+                                        height: MediaQuery.of(context)
+                                                .size
+                                                .height *
+                                            0.06,
+                                        width: MediaQuery.of(context)
+                                                .size
+                                                .width *
+                                            0.06,
                                       ),
-                                      SizedBox(width: 10),
-                                      Expanded(
+                                      Positioned(
                                         child: Text(
-                                          ayahs[index]['text'],
-                                          textAlign: TextAlign.right,
+                                          '${ayahs[index]['verse']}',
                                           style: TextStyle(
-                                            fontSize: 24,
+                                            fontSize: 12,
                                             fontFamily: 'UthmanicHafs',
+                                            color: Colors.black,
+                                            fontWeight: FontWeight.w600,
                                           ),
                                         ),
                                       ),
                                     ],
                                   ),
-                                ),
+                                  SizedBox(width: 10),
+                                  Expanded(
+                                    child: Text(
+                                      ayahs[index]['text'],
+                                      textAlign: TextAlign.right,
+                                      style: TextStyle(
+                                        fontSize: 24,
+                                        fontFamily: 'UthmanicHafs',
+                                      ),
+                                    ),
+                                  ),
+                                ],
                               ),
-                              Divider(
-                                color: Colors.grey,
-                                thickness: 2,
-                                indent: 40,
-                                endIndent: 40,
-                              ),
-                            ],
+                            ),
                           );
                         },
                       ),
