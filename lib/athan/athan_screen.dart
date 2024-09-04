@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart'; // For custom fonts
 
 class AthanWidget extends StatefulWidget {
   final String prayerName;
@@ -18,6 +19,7 @@ class _AthanWidgetState extends State<AthanWidget>
   late AnimationController _animationController;
   late Animation<double> _fadeAnimation;
   late Animation<double> _scaleAnimation;
+  late Animation<Color?> _colorAnimation;
 
   @override
   void initState() {
@@ -36,7 +38,15 @@ class _AthanWidgetState extends State<AthanWidget>
       CurvedAnimation(parent: _animationController, curve: Curves.elasticOut),
     );
 
+    _colorAnimation = ColorTween(
+      begin: Color(0xFF2D9CDB),
+      end: Color(0xFF2F80ED),
+    ).animate(_animationController);
+
     _animationController.forward();
+    _animationController.addListener(() {
+      setState(() {});
+    });
   }
 
   @override
@@ -55,7 +65,7 @@ class _AthanWidgetState extends State<AthanWidget>
           padding: EdgeInsets.all(20),
           decoration: BoxDecoration(
             gradient: LinearGradient(
-              colors: [Color(0xFF2D9CDB), Color(0xFF56CCF2), Color(0xFF2F80ED)],
+              colors: [Color(0xFF2D9CDB), _colorAnimation.value!, Color(0xFF2F80ED)],
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
             ),
@@ -74,7 +84,7 @@ class _AthanWidgetState extends State<AthanWidget>
             children: [
               Text(
                 "حان الآن موعد",
-                style: TextStyle(
+                style: GoogleFonts.tajawal(
                   fontSize: 22,
                   color: Colors.white.withOpacity(0.9),
                   fontWeight: FontWeight.w400,
@@ -83,7 +93,7 @@ class _AthanWidgetState extends State<AthanWidget>
               SizedBox(height: 10),
               Text(
                 widget.prayerName,
-                style: TextStyle(
+                style: GoogleFonts.tajawal(
                   fontSize: 36,
                   color: Colors.white,
                   fontWeight: FontWeight.bold,
@@ -99,7 +109,7 @@ class _AthanWidgetState extends State<AthanWidget>
               SizedBox(height: 10),
               Text(
                 widget.prayerTime,
-                style: TextStyle(
+                style: GoogleFonts.tajawal(
                   fontSize: 24,
                   color: Colors.white.withOpacity(0.9),
                   letterSpacing: 1.5,
@@ -124,6 +134,45 @@ class _AthanWidgetState extends State<AthanWidget>
                   color: Colors.white,
                   size: 40,
                 ),
+              ),
+              SizedBox(height: 20),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ElevatedButton(
+                    onPressed: () {
+                      // Snooze action
+                    },
+                    style: ElevatedButton.styleFrom(
+                      shape: CircleBorder(),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(12.0),
+                      child: Icon(
+                        Icons.snooze,
+                        color: Colors.white,
+                        size: 24,
+                      ),
+                    ),
+                  ),
+                  SizedBox(width: 20),
+                  ElevatedButton(
+                    onPressed: () {
+                      // Dismiss action
+                    },
+                    style: ElevatedButton.styleFrom(
+                      shape: CircleBorder(),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(12.0),
+                      child: Icon(
+                        Icons.close,
+                        color: Colors.white,
+                        size: 24,
+                      ),
+                    ),
+                  ),
+                ],
               ),
             ],
           ),
