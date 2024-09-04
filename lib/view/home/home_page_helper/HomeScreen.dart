@@ -1,3 +1,4 @@
+import 'package:moshaf/athan/athan_screen.dart';
 
 import '../../../imports/imports.dart';
 import '../../azkar/Azkar_Selection.dart';
@@ -101,7 +102,10 @@ class _HomeScreenState extends State<HomeScreen> {
                       label: "الاعدادات",
                       icon: Icons.settings,
                       onTap: () {
-                        Get.to(() => SettingsScreen());
+                        Get.to(() => AthanWidget(
+                              prayerName: "Fajr",
+                              prayerTime: "5:30 AM",
+                            ));
                       },
                       width: MediaQuery.of(context).size.width * 0.4,
                     ),
@@ -109,8 +113,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       label: "تسبيح",
                       icon: FlutterIslamicIcons.tasbihHand,
                       onTap: () {
-                        Get.to(() => TasbeehScreen
-                        ( ));
+                        Get.to(() => TasbeehScreen());
                       },
                       width: MediaQuery.of(context).size.width * 0.4,
                     ),
