@@ -1,5 +1,7 @@
+
 import '../../../imports/imports.dart';
 import '../../azkar/Azkar_Selection.dart';
+import '../../tasbih/tasbih_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   HomeScreen({super.key});
@@ -101,7 +103,16 @@ class _HomeScreenState extends State<HomeScreen> {
                       onTap: () {
                         Get.to(() => SettingsScreen());
                       },
-                      width: MediaQuery.of(context).size.width * 0.5,
+                      width: MediaQuery.of(context).size.width * 0.4,
+                    ),
+                    buildGridItem(
+                      label: "تسبيح",
+                      icon: FlutterIslamicIcons.tasbihHand,
+                      onTap: () {
+                        Get.to(() => TasbeehScreen
+                        ( ));
+                      },
+                      width: MediaQuery.of(context).size.width * 0.4,
                     ),
                   ],
                 ),
