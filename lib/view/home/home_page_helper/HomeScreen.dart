@@ -102,10 +102,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       label: "الاعدادات",
                       icon: Icons.settings,
                       onTap: () {
-                        Get.to(() => AthanScreen(
-                              name: "الفجر",
-                              time: "5:30 AM",
-                            ));
+                        Get.to(() => SettingsScreen());
                       },
                       width: MediaQuery.of(context).size.width * 0.4,
                     ),
