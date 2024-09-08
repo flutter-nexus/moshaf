@@ -1,5 +1,3 @@
-import 'package:moshaf/athan/athan_screen.dart';
-
 import '../../../imports/imports.dart';
 import '../../azkar/Azkar_Selection.dart';
 import '../../tasbih/tasbih_screen.dart';
@@ -35,6 +33,8 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           child: SingleChildScrollView(
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 buildGridItem(
                   label: "القرآن الكريم",
@@ -54,6 +54,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   width: double.infinity,
                 ),
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     buildGridItem(
                       label: "مواقيت الصلاة",
@@ -75,6 +76,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ],
                 ),
                 Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     buildGridItem(
                       label: "تعليم الوضوء",
@@ -117,6 +119,14 @@ class _HomeScreenState extends State<HomeScreen> {
                   ],
                 ),
                 SizedBox(height: MediaQuery.of(context).size.height * 0.085),
+                buildGridItem(
+                  label: "test notification",
+                  icon: Icons.notifications,
+                  onTap: () {
+                    Notifications().showNotifications();
+                  },
+                  width: MediaQuery.of(context).size.width * 0.4,
+                ),
               ],
             ),
           ),

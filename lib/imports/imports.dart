@@ -1,6 +1,4 @@
 export 'package:get/get.dart';
-import 'package:moshaf/view/azkar/Azkar_Selection.dart';
-
 export 'package:moshaf/service/navigation_bottom_bar.dart';
 export 'package:moshaf/view/home/home_page_helper/HomeScreen.dart';
 export 'package:moshaf/view/auth/login_screen.dart';
@@ -21,3 +19,5 @@ export 'package:moshaf/view/quran/quran_page_verse.dart';
 export 'package:moshaf/view/quran/helper/quran_bottom_sheet_container.dart';
 export 'package:moshaf/service/Kvariables.dart';
 export 'package:moshaf/service/golobal_variabules.dart';
+export 'package:moshaf/service/work_manager_service.dart';
+export 'Package:moshaf/service/notifcation.dart';
