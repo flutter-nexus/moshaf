@@ -1,79 +1,57 @@
 import 'package:crystal_navigation_bar/crystal_navigation_bar.dart';
 import 'package:moshaf/imports/imports.dart';
 
-class CustomBottomNavigationBar extends StatefulWidget {
-  const CustomBottomNavigationBar({super.key});
-
-  @override
-  State<CustomBottomNavigationBar> createState() =>
-      _CustomBottomNavigationBarState();
-}
-
-class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
-  int _selectedIndex = 0;
-  final PageController _pageController = PageController();
-  _handleIndexChanged(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-    Get.off(_pages[index]);
-  }
-
-  final List<Widget> _pages = [
-    HomeScreen(),
-    QuranIndexPage(),
-    PrayerTimeScreen(),
-    SettingsScreen(),
-  ];
-
+class CustomBottomNavigationBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return CrystalNavigationBar(
-      duration: Duration(milliseconds: 300),
-      currentIndex: _selectedIndex,
-      indicatorColor: navyBlue,
-      paddingR: EdgeInsets.all(2),
-      unselectedItemColor: lightBeige,
-      backgroundColor: tealBlue.withOpacity(0.7),
-      outlineBorderColor: lightBlue,
-      marginR: EdgeInsets.all(10),
-      borderRadius: 30,
-      onTap: _handleIndexChanged,
-      items: [
-        /// Home
-        CrystalNavigationBarItem(
-          icon: Icons.home_filled,
-          unselectedIcon: Icons.home_filled,
-          selectedColor: navyBlue,
-        ),
+    final controller = Get.put(BottomNavigationController());
 
-        /// Favourite
-        CrystalNavigationBarItem(
-          icon: FlutterIslamicIcons.quran,
-          unselectedIcon: FlutterIslamicIcons.quran,
-          selectedColor: navyBlue,
-        ),
-
-        /// Add
-        CrystalNavigationBarItem(
-          icon: FlutterIslamicIcons.prayingPerson,
-          unselectedIcon: FlutterIslamicIcons.prayingPerson,
-          selectedColor: navyBlue,
-        ),
-
-        /// Search
-        // CrystalNavigationBarItem(
-        //     icon: IconlyBold.search,
-        //     unselectedIcon: IconlyLight.search,
-        //     selectedColor: Colors.white),
-
-        /// Profile
-        CrystalNavigationBarItem(
-          icon: Icons.settings,
-          unselectedIcon: Icons.settings,
-          selectedColor: navyBlue,
-        ),
-      ],
-    );
+    return Obx(() {
+      return CrystalNavigationBar(
+        duration: Duration(milliseconds: 300),
+        currentIndex: controller.selectedIndex.value,
+        indicatorColor: navyBlue,
+        paddingR: EdgeInsets.all(2),
+        unselectedItemColor: lightBeige,
+        backgroundColor: tealBlue.withOpacity(0.7),
+        outlineBorderColor: lightBlue,
+        marginR: EdgeInsets.all(10),
+        borderRadius: 30,
+        onTap: (index) {
+          controller.setIndex(index);
+          if (index == 0) {
+            Get.offAll(HomeScreen());
+          } else if (index == 1) {
+            Get.to(QuranIndexPage());
+          } else if (index == 2) {
+            Get.to(PrayerTimeScreen());
+          } else {
+            Get.to(SettingsScreen());
+          }
+        },
+        items: [
+          CrystalNavigationBarItem(
+            icon: Icons.home_filled,
+            unselectedIcon: Icons.home_filled,
+            selectedColor: navyBlue,
+          ),
+          CrystalNavigationBarItem(
+            icon: FlutterIslamicIcons.quran,
+            unselectedIcon: FlutterIslamicIcons.quran,
+            selectedColor: navyBlue,
+          ),
+          CrystalNavigationBarItem(
+            icon: FlutterIslamicIcons.prayingPerson,
+            unselectedIcon: FlutterIslamicIcons.prayingPerson,
+            selectedColor: navyBlue,
+          ),
+          CrystalNavigationBarItem(
+            icon: Icons.settings,
+            unselectedIcon: Icons.settings,
+            selectedColor: navyBlue,
+          ),
+        ],
+      );
+    });
   }
 }
