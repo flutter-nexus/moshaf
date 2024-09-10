@@ -22,7 +22,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
           if (index == 0) {
             Get.offAll(HomeScreen());
           } else if (index == 1) {
-            Get.to(QuranIndexPage());
+            Get.to(QuranIndexPage(), arguments: "القرآن الكريم");
           } else if (index == 2) {
             Get.to(PrayerTimeScreen());
           } else {

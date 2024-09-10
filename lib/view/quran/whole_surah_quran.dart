@@ -1,10 +1,12 @@
-import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 
+import '../../imports/imports.dart';
+
 class WholeQuranSurah extends StatefulWidget {
-  WholeQuranSurah({super.key, this.intialPageNumber = 0,required this.surahNumber });
+  WholeQuranSurah(
+      {super.key, this.intialPageNumber = 0, required this.surahNumber});
   int intialPageNumber;
-  int surahNumber ;
+  int surahNumber;
   @override
   State<WholeQuranSurah> createState() => _WholeQuranSurahState();
 }
@@ -20,9 +22,13 @@ class _WholeQuranSurahState extends State<WholeQuranSurah> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
+        iconTheme: const IconThemeData(color: Colors.white),
+        backgroundColor: tealBlue,
         title: const Text(
           'القرآن الكريم',
           style: TextStyle(
+            fontWeight: FontWeight.bold,
+            color: Colors.white,
             fontFamily:
                 "UthmanicHafs", // Ensure the font is added to the project
           ),

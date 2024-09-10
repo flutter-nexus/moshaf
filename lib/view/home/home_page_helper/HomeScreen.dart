@@ -1,6 +1,4 @@
 import '../../../imports/imports.dart';
-import '../../azkar/Azkar_Selection.dart';
-import '../../tasbih/tasbih_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   HomeScreen({super.key});
@@ -42,7 +40,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   onTap: () {
                     Get.to(() => QuranIndexPage(), arguments: "القرآن الكريم");
                   },
-                  width: double.infinity,
+                  width: MediaQuery.of(context).size.width * 0.825,
                 ),
                 buildGridItem(
                   label: "تفسير القرآن الكريم",
@@ -51,7 +49,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     Get.to(() => QuranIndexPage(),
                         arguments: "تفسير القرآن الكريم");
                   },
-                  width: double.infinity,
+                  width: MediaQuery.of(context).size.width * 0.825,
                 ),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -61,29 +59,6 @@ class _HomeScreenState extends State<HomeScreen> {
                       icon: FlutterIslamicIcons.prayingPerson,
                       onTap: () {
                         Get.to(() => PrayerTimeScreen());
-                      },
-                      width: MediaQuery.of(context).size.width * 0.4,
-                    ),
-                    buildGridItem(
-                      label: "تعليم الصلاة",
-                      icon: FlutterIslamicIcons.sajadah,
-                      onTap: () {
-                        Get.to(() => TeachingPrayScreen(),
-                            arguments: 'تعليم الصلاة');
-                      },
-                      width: MediaQuery.of(context).size.width * 0.4,
-                    ),
-                  ],
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    buildGridItem(
-                      label: "تعليم الوضوء",
-                      icon: FlutterIslamicIcons.wudhu,
-                      onTap: () {
-                        Get.to(() => TeachingPrayScreen(),
-                            arguments: "تعليم الوضوء");
                       },
                       width: MediaQuery.of(context).size.width * 0.4,
                     ),
@@ -101,13 +76,28 @@ class _HomeScreenState extends State<HomeScreen> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     buildGridItem(
-                      label: "الاعدادات",
-                      icon: Icons.settings,
+                      label: "تعليم الصلاة",
+                      icon: FlutterIslamicIcons.sajadah,
                       onTap: () {
-                        Get.to(() => SettingsScreen());
+                        Get.to(() => TeachingPrayScreen(),
+                            arguments: 'تعليم الصلاة');
                       },
                       width: MediaQuery.of(context).size.width * 0.4,
                     ),
+                    buildGridItem(
+                      label: "تعليم الوضوء",
+                      icon: FlutterIslamicIcons.wudhu,
+                      onTap: () {
+                        Get.to(() => TeachingPrayScreen(),
+                            arguments: "تعليم الوضوء");
+                      },
+                      width: MediaQuery.of(context).size.width * 0.4,
+                    ),
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
                     buildGridItem(
                       label: "تسبيح",
                       icon: FlutterIslamicIcons.tasbihHand,
@@ -116,17 +106,17 @@ class _HomeScreenState extends State<HomeScreen> {
                       },
                       width: MediaQuery.of(context).size.width * 0.4,
                     ),
+                    buildGridItem(
+                      label: "الاعدادات",
+                      icon: Icons.settings,
+                      onTap: () {
+                        Get.to(() => SettingsScreen());
+                      },
+                      width: MediaQuery.of(context).size.width * 0.4,
+                    ),
                   ],
                 ),
                 SizedBox(height: MediaQuery.of(context).size.height * 0.085),
-                buildGridItem(
-                  label: "test notification",
-                  icon: Icons.notifications,
-                  onTap: () {
-                    Notifications().showAzanNotifications();
-                  },
-                  width: MediaQuery.of(context).size.width * 0.4,
-                ),
               ],
             ),
           ),

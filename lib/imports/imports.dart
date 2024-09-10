@@ -22,3 +22,5 @@ export 'package:moshaf/service/golobal_variabules.dart';
 export 'package:moshaf/service/work_manager_service.dart';
 export 'Package:moshaf/service/notifcation.dart';
 export 'package:moshaf/service/state_management.dart';
+export 'package:moshaf/view/azkar/Azkar_Selection.dart';
+export 'package:moshaf/view/tasbih/tasbih_screen.dart';

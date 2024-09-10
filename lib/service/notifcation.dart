@@ -25,4 +25,8 @@ class Notifications {
         0, 'آذان العصر', '', platformChannelSpecifics,
         payload: 'item x');
   }
+
+  void cancelAll() {
+    flutterLocalNotificationsPlugin.cancelAll();
+  }
 }

@@ -2,8 +2,11 @@ import 'dart:developer';
 import 'package:dio/dio.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:intl/intl.dart';
+<<<<<<< HEAD
 import 'package:moshaf/service/shared_prefrece.dart';
 
+=======
+>>>>>>> bd36777 (finishing UI)
 import '../../imports/imports.dart';
 
 class PrayerTimeScreen extends StatefulWidget {
@@ -206,11 +209,7 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
 
   Widget _buildPrayerTimesList() {
     return Container(
-      decoration: BoxDecoration(
-          gradient: LinearGradient(
-              colors: [tealBlue2, tealBlue],
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter)),
+      color: tealBlue4,
       child: Column(
         children: [
           Text(
@@ -218,7 +217,7 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
             style: TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.bold,
-              color: Colors.white,
+              color: navyBlue,
             ),
             textAlign: TextAlign.center,
           ),
@@ -227,6 +226,7 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
               padding: EdgeInsets.all(16),
               children: _prayerTimes!.entries.map((prayer) {
                 return Card(
+                  color: tealBlue,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(12),
                   ),
@@ -235,13 +235,13 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
                   child: ListTile(
                     contentPadding:
                         EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-                    leading: Icon(Icons.access_time, color: navyBlue),
+                    leading: Icon(Icons.access_time, color: Colors.white),
                     title: Text(
                       prayer.key,
                       style: TextStyle(
                         fontSize: 22,
                         fontWeight: FontWeight.bold,
-                        color: navyBlue,
+                        color: Colors.white,
                       ),
                     ),
                     trailing: Text(
@@ -249,7 +249,7 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
                       style: TextStyle(
                         fontSize: 22,
                         fontWeight: FontWeight.bold,
-                        color: navyBlue,
+                        color: Colors.white,
                       ),
                     ),
                   ),
