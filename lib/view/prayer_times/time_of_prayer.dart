@@ -1,12 +1,7 @@
-import 'dart:developer';
 import 'package:dio/dio.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:intl/intl.dart';
-<<<<<<< HEAD
 import 'package:moshaf/service/shared_prefrece.dart';
-
-=======
->>>>>>> bd36777 (finishing UI)
 import '../../imports/imports.dart';
 
 class PrayerTimeScreen extends StatefulWidget {
