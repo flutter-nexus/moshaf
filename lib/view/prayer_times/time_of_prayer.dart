@@ -1,6 +1,8 @@
+import 'dart:developer';
 import 'package:dio/dio.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:intl/intl.dart';
+import 'package:moshaf/service/shared_prefrece.dart';
 
 import '../../imports/imports.dart';
 
@@ -23,6 +25,23 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
     _getCurrentLocation();
   }
 
+  void savePrayerTimes() async {
+    Map<String, String> prayers = {
+      'الفجر': _prayerTimes!['الفجر']!,
+      'الظهر': _prayerTimes!['الظهر']!,
+      'العصر': _prayerTimes!['العصر']!,
+      'المغرب': _prayerTimes!['المغرب']!,
+      'العشاء': _prayerTimes!['العشاء']!,
+    };
+
+    await Future.wait(prayers.entries.map((entry) async {
+      await AppPreferences().saveString(entry.key, entry.value);
+    }));
+
+    await AppPreferences().saveString('datehijri', datehijri);
+    await AppPreferences().saveString('datenepali', datenepali);
+  }
+
   Future<void> _getCurrentLocation() async {
     try {
       final position = await _determinePosition();
@@ -32,19 +51,8 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
       });
       await _fetchPrayerTimes(position);
     } catch (e) {
-      setState(() {
-        _loading = false;
-        _errorMessage = e.toString();
-      });
-      _showErrorSnackBar(e.toString());
+      _handleError(e);
     }
-  }
-
-  String convertTo12HourFormat(String time24) {
-    final DateFormat timeFormat24 = DateFormat.Hm();
-    final DateFormat timeFormat12 = DateFormat.jm();
-    final DateTime dateTime = timeFormat24.parse(time24);
-    return timeFormat12.format(dateTime);
   }
 
   Future<Position> _determinePosition() async {
@@ -74,16 +82,13 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
   }
 
   Future<void> _fetchPrayerTimes(Position position) async {
-    final latitude = position.latitude;
-    final longitude = position.longitude;
-
     try {
       final dio = Dio();
       final response = await dio.get(
         'https://api.aladhan.com/v1/timings',
         queryParameters: {
-          'latitude': latitude,
-          'longitude': longitude,
+          'latitude': position.latitude,
+          'longitude': position.longitude,
           'method': 5,
         },
       );
@@ -91,7 +96,7 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
       final data = response.data;
       datehijri = data['data']['date']['readable'];
       datenepali =
-          " ${data['data']['date']['hijri']['day']} ${data['data']['date']['hijri']['month']['en']} ${data['data']['date']['hijri']['year']}";
+          "${data['data']['date']['hijri']['day']} ${data['data']['date']['hijri']['month']['en']} ${data['data']['date']['hijri']['year']}";
 
       if (data['code'] == 200) {
         setState(() {
@@ -104,16 +109,28 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
           };
           _loading = false;
         });
+        savePrayerTimes();
       } else {
         throw Exception("فشل تحميل مواقيت الصلاة");
       }
     } catch (e) {
-      setState(() {
-        _loading = false;
-        _errorMessage = 'فشل تحميل مواقيت الصلاة $e';
-      });
-      _showErrorSnackBar(e.toString());
+      _handleError(e);
     }
+  }
+
+  void _handleError(dynamic error) {
+    setState(() {
+      _loading = false;
+      _errorMessage = 'فشل تحميل مواقيت الصلاة: $error';
+    });
+    _showErrorSnackBar(error.toString());
+  }
+
+  String convertTo12HourFormat(String time24) {
+    final DateFormat timeFormat24 = DateFormat.Hm();
+    final DateFormat timeFormat12 = DateFormat.jm();
+    final DateTime dateTime = timeFormat24.parse(time24);
+    return timeFormat12.format(dateTime);
   }
 
   void _showErrorSnackBar(String message) {
@@ -174,10 +191,7 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
             ),
             SizedBox(height: 16),
             ElevatedButton(
-              onPressed: () {
-                _getCurrentLocation();
-                setState(() {});
-              },
+              onPressed: () => _getCurrentLocation(),
               child: Text('Retry'),
               style: ElevatedButton.styleFrom(
                 padding: EdgeInsets.symmetric(horizontal: 20, vertical: 12),
