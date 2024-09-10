@@ -21,3 +21,4 @@ export 'package:moshaf/service/Kvariables.dart';
 export 'package:moshaf/service/golobal_variabules.dart';
 export 'package:moshaf/service/work_manager_service.dart';
 export 'Package:moshaf/service/notifcation.dart';
+export 'package:moshaf/service/state_management.dart';

@@ -96,22 +96,21 @@ class _PrayerTimeScreenState extends State<PrayerTimeScreen> {
       if (data['code'] == 200) {
         setState(() {
           _prayerTimes = {
-            'Fajr': convertTo12HourFormat(data['data']['timings']['Fajr']),
-            'Dhuhr': convertTo12HourFormat(data['data']['timings']['Dhuhr']),
-            'Asr': convertTo12HourFormat(data['data']['timings']['Asr']),
-            'Maghrib':
-                convertTo12HourFormat(data['data']['timings']['Maghrib']),
-            'Isha': convertTo12HourFormat(data['data']['timings']['Isha']),
+            'الفجر': convertTo12HourFormat(data['data']['timings']['Fajr']),
+            'الظهر': convertTo12HourFormat(data['data']['timings']['Dhuhr']),
+            'العصر': convertTo12HourFormat(data['data']['timings']['Asr']),
+            'المغرب': convertTo12HourFormat(data['data']['timings']['Maghrib']),
+            'العشاء': convertTo12HourFormat(data['data']['timings']['Isha']),
           };
           _loading = false;
         });
       } else {
-        throw Exception('Failed to load prayer times');
+        throw Exception("فشل تحميل مواقيت الصلاة");
       }
     } catch (e) {
       setState(() {
         _loading = false;
-        _errorMessage = 'Failed to load prayer times: $e';
+        _errorMessage = 'فشل تحميل مواقيت الصلاة $e';
       });
       _showErrorSnackBar(e.toString());
     }

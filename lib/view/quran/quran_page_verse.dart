@@ -179,30 +179,21 @@ class _QuranPageVersePreviewState extends State<QuranPageVersePreview> {
             borderRadius: BorderRadius.circular(60),
           ),
           child: Padding(
-            padding: const EdgeInsets.all(16.0),
+            padding: const EdgeInsets.symmetric(vertical: 16.0, horizontal: 20),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 IconButton(
-                  onPressed: ()async {
-                    
-                    
+                  onPressed: () async {
                     await playAudio(index);
                   },
                   icon: Icon(Icons.play_arrow),
                 ),
                 IconButton(
-                  onPressed: ()async{
-                   await  player.pause();
-                   
-                  } ,
-                  icon: Icon(Icons.pause),
-                ),
-                IconButton(
-                  onPressed: ()  async {
+                  onPressed: () async {
                     await player.stop();
                   },
-                  icon: Icon(Icons.stop),
+                  icon: Icon(Icons.pause),
                 ),
               ],
             ),

@@ -3,7 +3,10 @@ import 'imports/imports.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Future.wait([WorkManagerService().init(), Notifications().init()]);
-  runApp(const MyApp());
+  runApp(GetMaterialApp(
+    home: MyApp(),
+    debugShowCheckedModeBanner: false,
+  ));
 }
 
 class MyApp extends StatelessWidget {
@@ -11,11 +14,9 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetMaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: Scaffold(
-        body: HomeScreen(),
-      ),
+    return GetBuilder<MuslimAppController>(
+      init: MuslimAppController(),
+      builder: (controller) => Scaffold(body: HomeScreen()),
     );
   }
 }

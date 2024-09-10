@@ -13,7 +13,7 @@ class Notifications {
     print("Notifications Initialized");
   }
 
-  void showNotifications() async {
+  void showAzanNotifications() async {
     const AndroidNotificationDetails androidPlatformChannelSpecifics =
         AndroidNotificationDetails('your channel id', 'your channel name',
             importance: Importance.max,
@@ -22,8 +22,7 @@ class Notifications {
     const NotificationDetails platformChannelSpecifics =
         NotificationDetails(android: androidPlatformChannelSpecifics);
     await flutterLocalNotificationsPlugin.show(
-        0, 'plain title', 'plain body', platformChannelSpecifics,
+        0, 'آذان العصر', '', platformChannelSpecifics,
         payload: 'item x');
-    print("Notifications Shown");
   }
 }

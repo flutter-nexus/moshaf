@@ -123,7 +123,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   label: "test notification",
                   icon: Icons.notifications,
                   onTap: () {
-                    Notifications().showNotifications();
+                    Notifications().showAzanNotifications();
                   },
                   width: MediaQuery.of(context).size.width * 0.4,
                 ),

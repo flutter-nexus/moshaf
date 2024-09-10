@@ -4,7 +4,7 @@ import 'package:moshaf/imports/imports.dart';
 class CustomBottomNavigationBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(BottomNavigationController());
+    final controller = Get.put(MuslimAppController());
 
     return Obx(() {
       return CrystalNavigationBar(

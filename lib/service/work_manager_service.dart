@@ -22,7 +22,7 @@ class WorkManagerService {
 @pragma('vm:entry-point')
 void actionTask() {
   Workmanager().executeTask((task, inputData) async {
-    Notifications().showNotifications();
+    Notifications().showAzanNotifications();
     return Future.value(true);
   });
 }
