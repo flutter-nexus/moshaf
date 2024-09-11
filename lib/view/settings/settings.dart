@@ -1,4 +1,7 @@
 import 'dart:developer';
+import 'package:moshaf/view/settings/more/AboutUs.dart';
+import 'package:moshaf/view/settings/more/HelpSupport.dart';
+import 'package:moshaf/view/settings/more/PrivacyPolicy.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../../imports/imports.dart';
 
@@ -67,10 +70,14 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       title: 'About Us',
                       subtitle: 'Learn more about our app',
                       onTap: () {
-                        log("clicked");
-
-                        log("end");
-                        // Navigate to About Us page
+                        
+                         Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => AboutUsScreen(),
+                                  ),
+                                );
+                        // Naigate to About Us page
                       },
                     ),
                     _buildListTile(
@@ -78,6 +85,12 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       title: 'Privacy Policy',
                       subtitle: 'View our privacy policy',
                       onTap: () {
+                           Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => HelpSupportScreen(),
+                                  ),
+                                );
                         // Navigate to Privacy Policy page
                       },
                     ),
@@ -86,6 +99,13 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       title: 'Help & Support',
                       subtitle: 'Get help and support',
                       onTap: () {
+                         Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => HelpSupportScreen(),
+                                  ),
+                                );
+                        // Navigate 
                         // Navigate to Help & Support page
                       },
                     ),
