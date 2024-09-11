@@ -1,6 +1,5 @@
 import 'dart:developer';
 
-import 'package:get/get_connect/http/src/utils/utils.dart';
 import 'package:moshaf/imports/imports.dart';
 
 import 'package:moshaf/view/quran/whole_surah_quran.dart';

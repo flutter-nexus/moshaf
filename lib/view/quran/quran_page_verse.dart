@@ -1,9 +1,7 @@
 import 'dart:convert';
 import 'dart:developer';
-import 'package:flutter/material.dart';
 import 'package:flutter/services.dart' show rootBundle;
 import 'package:just_audio/just_audio.dart';
-import 'package:moshaf/service/golobal_variabules.dart';
 
 import '../../imports/imports.dart';
 

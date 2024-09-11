@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 import 'package:moshaf/view/azkar/azkar%20view/all_azkar.dart';
 import '../../imports/imports.dart';
 
