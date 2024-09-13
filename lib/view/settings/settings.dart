@@ -1,8 +1,5 @@
-import 'dart:developer';
 import 'package:moshaf/view/settings/more/AboutUs.dart';
 import 'package:moshaf/view/settings/more/HelpSupport.dart';
-import 'package:moshaf/view/settings/more/PrivacyPolicy.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import '../../imports/imports.dart';
 
 class SettingsScreen extends StatefulWidget {
@@ -11,14 +8,7 @@ class SettingsScreen extends StatefulWidget {
 }
 
 class _SettingsScreenState extends State<SettingsScreen> {
-  bool _notificationsEnabled = true;
-
   @override
-  void initState() {
-    super.initState();
-    getSettingsData();
-  }
-
   @override
   Widget build(BuildContext context) {
     final screenHeight = MediaQuery.sizeOf(context).height;
@@ -44,39 +34,18 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    _buildSectionHeader('Settings'),
-                    _buildListTile(
-                      icon: Icons.notifications,
-                      title: 'Notifications',
-                      subtitle: _notificationsEnabled ? 'Enabled' : 'Disabled',
-                      trailing: _buildSwitch(
-                        value: _notificationsEnabled,
-                        onToggle: (val) async {
-                          final prefs = await SharedPreferences.getInstance();
-                          if (val) {
-                            Notifications().init();
-                            print('notifications enabled');
-                          } else {
-                            Notifications().cancelAll();
-                          }
-                          await prefs.setBool('notifications', val);
-                          setState(() => _notificationsEnabled = val);
-                        },
-                      ),
-                    ),
                     _buildSectionHeader('Information'),
                     _buildListTile(
                       icon: Icons.info,
                       title: 'About Us',
                       subtitle: 'Learn more about our app',
                       onTap: () {
-                        
-                         Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => AboutUsScreen(),
-                                  ),
-                                );
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => AboutUsScreen(),
+                          ),
+                        );
                         // Naigate to About Us page
                       },
                     ),
@@ -85,12 +54,12 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       title: 'Privacy Policy',
                       subtitle: 'View our privacy policy',
                       onTap: () {
-                           Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => HelpSupportScreen(),
-                                  ),
-                                );
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => HelpSupportScreen(),
+                          ),
+                        );
                         // Navigate to Privacy Policy page
                       },
                     ),
@@ -99,13 +68,13 @@ class _SettingsScreenState extends State<SettingsScreen> {
                       title: 'Help & Support',
                       subtitle: 'Get help and support',
                       onTap: () {
-                         Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => HelpSupportScreen(),
-                                  ),
-                                );
-                        // Navigate 
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => HelpSupportScreen(),
+                          ),
+                        );
+                        // Navigate
                         // Navigate to Help & Support page
                       },
                     ),
@@ -218,13 +187,5 @@ class _SettingsScreenState extends State<SettingsScreen> {
         onChanged: onChanged,
       ),
     );
-  }
-
-  Future<void> getSettingsData() async {
-    final prefs = await SharedPreferences.getInstance();
-
-    setState(() {
-      _notificationsEnabled = prefs.getBool('notifications') ?? false;
-    });
   }
 }

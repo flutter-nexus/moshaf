@@ -11,10 +11,15 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(onPressed: () {
+        void _testNotification() async {
+          await NotificationService.showAzanNotification('الفجر');
+        }
+      }),
       backgroundColor: Colors.white,
       appBar: AppBar(
         iconTheme: IconThemeData(
-          color: Colors.white, // لون الأيقونة
+          color: Colors.white,
         ),
         backgroundColor: tealBlue,
         title: Text(

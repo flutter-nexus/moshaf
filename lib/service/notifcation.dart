@@ -1,32 +1,48 @@
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
-class Notifications {
-  FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+class NotificationService {
+  static final FlutterLocalNotificationsPlugin _notificationsPlugin =
       FlutterLocalNotificationsPlugin();
-  Future<void> init() async {
-    const AndroidInitializationSettings initializationSettingsAndroid =
-        AndroidInitializationSettings('@mipmap/ic_launcher');
-    const InitializationSettings initializationSettings =
-        InitializationSettings(android: initializationSettingsAndroid);
-    await flutterLocalNotificationsPlugin.initialize(initializationSettings);
 
-    print("Notifications Initialized");
+  static Future<void> initialize(Function(String?) onSelectNotification) async {
+    const AndroidInitializationSettings initializationSettingsAndroid =
+        AndroidInitializationSettings('app_icon');
+
+    final InitializationSettings initializationSettings =
+        InitializationSettings(
+      android: initializationSettingsAndroid,
+    );
+
+    await _notificationsPlugin.initialize(
+      initializationSettings,
+      onDidReceiveNotificationResponse:
+          (NotificationResponse notificationResponse) {
+        if (notificationResponse.payload != null) {
+          onSelectNotification(notificationResponse.payload);
+        }
+      },
+    );
   }
 
-  void showAzanNotifications() async {
+  static Future<void> showAzanNotification(String prayerName) async {
     const AndroidNotificationDetails androidPlatformChannelSpecifics =
-        AndroidNotificationDetails('your channel id', 'your channel name',
-            importance: Importance.max,
-            priority: Priority.high,
-            ticker: 'ticker');
+        AndroidNotificationDetails(
+      'azan_channel',
+      'Azan Notifications',
+      channelDescription: 'Notifications for prayer times',
+      importance: Importance.max,
+      priority: Priority.high,
+    );
+
     const NotificationDetails platformChannelSpecifics =
         NotificationDetails(android: androidPlatformChannelSpecifics);
-    await flutterLocalNotificationsPlugin.show(
-        0, 'آذان العصر', '', platformChannelSpecifics,
-        payload: 'item x');
-  }
 
-  void cancelAll() {
-    flutterLocalNotificationsPlugin.cancelAll();
+    await _notificationsPlugin.show(
+      0, // ID الإشعار
+      'وقت الصلاة',
+      'حان وقت صلاة $prayerName',
+      platformChannelSpecifics,
+      payload: prayerName, // تمرير اسم الصلاة هنا
+    );
   }
 }

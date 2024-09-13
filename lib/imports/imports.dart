@@ -6,7 +6,7 @@ export 'package:moshaf/view/auth/reset_password_screen.dart';
 export 'package:moshaf/view/auth/signup_screen.dart';
 export 'package:moshaf/view/auth/verification%20_code.dart';
 export 'package:moshaf/view/quran/index_quuran.dart';
-export 'package:moshaf/view/prayer_times/time_of_prayer.dart';
+export 'package:moshaf/view/prayer_times/prayer_time_screen.dart';
 export 'package:moshaf/view/settings/settings.dart';
 export 'package:moshaf/view/teaching_pray_and_ablution/teaching_pray_and_ablution.dart';
 export 'package:moshaf/view/hadith/hadith.dart';
