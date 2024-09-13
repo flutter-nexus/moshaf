@@ -15,6 +15,8 @@ class _HomeScreenState extends State<HomeScreen> {
         void _testNotification() async {
           await NotificationService.showAzanNotification('الفجر');
         }
+
+        _testNotification();
       }),
       backgroundColor: Colors.white,
       appBar: AppBar(
