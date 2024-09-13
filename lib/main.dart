@@ -6,21 +6,19 @@ void main() async {
     // هنا يمكنك التعامل مع الإشعار عند النقر عليه
   });
   await WorkManagerService().init();
-  runApp(MyApp());
-}
+runApp(GetMaterialApp(
+    home: MyApp(),
+    debugShowCheckedModeBanner: false,
+  ));}
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text('WorkManager & Notifications'),
-        ),
-        body: Center(
-          child: Text('Hello World'),
-        ),
-      ),
+    return GetBuilder<MuslimAppController>(
+      init: MuslimAppController(),
+      builder: (controller) => Scaffold(body: HomeScreen()),
     );
   }
 }
