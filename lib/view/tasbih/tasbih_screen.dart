@@ -40,6 +40,7 @@ class _TasbeehScreenState extends State<TasbeehScreen> with TickerProviderStateM
 
     _controller = AnimationController(
       duration: const Duration(milliseconds: 300),
+      
       vsync: this,
     );
 
