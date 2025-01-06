@@ -121,6 +121,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.8"
+  dartarabic:
+    dependency: transitive
+    description:
+      name: dartarabic
+      sha256: "203da945e11da7a51f5d65bd67dd098c06ba0ffeb8c95360bf5e1e2ae335579f"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.1.2"
   dbus:
     dependency: transitive
     description:
@@ -214,6 +222,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.13.1"
+  flutter_lints:
+    dependency: transitive
+    description:
+      name: flutter_lints
+      sha256: a25a15ebbdfc33ab1cd26c63a6ee519df92338a9c10f122adda92938253bef04
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.0.3"
   flutter_local_notifications:
     dependency: "direct main"
     description:
@@ -440,6 +456,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.0.1"
+  lints:
+    dependency: transitive
+    description:
+      name: lints
+      sha256: "0a217c6c989d21039f1498c3ed9f3ed71b354e69873f13a8dfc3c9fe76f1b452"
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.1.1"
   matcher:
     dependency: transitive
     description:
@@ -552,6 +576,13 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.8"
+  quran:
+    dependency: "direct main"
+    description:
+      path: "quran-1.2.2"
+      relative: true
+    source: path
+    version: "1.2.2"
   rxdart:
     dependency: transitive
     description:
@@ -661,6 +692,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.2.0"
+  string_validator:
+    dependency: transitive
+    description:
+      name: string_validator
+      sha256: "50dd8ecf91db6a732f4a851eeae81ee12406eedc62d0da72f2d91a04a2d10dd8"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.3.0"
   syncfusion_flutter_core:
     dependency: transitive
     description:

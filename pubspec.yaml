@@ -49,6 +49,8 @@ dependencies:
   syncfusion_flutter_pdfviewer: ^26.2.11
   workmanager: ^0.5.2
   intl: ^0.18.0
+  quran: 
+    path: ./quran-1.2.2
 
 
 dev_dependencies:
