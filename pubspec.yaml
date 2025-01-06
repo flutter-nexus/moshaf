@@ -51,6 +51,10 @@ dependencies:
   intl: ^0.18.0
   quran: 
     path: ./quran-1.2.2
+  easy_container: ^1.0.5
+  flutter_screenutil: ^5.9.3
+  quran_flutter: ^1.0.3
+  wakelock_plus: ^1.2.10
 
 
 dev_dependencies:
