@@ -1,8 +1,35 @@
+import 'dart:convert';
+
 import 'package:crystal_navigation_bar/crystal_navigation_bar.dart';
+import 'package:flutter/services.dart';
 import 'package:moshaf/imports/imports.dart';
 
-class CustomBottomNavigationBar extends StatelessWidget {
+import '../view/quran/quran_sura_page.dart';
+
+class CustomBottomNavigationBar extends StatefulWidget {
   @override
+  State<CustomBottomNavigationBar> createState() => _CustomBottomNavigationBarState();
+}
+
+class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
+ var widgejsonData;
+
+  loadJsonAsset() async {
+    final String jsonString =
+        await rootBundle.loadString('assets/json/surahs.json');
+    var data = jsonDecode(jsonString);
+    setState(() {
+      widgejsonData = data;
+    });
+  }
+
+  @override
+  void initState() {
+    loadJsonAsset();
+
+    // TODO: implement initState
+    super.initState();
+  } 
   Widget build(BuildContext context) {
     final controller = Get.put(MuslimAppController());
 
@@ -22,7 +49,7 @@ class CustomBottomNavigationBar extends StatelessWidget {
           if (index == 0) {
             Get.offAll(HomeScreen());
           } else if (index == 1) {
-            Get.to(QuranIndexPage(), arguments: "القرآن الكريم");
+            Get.to(QuranPage(suraJsonData:widgejsonData ,), arguments: "القرآن الكريم");
           } else if (index == 2) {
             Get.to(PrayerTimeScreen());
           } else {

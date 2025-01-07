@@ -25,7 +25,7 @@ class _BasmallahState extends State<Basmallah> {
         child:
 
       Image.asset(
-          "assets/images/Basmala.png",
+          "assets/images/frist/Basmala.png",
           color:Colors.black,
           width: MediaQuery.of(context).size.width*.4,
         ),

@@ -1,3 +1,5 @@
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+
 import 'imports/imports.dart';
 
 void main() async {
@@ -16,9 +18,13 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GetBuilder<MuslimAppController>(
-      init: MuslimAppController(),
-      builder: (controller) => Scaffold(body: HomeScreen()),
+    return ScreenUtilInit(
+              designSize: const Size(392.72727272727275, 800.7272727272727),
+
+      child: GetBuilder<MuslimAppController>(
+        init: MuslimAppController(),
+        builder: (controller) => Scaffold(body: HomeScreen()),
+      ),
     );
   }
 }

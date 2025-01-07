@@ -7,14 +7,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:moshaf/view/quran/widgets/basmallah.dart';
 import 'package:quran/quran.dart';
 import 'package:wakelock_plus/wakelock_plus.dart';
-// import 'package:quran_tutorial/globalhelpers/constants.dart';
-// import 'package:quran_tutorial/widgets/basmallah.dart';
-// import 'package:quran_tutorial/widgets/header_widget.dart';
 
+import 'widgets/basmallah.dart';
 import 'widgets/header_widget.dart';
+
 
 class QuranViewPage extends StatefulWidget {
   int pageNumber;
@@ -105,7 +103,6 @@ class _QuranViewPageState extends State<QuranViewPage> {
     SystemChrome.setEnabledSystemUIMode(SystemUiMode.edgeToEdge);
 
     WakelockPlus.disable();
-    
     super.dispose();
   }
 
@@ -134,7 +131,7 @@ class _QuranViewPageState extends State<QuranViewPage> {
           return Container(
             color: const Color(0xffFFFCE7),
             child: Image.asset(
-              "assets/images/jpg",
+              "assets/images/frist/Basmala.png",
               fit: BoxFit.fill,
             ),
           );
@@ -142,7 +139,7 @@ class _QuranViewPageState extends State<QuranViewPage> {
 
         return Container(
           decoration: const BoxDecoration(
-            color: Color(0xffF1EEE5),
+            color: Color(0xffFFFCE7),
           ),
           child: Scaffold(
             resizeToAvoidBottomInset: false,
@@ -255,11 +252,10 @@ class _QuranViewPageState extends State<QuranViewPage> {
                                         ));
                                         if (index != 187 && index != 1) {
                                           spans.add(WidgetSpan(
-                                            
                                             child: Basmallah(index: 0),
                                           ));
                                         }
-                                      if (index == 187) {
+                                        if (index == 187) {
                                           spans.add(WidgetSpan(
                                             child: Container(
                                               height: 10.h,
@@ -272,7 +268,10 @@ class _QuranViewPageState extends State<QuranViewPage> {
                                       spans.add(TextSpan(
                                         recognizer: LongPressGestureRecognizer()
                                           ..onLongPress = () {
-                                    
+                                            // showAyahOptionsSheet(
+                                            //     index,
+                                            //     e["surah"],
+                                            //     i);
                                             print("longpressed");
                                           }
                                           ..onLongPressDown = (details) {
@@ -294,7 +293,10 @@ class _QuranViewPageState extends State<QuranViewPage> {
                                             ? "${getVerseQCF(e["surah"], i).replaceAll(" ", "").substring(0, 1)}\u200A${getVerseQCF(e["surah"], i).replaceAll(" ", "").substring(1)}"
                                             : getVerseQCF(e["surah"], i)
                                                 .replaceAll(' ', ''),
-                
+                                        //  i == e["start"]
+                                        // ? "${getVerseQCF(e["surah"], i).replaceAll(" ", "").substring(0, 1)}\u200A${getVerseQCF(e["surah"], i).replaceAll(" ", "").substring(1).substring(0,  getVerseQCF(e["surah"], i).replaceAll(" ", "").substring(1).length - 1)}"
+                                        // :
+                                        // getVerseQCF(e["surah"], i).replaceAll(' ', '').substring(0,  getVerseQCF(e["surah"], i).replaceAll(' ', '').length - 1),
                                         style: TextStyle(
                                           color: Colors.black,
                                           height: (index == 1 || index == 2)
@@ -314,7 +316,18 @@ class _QuranViewPageState extends State<QuranViewPage> {
                                           backgroundColor: Colors.transparent,
                                         ),
                                         children: const <TextSpan>[
-                                     
+                                          // TextSpan(
+                                          //   text: getVerseQCF(e["surah"], i).substring(getVerseQCF(e["surah"], i).length - 1),
+                                          //   style:  TextStyle(
+                                          //     color: isVerseStarred(
+                                          //                                                     e[
+                                          //                                                         "surah"],
+                                          //                                                     i)
+                                          //                                                 ? Colors
+                                          //                                                     .amber
+                                          //                                                 : secondaryColors[getValue("quranPageolorsIndex")] // Change color here
+                                          //   ),
+                                          // ),
                                         ],
                                       ));
                                     }

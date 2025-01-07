@@ -18,7 +18,7 @@ class HeaderWidget extends StatelessWidget {
         children: [
           Center(
             child: Image.asset(
-              "assets/images/888-02.png",
+              "assets/images/frist/888-02.png",
               width: MediaQuery.of(context).size.width,
               height: 50,
     

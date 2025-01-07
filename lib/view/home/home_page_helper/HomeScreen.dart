@@ -1,4 +1,9 @@
+import 'dart:convert';
+
+import 'package:flutter/services.dart';
+
 import '../../../imports/imports.dart';
+import '../../quran/quran_sura_page.dart';
 
 class HomeScreen extends StatefulWidget {
   HomeScreen({super.key});
@@ -8,8 +13,26 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+ var widgejsonData;
+
+  loadJsonAsset() async {
+    final String jsonString =
+        await rootBundle.loadString('assets/json/surahs.json');
+    var data = jsonDecode(jsonString);
+    setState(() {
+      widgejsonData = data;
+    });
+  }
+
   @override
-  Widget build(BuildContext context) {
+  void initState() {
+    loadJsonAsset();
+
+    // TODO: implement initState
+    super.initState();
+  } 
+  
+   Widget build(BuildContext context) {
     return Scaffold(
    
       backgroundColor: Colors.white,
@@ -39,7 +62,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   label: "القرآن الكريم",
                   icon: FlutterIslamicIcons.quran,
                   onTap: () {
-                    Get.to(() => QuranIndexPage(), arguments: "القرآن الكريم");
+                    Get.to(() => QuranPage( suraJsonData:widgejsonData ,),
+                        arguments: "القرآن الكريم");
                   },
                   width: MediaQuery.of(context).size.width * 0.825,
                 ),
