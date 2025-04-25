@@ -1,0 +1,2 @@
+C:/Users/zemax/Desktop/projects/moshaf/android/app/.cxx/Debug/6t6d5250/armeabi-v7a/CMakeFiles/edit_cache.dir
+C:/Users/zemax/Desktop/projects/moshaf/android/app/.cxx/Debug/6t6d5250/armeabi-v7a/CMakeFiles/rebuild_cache.dir

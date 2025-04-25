@@ -273,6 +273,7 @@ class _QuranViewPageState extends State<QuranViewPage> {
                                             //     e["surah"],
                                             //     i);
                                             print("longpressed");
+                                          
                                           }
                                           ..onLongPressDown = (details) {
                                             setState(() {

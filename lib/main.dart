@@ -7,7 +7,7 @@ void main() async {
   await NotificationService.initialize((String? payload) {
     // هنا يمكنك التعامل مع الإشعار عند النقر عليه
   });
-  await WorkManagerService().init();
+  // await WorkManagerService().init();
 runApp(GetMaterialApp(
     home: MyApp(),
     debugShowCheckedModeBanner: false,

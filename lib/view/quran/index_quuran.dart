@@ -134,10 +134,10 @@ class _SurahCardState extends State<_SurahCard> {
             trailing: Icon(Icons.arrow_forward_ios, color: tealBlue),
             onTap: () async {
               if (Get.arguments == "القرآن الكريم") {
-                Get.to(() => WholeQuranSurah(
-                      intialPageNumber: widget.surah["pageNumber"],
-                      surahNumber: widget.index + 1,
-                    ));
+                // Get.to(() => WholeQuranSurah(
+                //       intialPageNumber: widget.surah["pageNumber"],
+                //       surahNumber: widget.index + 1,
+                //     ));
               } else {
                 log('Surah tapped: ${widget.surah['name']} (Index: ${widget.index})');
                 Get.to(() => QuranPageVersePreview(
